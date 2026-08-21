@@ -1,0 +1,2623 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IGCSE Combined Science 0653 理科中英学习大纲</title>
+<style>
+  :root{
+    --paper:#faf6ee;
+    --ink:#241c1a;
+    --ink-soft:#5c534e;
+    --oxy-red:#b3382c;
+    --deoxy-blue:#2c5f7c;
+    --leaf:#4a7a4e;
+    --line:#e3d9c8;
+    --panel:#ffffff;
+    --accent-soft:#f1e3d3;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    line-height:1.65;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    max-width:1160px;margin:0 auto;padding:2.6rem 1.5rem 1.6rem 1.5rem;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{font-size:0.76rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--deoxy-blue);font-weight:600;margin-bottom:0.7rem;}
+  h1{font-family: Georgia, "Songti SC", "STSong", serif;font-size:2.1rem;line-height:1.15;margin:0 0 0.5rem 0;color:var(--ink);}
+  h1 .en{display:block;font-size:1.05rem;font-style:italic;font-weight:400;color:var(--ink-soft);margin-top:0.25rem;}
+  .subtitle{font-size:0.92rem;color:var(--ink-soft);max-width:640px;margin:0;}
+  .pulse{width:100%;max-width:500px;height:28px;margin-top:1rem;}
+  .pulse path{fill:none;stroke:var(--oxy-red);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+  /* ---------- Layout: sidebar + content ---------- */
+  .layout{
+    max-width:1160px;margin:0 auto;padding:0 1.5rem;
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:2.2rem;
+    align-items:start;
+  }
+
+  aside{
+    /* position:sticky keeps the sidebar pinned while scrolling. The sidebar
+       now has more links than fit in one screen (16 biology + chemistry +
+       physics), so it needs its own scroll region — overflow-y:auto here.
+       Earlier this was avoided because sticky+overflow-y:auto is a known
+       WebKit issue where TOUCH taps get misread as the start of a scroll
+       gesture and dropped — but that's a touch-gesture bug, not a mouse
+       one, so it's safe on desktop/pointer devices. The narrow-screen
+       media query below (touch devices) intentionally does NOT use this —
+       it keeps the flat horizontal bar instead. */
+    position:sticky;
+    top:1.2rem;
+    max-height:calc(100vh - 2.4rem);
+    overflow-y:auto;
+    padding-top:1.6rem;
+    padding-right:0.3rem;
+    display:flex;
+    flex-direction:column;
+    gap:0.3rem;
+    scrollbar-width:thin;
+    scrollbar-color:var(--line) transparent;
+  }
+  aside::-webkit-scrollbar{width:6px;}
+  aside::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px;}
+  aside::-webkit-scrollbar-track{background:transparent;}
+  .side-link{
+    display:block;
+    text-decoration:none;
+    text-align:left;
+    font-size:0.83rem;
+    font-family:inherit;
+    color:var(--ink-soft);
+    background:none;
+    border:none;
+    border-left:2px solid transparent;
+    padding:0.45rem 0.7rem;
+    cursor:pointer;
+    border-radius:0 6px 6px 0;
+    line-height:1.35;
+    touch-action:manipulation;   /* skip the ~300ms iOS tap delay */
+  }
+  .side-link:hover{background:var(--accent-soft);color:var(--ink);}
+  .side-link.active{
+    color:var(--oxy-red);
+    font-weight:600;
+    border-left-color:var(--oxy-red);
+    background:var(--accent-soft);
+  }
+  .side-group{
+    font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+    color:var(--deoxy-blue);margin:0.9rem 0 0.1rem 0.7rem;
+  }
+  .side-group:first-child{margin-top:0;}
+  .side-note{
+    font-size:0.74rem;color:var(--ink-soft);opacity:0.7;padding:0.2rem 0.7rem 0.3rem 0.7rem;
+    font-style:italic;
+  }
+
+  main{padding:1.6rem 0 5rem 0;min-width:0;}
+
+  /* ---------- Accordion topics ---------- */
+  details.topic{
+    border-bottom:1px solid var(--line);
+    scroll-margin-top:1rem;
+  }
+  details.topic:first-of-type{border-top:1px solid var(--line);}
+  details.topic summary{
+    list-style:none;
+    cursor:pointer;
+    padding:1.3rem 0.2rem;
+    display:flex;
+    align-items:baseline;
+    gap:0.8rem;
+    position:relative;
+  }
+  details.topic summary::-webkit-details-marker{display:none;}
+  details.topic summary h2{margin:0;flex:1;}
+  .sec-num{font-family: Georgia, serif;font-size:0.95rem;color:var(--oxy-red);font-weight:700;letter-spacing:0.03em;white-space:nowrap;flex:none;}
+  .chev{font-size:0.8rem;color:var(--ink-soft);transition:transform 0.2s ease;flex:none;}
+  details.topic[open] summary .chev{transform:rotate(180deg);}
+
+  h2{font-family: Georgia, "Songti SC", "STSong", serif;font-size:1.45rem;margin:0;}
+  h2 .en{display:block;font-size:0.92rem;font-style:italic;color:var(--ink-soft);font-weight:400;margin-top:0.1rem;}
+
+  .topic-body{padding:0 0.2rem 2.2rem 0.2rem;}
+  /* Invisible target that the sidebar links actually jump to. It sits
+     inside .topic-body (hidden while the <details> is closed) so that
+     following a #bN-jump link makes the browser auto-open the parent
+     <details> natively — no JavaScript required. scroll-margin-top keeps
+     it from landing under the sticky top bar on phones/tablets. */
+  .jump-anchor{display:block;height:0;scroll-margin-top:1rem;}
+  @media (max-width:820px){ .jump-anchor{scroll-margin-top:4rem;} }
+
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1.1rem 1.3rem;margin-top:1.1rem;}
+  .card h3{margin:0 0 0.6rem 0;font-size:0.92rem;color:var(--deoxy-blue);display:flex;align-items:center;gap:0.5rem;}
+  .card h3::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--deoxy-blue);display:inline-block;flex:none;}
+  .card.red h3{color:var(--oxy-red);} .card.red h3::before{background:var(--oxy-red);}
+  .card.green h3{color:var(--leaf);} .card.green h3::before{background:var(--leaf);}
+
+  dl{margin:0;}
+  dl div{display:flex;gap:1rem;padding:0.5rem 0;border-bottom:1px dashed var(--line);}
+  dl div:last-child{border-bottom:none;}
+  dt{flex:0 0 160px;font-weight:600;color:var(--ink);font-size:0.9rem;}
+  dt .zh{display:block;font-weight:400;color:var(--ink-soft);font-size:0.83rem;margin-top:0.1rem;}
+  dd{margin:0;flex:1;color:var(--ink-soft);font-size:0.88rem;}
+
+  .flow{display:flex;flex-wrap:wrap;align-items:center;gap:0.4rem;font-size:0.8rem;margin-top:0.8rem;line-height:1.4;}
+  .flow .step{background:var(--accent-soft);border:1px solid var(--line);border-radius:6px;padding:0.3rem 0.5rem;}
+  .flow .arrow{color:var(--ink-soft);}
+  .flow .step.red{background:#f6e3df;border-color:#e3b5ac;}
+  .flow .step.blue{background:#dfe9ee;border-color:#a9c4d1;}
+  .flow .step.green{background:#e3ecdf;border-color:#b8ceb4;}
+
+  ul.compact{margin:0.7rem 0 0 0;padding-left:1.2rem;}
+  ul.compact li{margin-bottom:0.4rem;font-size:0.88rem;color:var(--ink-soft);}
+  ul.compact li b{color:var(--ink);font-weight:600;}
+
+  table{width:100%;border-collapse:collapse;margin-top:0.9rem;font-size:0.85rem;}
+  th{text-align:left;font-size:0.75rem;color:var(--ink-soft);font-weight:600;padding:0.4rem 0.5rem;border-bottom:2px solid var(--line);}
+  td{padding:0.5rem;border-bottom:1px solid var(--line);vertical-align:top;}
+  td .zh{display:block;color:var(--ink-soft);font-size:0.8rem;margin-top:0.1rem;}
+
+  .tag{display:inline-block;font-size:0.68rem;font-weight:700;letter-spacing:0.03em;padding:0.15rem 0.5rem;border-radius:999px;margin-left:0.5rem;vertical-align:middle;white-space:nowrap;}
+  .tag.core{background:#e3ecdf;color:var(--leaf);border:1px solid #b8ceb4;}
+  .tag.ext{background:#f3e3d8;color:#9a5a24;border:1px solid #dcb894;}
+  .tag.bg{background:#eee;color:var(--ink-soft);border:1px solid var(--line);}
+  .tag.y8{background:#dceaf5;color:#1d5a8c;border:1px solid #a9cbe8;}
+  .tag.igcse{background:#f0e6f6;color:#7a4a9e;border:1px solid #d6bce8;}
+  .tier-legend{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;font-size:0.82rem;color:var(--ink-soft);margin-top:0.9rem;padding:0.7rem 0.95rem;background:#fff;border:1px solid var(--line);border-radius:8px;}
+
+  .filter-bar{
+    display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center;
+    margin-top:0.9rem;padding:0.7rem 0.95rem;background:#fff;
+    border:1px solid var(--line);border-radius:8px;
+  }
+  .filter-bar .filter-label{font-size:0.78rem;font-weight:600;color:var(--ink-soft);margin-right:0.2rem;}
+  .filter-btn{
+    font-family:inherit;font-size:0.82rem;font-weight:600;cursor:pointer;
+    padding:0.4rem 0.85rem;border-radius:999px;border:1px solid var(--line);
+    background:#fff;color:var(--ink-soft);transition:background 0.15s ease,color 0.15s ease,border-color 0.15s ease;
+  }
+  .filter-btn:hover{background:var(--accent-soft);}
+  .filter-btn.active{background:var(--deoxy-blue);border-color:var(--deoxy-blue);color:#fff;}
+  .filter-btn[data-filter="y8"].active{background:#1d5a8c;border-color:#1d5a8c;}
+  .filter-btn[data-filter="igcse"].active{background:#7a4a9e;border-color:#7a4a9e;}
+  .filter-count{font-size:0.76rem;color:var(--ink-soft);opacity:0.75;margin-left:0.2rem;}
+  .card.filtered-out{display:none !important;}
+  .chapter-hidden-note{
+    display:none;font-size:0.82rem;color:var(--ink-soft);font-style:italic;
+    padding:0.6rem 0;
+  }
+  .chapter-hidden-note.shown{display:block;}
+
+  .model-answer{margin-top:0.4rem;padding:0.75rem 0.95rem;background:#f4f0e6;border:1px dashed #c9b896;border-radius:8px;}
+  .ma-label{display:block;font-size:0.72rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#9a7d3a;margin-bottom:0.4rem;}
+  .model-answer p{margin:0;font-size:0.88rem;line-height:1.55;color:var(--ink);font-style:italic;}
+  .model-answer p b{font-style:normal;color:var(--oxy-red);}
+
+  .note{margin-top:1rem;padding:0.7rem 0.95rem;background:var(--accent-soft);border-left:3px solid var(--oxy-red);border-radius:0 6px 6px 0;font-size:0.83rem;color:var(--ink-soft);}
+  .note b{color:var(--ink);}
+  .note.green{border-left-color:var(--leaf);}
+  .note.blue{border-left-color:var(--deoxy-blue);}
+  .yn{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:1.7rem;height:1.7rem;border-radius:50%;
+    font-weight:800;font-size:1.05rem;line-height:1;color:#fff;
+  }
+  .yn.yes{background:#1f9e4c;}
+  .yn.no{background:#e0362b;}
+  td.yn-cell{text-align:center;}
+  th.yn-head{text-align:center;}
+
+  footer{max-width:1160px;margin:0 auto;padding:1rem 1.5rem 3rem 1.5rem;font-size:0.8rem;color:var(--ink-soft);}
+
+  /* ---------- Phone / iPad-portrait only: sidebar becomes horizontal bar ----------
+     Kept to a plain width breakpoint (not a touch/pointer check) so iPad in
+     LANDSCAPE keeps the left sidebar, per preference — only narrow/portrait
+     screens fall back to the top bar. */
+  @media (max-width:820px){
+    .layout{grid-template-columns:1fr;gap:0;}
+    aside{
+      /* On phones the bar also scrolls horizontally (overflow-x:auto) to
+         reach all 16 buttons, and combining that with position:sticky is
+         the same WebKit combo that can swallow taps on the links inside.
+         Kept sticky here per request — if link taps ever misfire on an
+         iPhone/iPad, this media query is the first thing to revert (drop
+         position:sticky, keep everything else) to restore tap reliability. */
+      position:sticky;
+      top:0;
+      z-index:20;
+      flex-direction:row;
+      overflow-x:auto;overflow-y:hidden;
+      -webkit-overflow-scrolling:touch;
+      padding:0.7rem 1.5rem;
+      background:var(--paper);
+      border-bottom:1px solid var(--line);
+      gap:0.4rem;
+      margin:0 -1.5rem;
+    }
+    .side-link{
+      white-space:nowrap;
+      border-left:none;
+      border-bottom:2px solid transparent;
+      border-radius:6px;
+      flex:none;
+      padding:0.6rem 0.9rem;      /* bigger touch target */
+      font-size:0.88rem;
+    }
+    .side-link.active{border-left:none;border-bottom-color:var(--oxy-red);}
+    main{padding-top:1rem;}
+    h1{font-size:1.7rem;} h1 .en{font-size:0.95rem;}
+    dt{flex-basis:130px;font-size:0.86rem;}
+    .card{padding:1rem 1.1rem;}
+    details.topic summary{padding:1.15rem 0.2rem;}  /* easier to tap open/close */
+    table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:normal;}
+    th,td{font-size:0.82rem;}
+  }
+
+  /* ---------- Narrow phones ---------- */
+  @media (max-width:520px){
+    .layout{padding:0 1.1rem;}
+    aside{padding:0.6rem 1.1rem;margin:0 -1.1rem;}
+    h1{font-size:1.4rem;}
+    dt{flex-basis:100%;}
+    dl div{flex-direction:column;gap:0.2rem;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">IGCSE Combined Science 0653 · Biology + Chemistry + Physics</div>
+  <h1>理科学习大纲<span class="en">Combined Science — Full Topic Outline</span></h1>
+  <p class="subtitle">中英双语，供自学与备课参考。英文术语为考试要求原词，务必记住拼写；中文用于理解概念，不是考试用语。点击左侧（手机版：上方）章节名可直接跳转，其余章节会自动收起。生物、化学、物理三科已全部完成。</p>
+  <div class="tier-legend">
+    <span><span class="tag core">Core</span> = 所有学生都要学，考 Paper 1/3，上限 C 级</span>
+    <span><span class="tag ext">Extended</span> = 只有报考 Extended 的学生需要学（Paper 2/4），可拿 A*</span>
+    <span><span class="tag bg">背景</span> = 有助理解，但不是本 syllabus 明确列出的考点</span>
+    <span><span class="tag y8">Stage 7/8/9</span> = 对应 Cambridge Lower Secondary Science 0893 的现阶段学习目标，<b>现在就可以教</b></span>
+    <span><span class="tag igcse">IGCSE专属</span> = 只在 0653 IGCSE 大纲出现，0893 没有，<b>可以先缓一缓</b></span>
+  </div>
+  <div class="note blue"><b>标签依据：</b>Cambridge Lower Secondary Science 0893 Curriculum Framework v3.0（2026）与 Cambridge IGCSE Combined Science 0653 syllabus（2025–2027）。Stage 标签表示该知识已在 Lower Secondary 对应阶段出现；一张卡同时包含更深内容时，会在卡内另行标注。</div>
+
+  <div class="filter-bar">
+    <span class="filter-label">筛选 Filter：</span>
+    <button class="filter-btn active" type="button" data-filter="all">显示全部</button>
+    <button class="filter-btn" type="button" data-filter="y8">只看现在可教（0893）</button>
+    <button class="filter-btn" type="button" data-filter="igcse">只看 IGCSE 专属</button>
+    <span class="filter-count" id="filter-count"></span>
+  </div>
+
+  <svg class="pulse" viewBox="0 0 700 38" preserveAspectRatio="none">
+    <path d="M0,19 L120,19 L145,19 L160,4 L180,34 L200,10 L215,19 L260,19 L700,19"/>
+  </svg>
+</header>
+
+<div class="layout">
+  <aside>
+    <div class="side-group">Biology 生物</div>
+    <a class="side-link active" href="#b1-jump" data-target="b1">B1 生命特征</a>
+    <a class="side-link" href="#b2-jump" data-target="b2">B2 细胞</a>
+    <a class="side-link" href="#b3-jump" data-target="b3">B3 物质进出细胞</a>
+    <a class="side-link" href="#b4-jump" data-target="b4">B4 生物分子</a>
+    <a class="side-link" href="#b5-jump" data-target="b5">B5 酶</a>
+    <a class="side-link" href="#b6-jump" data-target="b6">B6 植物营养</a>
+    <a class="side-link" href="#b7-jump" data-target="b7">B7 人体营养</a>
+    <a class="side-link" href="#b8-jump" data-target="b8">B8 植物运输</a>
+    <a class="side-link" href="#b9-jump" data-target="b9">B9 动物运输</a>
+    <a class="side-link" href="#b10-jump" data-target="b10">B10 疾病免疫</a>
+    <a class="side-link" href="#b11-jump" data-target="b11">B11 气体交换</a>
+    <a class="side-link" href="#b12-jump" data-target="b12">B12 呼吸作用</a>
+    <a class="side-link" href="#b13-jump" data-target="b13">B13 药物</a>
+    <a class="side-link" href="#b14-jump" data-target="b14">B14 生殖</a>
+    <a class="side-link" href="#b15-jump" data-target="b15">B15 生物与环境</a>
+    <a class="side-link" href="#b16-jump" data-target="b16">B16 生态影响</a>
+
+    <div class="side-group">Chemistry 化学</div>
+    <a class="side-link" href="#c1-jump" data-target="c1">C1 状态与粒子模型</a>
+    <a class="side-link" href="#c2-jump" data-target="c2">C2 原子元素化合物</a>
+    <a class="side-link" href="#c3-jump" data-target="c3">C3 计量化学</a>
+    <a class="side-link" href="#c4-jump" data-target="c4">C4 电化学</a>
+    <a class="side-link" href="#c5-jump" data-target="c5">C5 化学能量学</a>
+    <a class="side-link" href="#c6-jump" data-target="c6">C6 化学反应</a>
+    <a class="side-link" href="#c7-jump" data-target="c7">C7 酸碱盐</a>
+    <a class="side-link" href="#c8-jump" data-target="c8">C8 元素周期表</a>
+    <a class="side-link" href="#c9-jump" data-target="c9">C9 金属</a>
+    <a class="side-link" href="#c10-jump" data-target="c10">C10 环境化学</a>
+    <a class="side-link" href="#c11-jump" data-target="c11">C11 有机化学</a>
+    <a class="side-link" href="#c12-jump" data-target="c12">C12 实验技巧</a>
+
+    <div class="side-group">Physics 物理</div>
+    <a class="side-link" href="#p1-jump" data-target="p1">P1 运动、力与能量</a>
+    <a class="side-link" href="#p2-jump" data-target="p2">P2 热学</a>
+    <a class="side-link" href="#p3-jump" data-target="p3">P3 波</a>
+    <a class="side-link" href="#p4-jump" data-target="p4">P4 电学</a>
+    <a class="side-link" href="#p5-jump" data-target="p5">P5 宇宙物理</a>
+  </aside>
+
+  <main>
+<details class="topic" id="b1" open>
+  <summary>
+    <span class="sec-num">B1</span>
+    <h2>生命特征<span class="en">Characteristics of Living Organisms</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="b1-jump" class="jump-anchor" aria-hidden="true"></span>
+
+  <div class="card">
+    <h3>MRS GREN — 七大生命特征（必背）<span class="tag core">Core</span><span class="tag y8">Stage 7</span></h3>
+    <dl>
+      <div><dt>Movement<span class="zh">运动</span></dt><dd>生物体（或其部分）改变位置的动作（an action by an organism causing a change of position or place）。</dd></div>
+      <div><dt>Respiration<span class="zh">呼吸作用</span></dt><dd>细胞内分解养分释放能量的化学反应（chemical reactions that break down nutrients to release energy）——注意：不是"呼吸动作 breathing"，详见 B12。</dd></div>
+      <div><dt>Sensitivity<span class="zh">感应性</span></dt><dd>感知内外环境变化并作出适当反应的能力（the ability to detect and respond to changes in the environment）。</dd></div>
+      <div><dt>Growth<span class="zh">生长</span></dt><dd>体积和干重（dry mass）永久性、不可逆的增加（a permanent increase in size and dry mass）。</dd></div>
+      <div><dt>Reproduction<span class="zh">生殖</span></dt><dd>产生同类新个体（后代）的过程（processes that make more of the same species）。</dd></div>
+      <div><dt>Excretion<span class="zh">排泄</span></dt><dd>把体内代谢产生的废物、以及过量物质排出体外（removal of the waste products of metabolism, and substances in excess）。注意区分 B7 的 egestion（排遗）——那是未被消化的食物残渣，不是代谢废物。</dd></div>
+      <div><dt>Nutrition<span class="zh">营养</span></dt><dd>摄取有机养分和矿物质离子，作为能量来源、用于生长和发育（taking in of nutrients for energy, growth and development）。</dd></div>
+    </dl>
+    <div class="note"><b>记忆技巧：</b>七个英文首字母合起来是 <b>MRS GREN</b>，考试常直接问"生物体的特征是什么"，需要能默写全部七个官方定义（syllabus 原词，不能随意替换关键词）。</div>
+  </div>
+
+  <div class="card">
+    <h3>MRS GREN 图解 Visual Summary<span class="tag bg">背景</span><span class="tag y8">Stage 7</span></h3>
+    <img src="../../shared/images/biology/mrs-gren.jpg" alt="MRS GREN 七大生命特征图解" style="width:100%;height:auto;border-radius:8px;margin-top:0.5rem;" />
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: State three characteristics shown by all living organisms.<br>A: <b>Nutrition</b> — taking in of nutrients for energy and growth; <b>Respiration</b> — chemical reactions that break down nutrients to release energy; <b>Excretion</b> — removal of the waste products of metabolism.</p>
+  </div>
+  </div>
+</details>
+
+<details class="topic" id="b2" open>
+  <summary>
+    <span class="sec-num">B2</span>
+    <h2>细胞<span class="en">Cells</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="b2-jump" class="jump-anchor" aria-hidden="true"></span>
+  <div class="card">
+    <h3>动物细胞 vs 植物细胞<span class="tag core">Core</span><span class="tag y8">Stage 7</span></h3>
+    <table>
+      <tr><th>结构 Structure</th><th class="yn-head">动物细胞 Animal</th><th class="yn-head">植物细胞 Plant</th></tr>
+      <tr><td><b>Cell wall</b><span class="zh">细胞壁</span></td><td class="yn-cell"><span class="yn no">✗</span></td><td class="yn-cell"><span class="yn yes">✓</span><br><span class="zh" style="font-size:0.78rem;">cellulose 纤维素构成，提供支撑</span></td></tr>
+      <tr><td><b>Cell membrane</b><span class="zh">细胞膜</span></td><td class="yn-cell"><span class="yn yes">✓</span></td><td class="yn-cell"><span class="yn yes">✓</span></td></tr>
+      <tr><td><b>Cytoplasm</b><span class="zh">细胞质</span></td><td class="yn-cell"><span class="yn yes">✓</span></td><td class="yn-cell"><span class="yn yes">✓</span></td></tr>
+      <tr><td><b>Nucleus</b><span class="zh">细胞核</span></td><td class="yn-cell"><span class="yn yes">✓</span></td><td class="yn-cell"><span class="yn yes">✓</span></td></tr>
+      <tr><td><b>Chloroplast</b><span class="zh">叶绿体</span></td><td class="yn-cell"><span class="yn no">✗</span></td><td class="yn-cell"><span class="yn yes">✓</span><br><span class="zh" style="font-size:0.78rem;">光合作用场所，只在能进行光合作用的细胞中出现</span></td></tr>
+      <tr><td><b>Permanent vacuole</b><span class="zh">永久液泡</span></td><td class="yn-cell"><span class="yn no">✗</span><br><span class="zh" style="font-size:0.78rem;">小/无</span></td><td class="yn-cell"><span class="yn yes">✓</span><br><span class="zh" style="font-size:0.78rem;">大而永久，充满细胞液 cell sap</span></td></tr>
+      <tr><td><b>Mitochondria</b><span class="zh">线粒体</span></td><td class="yn-cell"><span class="yn yes">✓</span><br><span class="zh" style="font-size:0.78rem;">呼吸作用场所</span></td><td class="yn-cell"><span class="yn yes">✓</span></td></tr>
+      <tr><td><b>Ribosomes</b><span class="zh">核糖体</span></td><td class="yn-cell"><span class="yn yes">✓</span><br><span class="zh" style="font-size:0.78rem;">合成蛋白质</span></td><td class="yn-cell"><span class="yn yes">✓</span></td></tr>
+    </table>
+    <div class="note"><b>常考陷阱：</b>不要写"植物细胞有叶绿体，动物细胞没有"就完事——根细胞（root cell）是植物细胞，但同样<b>没有</b>叶绿体（不接触光照）。判断标准是"能不能进行光合作用"，不是"是不是植物细胞"。</div>
+  </div>
+
+  <div class="card">
+    <h3>细菌细胞 Bacterial Cell<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">有 cell wall（细胞壁，成分不是纤维素）、cell membrane（细胞膜）、cytoplasm（细胞质）、ribosomes（核糖体）——但<b>没有由核膜包裹的细胞核（no nucleus）</b>，遗传物质是一条环状 DNA（circular DNA），裸露在细胞质中；还可能带有一个或多个额外的小环状 DNA，叫 plasmid（质粒）。</p>
+  </div>
+
+  <div class="card">
+    <h3>细胞→组织→器官→系统 Levels of Organisation<span class="tag core">Core</span><span class="tag y8">Stage 7</span></h3>
+    <div class="flow">
+      <span class="step">Cell 细胞</span><span class="arrow">→</span>
+      <span class="step">Tissue 组织</span><span class="arrow">→</span>
+      <span class="step">Organ 器官</span><span class="arrow">→</span>
+      <span class="step">Organ system 系统</span><span class="arrow">→</span>
+      <span class="step">Organism 生物体</span>
+    </div>
+    <dl style="margin-top:0.8rem;">
+      <div><dt>Tissue<span class="zh">组织</span></dt><dd>一群结构和功能相似、共同执行特定功能的细胞（a group of cells with similar structures, working together to perform a shared function）。例：muscle tissue（肌肉组织）。</dd></div>
+      <div><dt>Organ<span class="zh">器官</span></dt><dd>由多种组织构成、共同执行特定功能的结构（a structure made of a group of tissues working together to perform specific functions）。例：胃（stomach）由肌肉组织、腺体组织等构成。</dd></div>
+      <div><dt>Organ system<span class="zh">器官系统</span></dt><dd>一组器官协同工作，共同完成一项或多项生命功能。例：消化系统（digestive system）。</dd></div>
+    </dl>
+  </div>
+
+  <div class="card green">
+    <h3>特化细胞 Specialised Cells<span class="tag core">Core</span><span class="tag y8">Stage 7</span></h3>
+    <ul class="compact">
+      <li><b>Root hair cell 根毛细胞</b> — 表面积大，负责吸收（absorption）水分和矿物质离子</li>
+      <li><b>Palisade mesophyll cell 栅栏组织细胞</b> — 含大量叶绿体，负责光合作用（photosynthesis）</li>
+      <li><b>Red blood cell 红细胞</b> — 无细胞核、双凹圆盘形，负责运输氧气</li>
+      <li><b>Sperm cell 精细胞</b> — 有尾部（鞭毛）帮助游动，负责运输遗传物质到卵细胞</li>
+      <li><b>Neurone 神经元</b> — 细长、有分支，负责快速传递电信号</li>
+    </ul>
+    <div class="note green"><span class="tag ext">Extended</span> 每种特化细胞的<b>结构都要能对应到它的功能</b>（structure-function relationship）——这是Extended论述题的常考角度，例如"为什么根毛细胞适合吸收水分"要答出"表面积大，加快扩散/渗透速率"。</div>
+  </div>
+
+  <div class="card">
+    <h3>放大倍数 Magnification<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">Magnification（放大倍数）= image size（图像大小）÷ actual size（实际大小）。单位要先统一，常用换算：<b>1mm = 1000μm</b>，1μm = 1000nm。</p>
+    <div class="note"><b>公式要能灵活变形：</b>已知放大倍数和图像大小，求实际大小时，公式要反过来用：<b>actual size = image size ÷ magnification</b>。做题前先圈出题目问的是三者中的哪一个，再决定用哪个方向的公式，不要死记一个方向。</div>
+    <div class="model-answer">
+      <span class="ma-label">答题模板 Model Answer — 求放大倍数</span>
+      <p>Q: 图中细胞长度（image size）为 40mm，实际长度（actual size）为 0.02mm，求放大倍数。<br>A: Magnification = image size ÷ actual size = 40 ÷ 0.02 = <b>×2000</b>。（代入前先确认单位一致，此题已统一为mm。）</p>
+    </div>
+    <div class="model-answer">
+      <span class="ma-label">答题模板 Model Answer — 求实际大小</span>
+      <p>Q: 一张细胞照片放大倍数为 ×500，图中细胞长度（image size）量得为 5mm，求该细胞的实际长度（actual size），并以μm为单位作答。<br>A: Actual size = image size ÷ magnification = 5mm ÷ 500 = 0.01mm。转换为μm：0.01mm × 1000 = <b>10μm</b>。（题目要求以μm作答，别忘了最后一步单位换算。）</p>
+    </div>
+  </div>
+  </div>
+</details>
+
+<details class="topic" id="b3" open>
+  <summary>
+    <span class="sec-num">B3</span>
+    <h2>物质进出细胞<span class="en">Movement into and out of Cells</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="b3-jump" class="jump-anchor" aria-hidden="true"></span>
+  <div class="card">
+    <h3>三种运输方式对比<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <table>
+      <tr><th>方式</th><th>定义</th><th class="yn-head">是否耗能</th></tr>
+      <tr><td><b>Diffusion</b><span class="zh">扩散</span></td><td>粒子从高浓度区域随机运动，净移动到低浓度区域（顺浓度梯度 down a concentration gradient）</td><td class="yn-cell"><span class="yn no">✗</span></td></tr>
+      <tr><td><b>Osmosis</b><span class="zh">渗透</span></td><td>水分子通过半透膜（partially permeable membrane），从高水势（higher water potential）移动到低水势</td><td class="yn-cell"><span class="yn no">✗</span></td></tr>
+      <tr><td><b>Active transport</b><span class="zh">主动运输</span></td><td>粒子从低浓度移动到高浓度（逆浓度梯度 against a concentration gradient）</td><td class="yn-cell"><span class="yn yes">✓</span><br><span class="zh" style="font-size:0.78rem;">能量来自呼吸作用 respiration</span></td></tr>
+    </table>
+    <div class="note"><b>常考例子：</b>根毛细胞吸收矿物质离子（ion uptake）就是主动运输的典型例子——因为土壤里矿物质浓度往往比根细胞内低，必须逆浓度梯度吸收，所以需要能量，也解释了为什么根毛细胞含有大量线粒体。</div>
+  </div>
+
+  <div class="card">
+    <h3>影响扩散速率的因素 Factors Affecting Diffusion Rate<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <ul class="compact">
+      <li><b>Concentration gradient 浓度梯度</b> — 梯度越大（两边浓度差越大），扩散越快</li>
+      <li><b>Surface area 表面积</b> — 交换表面积越大，同时扩散的粒子越多，速率越快</li>
+      <li><b>Distance 距离</b> — 需要扩散的距离越短，速率越快（这也是为什么细胞和交换表面通常很薄/很小）</li>
+      <li><b>Temperature 温度</b> — 温度升高，粒子动能增加、运动加快，扩散速率提高</li>
+    </ul>
+    <div class="note">这四个因素同样解释了为什么肺泡（B11）、小肠绒毛、根毛细胞这些"交换表面"都长成"薄、表面积大"的样子——考试常要求把这条原理套用到具体器官上。</div>
+  </div>
+
+  <div class="card red">
+    <h3>渗透对植物细胞的影响（高频考点）<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <dl>
+      <div><dt>Turgid<span class="zh">膨胀的</span></dt><dd>细胞处于低浓度溶液（浓溶液外/稀溶液环境）中吸水膨胀，细胞壁提供反作用力（阻止细胞破裂），产生 turgor pressure（膨压），使细胞保持坚挺——这也是植物茎叶保持挺立的原因之一。</dd></div>
+      <div><dt>Flaccid<span class="zh">松软的</span></dt><dd>细胞失水，不再膨胀，但细胞膜还未脱离细胞壁。</dd></div>
+      <div><dt>Plasmolysis<span class="zh">质壁分离</span></dt><dd>细胞放入高浓度溶液（相对细胞内液更浓）中，大量失水，细胞膜与细胞壁分离，细胞收缩。</dd></div>
+    </dl>
+    <div class="note red"><span class="tag ext">Extended</span> <b>渗透方向判断口诀：</b>水总是从"水势高（溶质少/稀溶液）"流向"水势低（溶质多/浓溶液）"。判断细胞会吸水还是失水，看细胞<b>外面</b>溶液比细胞内液浓还是稀：外面稀 → 细胞吸水变膨胀；外面浓 → 细胞失水质壁分离。</div>
+  </div>
+
+  <div class="card">
+    <h3>渗透对动物细胞的影响 &amp; 植物 vs 动物对比<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0 0 0.7rem 0;font-size:0.92rem;color:var(--ink-soft);">动物细胞（如红细胞）<b>没有细胞壁</b>，遇到渗透时没有"细胞壁挡着"这道保护，后果比植物细胞严重得多：</p>
+    <dl>
+      <div><dt>Lysis / Haemolysis<span class="zh">溶胀/溶血</span></dt><dd>动物细胞放入<b>低浓度（稀）溶液</b>中，持续吸水但没有细胞壁限制体积，最终细胞膜<b>胀破</b>（cell bursts）——红细胞的这种破裂现象特别称为 haemolysis（溶血）。</dd></div>
+      <div><dt>Crenation<span class="zh">皱缩</span></dt><dd>动物细胞放入<b>高浓度（浓）溶液</b>中大量失水，细胞<b>皱缩变形</b>（shrivels/crenates）。</dd></div>
+    </dl>
+    <table>
+      <tr><th></th><th>放入低浓度（稀）溶液</th><th>放入高浓度（浓）溶液</th></tr>
+      <tr><td><b>植物细胞</b> Plant cell</td><td>吸水变 <b>turgid</b>（细胞壁挡住，不会破）</td><td>失水 <b>plasmolysis</b>（细胞膜与细胞壁分离）</td></tr>
+      <tr><td><b>动物细胞</b> Animal cell</td><td>吸水直到 <b>lysis 胀破</b>（无细胞壁保护）</td><td>失水 <b>crenation 皱缩</b></td></tr>
+    </table>
+    <div class="note"><b>为什么两者结果不同：</b>根本原因就是植物细胞有 cell wall（细胞壁），能提供反作用力、限制细胞吸水后的体积膨胀；动物细胞没有这层保护，所以吸水没有上限，最终会胀破。这个"有没有细胞壁"的差异，是B2就学过的内容在这里的直接应用。</div>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: Explain why a red blood cell placed in pure water eventually bursts, while a plant cell placed in pure water does not.<br>A: Water enters both cells by <b>osmosis</b>, down the water potential gradient. The plant cell has a <b>cell wall</b>, which is rigid and provides an opposing force once the cell is turgid, preventing further expansion. The red blood cell has <b>no cell wall</b> — only a cell membrane — so there is nothing to stop it taking in water, and it continues to swell until it bursts (<b>lysis</b>).</p>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: Explain why a plant cell placed in a concentrated sugar solution becomes plasmolysed.<br>A: The sugar solution has a <b>lower water potential</b> than the cell's cytoplasm. Water moves out of the cell by <b>osmosis</b>, down the water potential gradient, through the partially permeable cell membrane. The cell loses water and shrinks, causing the cell membrane to pull away from the cell wall.</p>
+  </div>
+  </div>
+</details>
+
+<details class="topic" id="b4" open>
+  <summary>
+    <span class="sec-num">B4</span>
+    <h2>生物分子<span class="en">Biological Molecules</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="b4-jump" class="jump-anchor" aria-hidden="true"></span>
+  <div class="card">
+    <h3>三大营养分子的组成<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <ul class="compact">
+      <li><b>Carbohydrates 碳水化合物</b> — 由葡萄糖（glucose）组成 starch（淀粉）、glycogen（糖原）、cellulose（纤维素）</li>
+      <li><b>Proteins 蛋白质</b> — 由氨基酸（amino acids）组成</li>
+      <li><b>Fats and oils 脂肪</b> — 由脂肪酸（fatty acids）和甘油（glycerol）组成</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>组成元素 Chemical Elements<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <table>
+      <tr><th>分子</th><th>含有的化学元素</th></tr>
+      <tr><td>Carbohydrates 碳水化合物</td><td><b>C</b>（碳）、<b>H</b>（氢）、<b>O</b>（氧）</td></tr>
+      <tr><td>Fats and oils 脂肪</td><td><b>C</b>（碳）、<b>H</b>（氢）、<b>O</b>（氧）</td></tr>
+      <tr><td>Proteins 蛋白质</td><td><b>C</b>（碳）、<b>H</b>（氢）、<b>O</b>（氧）、<b>N</b>（氮）（有时还含少量 S 硫）</td></tr>
+    </table>
+    <div class="note">易考点：碳水化合物和脂肪的组成元素<b>完全一样（都是C、H、O）</b>，区分它们不能靠元素种类，而要靠比例和分子结构；蛋白质则多出<b>氮（N）</b>这个额外元素——这也是为什么检测蛋白质（Biuret test）和检测糖类/脂肪的原理完全不同。</div>
+  </div>
+
+  <div class="card">
+    <h3>单体与多聚体 Monomers &amp; Polymers<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">Starch、glycogen、cellulose 都是由许多个 glucose（单体 monomer）连接而成的大分子（多聚体 polymer）；protein 是由许多个 amino acid 连接而成的多聚体。理解"单体反复连接形成多聚体"这个概念，有助于回答"为什么淀粉分子很大、不溶于水"这类问题。</p>
+  </div>
+
+  <div class="card red">
+    <h3>四种食物检测法（必背，考试常出操作步骤题）<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <table>
+      <tr><th>检测目标</th><th>试剂</th><th>操作要点</th><th>阳性结果</th></tr>
+      <tr><td>淀粉 Starch</td><td>Iodine solution 碘液</td><td>直接滴加到样品上</td><td>橙棕色 → <b>蓝黑色</b></td></tr>
+      <tr><td>还原糖 Reducing sugar</td><td>Benedict's solution</td><td>加入等量试剂后<b>水浴加热</b>（heat in a water bath）</td><td>蓝色 → 加热后变<b>砖红色沉淀</b></td></tr>
+      <tr><td>蛋白质 Protein</td><td>Biuret reagent</td><td>直接加入并摇匀，<b>不需要加热</b></td><td>蓝色 → <b>紫色/淡紫色</b></td></tr>
+      <tr><td>脂肪 Fats/oils</td><td>Ethanol（乙醇乳化实验 emulsion test）</td><td>先加乙醇溶解样品，再倒入等量清水</td><td>出现<b>白色浑浊乳状层</b></td></tr>
+    </table>
+    <div class="note red"><b>易丢分细节：</b>还原糖检测<b>一定要加热</b>，蛋白质检测<b>不能加热</b>——这个操作步骤上的差异是简答题常考点。此外，如果原样品本身有颜色（比如深色果汁），碘液和Benedict's的颜色变化可能不明显，考试可能要求你说明这个局限性。</div>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: Describe a test to show that a food sample contains reducing sugar.<br>A: Add an equal volume of <b>Benedict's solution</b> to the food sample. <b>Heat the mixture in a water bath</b> that has been brought to boiling. If reducing sugar is present, the solution changes from blue to <b>green, yellow, orange, then a brick-red precipitate</b> forms.</p>
+  </div>
+  </div>
+</details>
+
+<details class="topic" id="b5" open>
+  <summary>
+    <span class="sec-num">B5</span>
+    <h2>酶<span class="en">Enzymes</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="b5-jump" class="jump-anchor" aria-hidden="true"></span>
+  <div class="card">
+    <h3>核心概念<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">Enzyme（酶）是<b>蛋白质</b>，作为生物催化剂（biological catalyst）参与所有代谢反应，能加快反应速率而<b>本身不被消耗</b>。酶有一个 active site（活性位点），形状与 substrate（底物）互补（complementary shape），像"锁和钥匙"（lock and key）一样结合，形成 enzyme-substrate complex（酶-底物复合体）——这解释了酶的<b>特异性（specificity）</b>：一种酶通常只能作用于一种（或一类）底物。</p>
+  </div>
+
+  <div class="card red">
+    <h3>温度与 pH 对酶活性的影响（高频考点）<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <ul class="compact">
+      <li><b>温度过高</b> → 酶（蛋白质）的形状被破坏（活性位点变形，不再与底物互补）→ <b>denatured 变性</b> → 不能再结合底物，永久失效</li>
+      <li><b>温度过低</b> → 粒子运动慢、酶与底物碰撞频率低 → 反应速率慢，但酶结构未被破坏（温度回升后可恢复活性）</li>
+      <li><b>pH 偏离最适值（optimum pH）</b> → 同样会破坏活性位点形状 → 变性</li>
+    </ul>
+    <div class="note"><b>注意区分：</b>低温只是"减慢"反应（可逆，reversible），高温/极端pH是"破坏"结构（denatured，不可逆，irreversible）——这是考试最爱考的辨析点，写答案时一定要用对"slows down"还是"denatures"。</div>
+  </div>
+
+  <div class="card">
+    <h3>酶活性 vs 温度的图像描述<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">典型图像先随温度升高而<b>上升</b>（分子运动加快，碰撞增多），在<b>最适温度（optimum temperature）</b>达到最高点，之后<b>急剧下降</b>到接近零（酶开始变性，活性位点被破坏，最终完全失效）。描述这类图像时要分段说明"上升段的原因"和"下降段的原因"，而不是只说"先升后降"。</p>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: Explain why enzyme activity decreases rapidly above the optimum temperature.<br>A: Above the optimum temperature, the enzyme molecule gains enough energy that its <b>tertiary structure changes shape</b>. This <b>changes the shape of the active site</b> so it is no longer complementary to the substrate. The enzyme is <b>denatured</b> and can no longer form an enzyme-substrate complex, so the rate of reaction decreases.</p>
+  </div>
+  </div>
+</details>
+
+<details class="topic" id="b6" open>
+  <summary>
+    <span class="sec-num">B6</span>
+    <h2>植物营养<span class="en">Plant Nutrition</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="b6-jump" class="jump-anchor" aria-hidden="true"></span>
+  <div class="card green">
+    <h3>光合作用方程式（必背）<span class="tag core">Core</span><span class="tag y8">Stage 9</span></h3>
+    <div class="flow">
+      <span class="step green">Carbon dioxide 二氧化碳</span><span class="arrow">+</span>
+      <span class="step green">Water 水</span><span class="arrow">→（光照+叶绿素）→</span>
+      <span class="step green">Glucose 葡萄糖</span><span class="arrow">+</span>
+      <span class="step green">Oxygen 氧气</span>
+    </div>
+    <p style="margin-top:0.7rem;font-size:0.9rem;color:var(--ink-soft);">符号方程式：6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂（光照、叶绿素条件下）。定义：photosynthesis 是绿色植物和藻类利用<b>光能</b>把二氧化碳和水转化为有机养分（葡萄糖），并释放氧气作为副产物的过程。</p>
+  </div>
+
+  <div class="card">
+    <h3>影响光合速率的因素<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <ul class="compact">
+      <li><b>Light intensity 光照强度</b></li>
+      <li><b>Carbon dioxide concentration 二氧化碳浓度</b></li>
+      <li><b>Temperature 温度</b></li>
+    </ul>
+    <p style="margin:0.6rem 0 0 0;font-size:0.9rem;color:var(--ink-soft);">这三者中任何一个不足，都会成为<b>限制因素（limiting factor）</b>——即使其他两个因素都很充足，光合速率也无法进一步提高，直到这个不足的因素被改善。</p>
+  </div>
+
+  <div class="card red">
+    <h3>限制因素图像分析<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0;font-size:0.92rem;">典型的"光合速率 vs 光照强度"图像：一开始光合速率随光照强度增加而<b>上升</b>（此时光照是限制因素）；到某一点后曲线变<b>平（plateau）</b>，说明此时光照已经不再是限制因素，是<b>另一个因素（通常是CO₂浓度或温度）</b>在限制速率。想让平台期继续升高，必须增加正在起限制作用的那个因素——这是温室（greenhouse/glasshouse）里补充CO₂、控温的原理。</p>
+  </div>
+
+  <div class="card">
+    <h3>叶片结构 Leaf Structure<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;color:var(--ink-soft);">需要能在图中认出：chloroplasts（叶绿体）、cuticle（角质层，防止水分流失）、guard cells（保卫细胞）、stomata（气孔，气体进出通道）、upper/lower epidermis（上/下表皮）、palisade mesophyll（栅栏组织）、spongy mesophyll（海绵组织，有空气间隙 air spaces）、vascular bundles（维管束，含 xylem 木质部和 phloem 韧皮部）。</p>
+    <dl>
+      <div><dt>Palisade mesophyll<span class="zh">栅栏组织</span></dt><dd>紧靠叶片上表面，细胞排列紧密、含大量叶绿体，是光合作用的主要场所（光照最先到达的地方）。</dd></div>
+      <div><dt>Spongy mesophyll<span class="zh">海绵组织</span></dt><dd>细胞间有很多空气间隙，增大了气体（CO₂、O₂）扩散的表面积，帮助气体快速到达/离开细胞。</dd></div>
+      <div><dt>Stomata（单数 stoma）<span class="zh">气孔</span></dt><dd>由一对 guard cells（保卫细胞）围成的开口，控制CO₂进入和O₂、水蒸气排出；大多分布在叶片下表面，减少水分因阳光直射而过度蒸发。</dd></div>
+    </dl>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: Explain why the spongy mesophyll layer has large air spaces between the cells.<br>A: The air spaces provide a <b>large surface area</b> for gas exchange, allowing carbon dioxide to diffuse quickly to the palisade and spongy mesophyll cells, and allowing oxygen produced in photosynthesis to diffuse out towards the stomata.</p>
+  </div>
+  </div>
+</details>
+
+<details class="topic" id="b7" open>
+  <summary>
+    <span class="sec-num">B7</span>
+    <h2>人体营养<span class="en">Human Nutrition</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="b7-jump" class="jump-anchor" aria-hidden="true"></span>
+  <div class="card">
+    <h3>均衡膳食 Balanced Diet<span class="tag core">Core</span><span class="tag y8">Stage 8</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">A balanced diet（均衡膳食）：包含合适种类、合适比例的各种营养素，能满足身体对能量和营养的需求。</p>
+    <dl>
+      <div><dt>Carbohydrates<span class="zh">碳水化合物</span></dt><dd>主要能量来源。</dd></div>
+      <div><dt>Fats<span class="zh">脂肪</span></dt><dd>能量储存、保温、保护器官。</dd></div>
+      <div><dt>Proteins<span class="zh">蛋白质</span></dt><dd>生长和修复组织。</dd></div>
+      <div><dt>Vitamins &amp; Minerals<span class="zh">维生素 &amp; 矿物质</span></dt><dd>少量需求，但对代谢和健康至关重要，例如钙（calcium，骨骼牙齿）、铁（iron，制造血红蛋白）。</dd></div>
+      <div><dt>Fibre<span class="zh">纤维</span></dt><dd>帮助肠道蠕动、预防便秘，本身不被消化。</dd></div>
+      <div><dt>Water<span class="zh">水</span></dt><dd>几乎所有代谢反应都需要水作为介质。</dd></div>
+    </dl>
+    <div class="note">个体所需的营养组成会因<b>年龄、性别、活动量</b>不同而变化——例如孕妇需要更多铁和钙，运动员需要更多碳水化合物和蛋白质。</div>
+  </div>
+
+  <div class="card">
+    <h3>消化系统器官 Digestive System<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <div class="flow">
+      <span class="step">Mouth 口</span><span class="arrow">→</span>
+      <span class="step">Oesophagus 食道</span><span class="arrow">→</span>
+      <span class="step">Stomach 胃</span><span class="arrow">→</span>
+      <span class="step">Small intestine 小肠</span><span class="arrow">→</span>
+      <span class="step">Large intestine 大肠</span><span class="arrow">→</span>
+      <span class="step">Anus 肛门</span>
+    </div>
+    <p style="margin-top:0.6rem;font-size:0.88rem;color:var(--ink-soft);">附属器官（associated organs）：salivary glands（唾液腺，分泌唾液淀粉酶）、pancreas（胰腺，分泌多种消化酶）、liver（肝，制造胆汁）、gall bladder（胆囊，储存胆汁）。</p>
+  </div>
+
+  <div class="card red">
+    <h3>五个消化相关术语（易混淆，必须区分）<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <dl>
+      <div><dt>Ingestion<span class="zh">摄入</span></dt><dd>把食物/饮料摄入体内（taking food/drink into the body through the mouth）。</dd></div>
+      <div><dt>Digestion<span class="zh">消化</span></dt><dd>把大分子食物分解成可以被吸收的小分子（breakdown of large, insoluble molecules into small, soluble molecules）。</dd></div>
+      <div><dt>Absorption<span class="zh">吸收</span></dt><dd>消化后的小分子养分从肠道穿过肠壁进入血液（movement of digested food through the wall of the intestine into the blood or lymph）。</dd></div>
+      <div><dt>Assimilation<span class="zh">同化</span></dt><dd>被吸收的养分进入细胞、被细胞利用（movement of digested food into the cells of the body where it is used）。</dd></div>
+      <div><dt>Egestion<span class="zh">排遗</span></dt><dd>未被消化的食物以粪便形式经肛门排出（passing out of food that has not been digested, as faeces）——注意：不是"排泄 excretion"，那是代谢废物（B1、B10）。</dd></div>
+    </dl>
+  </div>
+
+  <div class="card">
+    <h3>三种消化酶<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <table>
+      <tr><th>酶</th><th>产生部位</th><th>作用</th></tr>
+      <tr><td><b>Amylase</b><span class="zh">淀粉酶</span></td><td>唾液腺、胰腺</td><td>淀粉 → 还原糖（麦芽糖）</td></tr>
+      <tr><td><b>Protease</b><span class="zh">蛋白酶</span></td><td>胃、胰腺</td><td>蛋白质 → 氨基酸</td></tr>
+      <tr><td><b>Lipase</b><span class="zh">脂肪酶</span></td><td>胰腺</td><td>脂肪 → 脂肪酸 + 甘油</td></tr>
+    </table>
+    <div class="note">胃中的蛋白酶叫 <b>pepsin</b>，在强酸性环境（胃酸 hydrochloric acid 提供）中活性最高，这和B5讲的"极端pH使酶变性"看似矛盾——其实每种酶都有自己的最适pH，胃蛋白酶的最适pH本来就很低（酸性），不代表它不遵守pH影响活性的规律。</div>
+  </div>
+
+  <div class="card green">
+    <h3>胆汁的作用 Bile<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">Bile（胆汁）由肝脏产生、胆囊储存，经胆管排入小肠，作用是<b>乳化脂肪（emulsification of fats）</b>——把大脂肪滴分解成很多小脂肪滴，增大了脂肪与脂肪酶接触的<b>表面积</b>，从而加快脂肪的消化速度。胆汁还能中和从胃来的酸性食糜，为小肠内的酶提供合适的pH环境。</p>
+  </div>
+
+  <div class="card">
+    <h3>小肠绒毛的适应 Villi Adaptations<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0;font-size:0.92rem;">小肠内壁布满 villi（绒毛，单数 villus），这些结构如何提高吸收效率：<b>数量多、表面积极大</b>（增加吸收面积）；<b>壁只有一层细胞厚</b>（扩散距离短）；内部有<b>丰富的毛细血管网</b>（维持浓度梯度，及时运走吸收的养分）；表面还有更微小的 microvilli（微绒毛），进一步增大表面积。</p>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: Explain how villi are adapted for the efficient absorption of digested food.<br>A: Villi have a <b>large surface area</b>, increasing the rate of diffusion/absorption. Their walls are <b>one cell thick</b>, giving a short diffusion distance. They have a good blood supply (many <b>capillaries</b>), which maintains a steep concentration gradient by carrying absorbed food away quickly.</p>
+  </div>
+  </div>
+</details>
+
+<details class="topic" id="b8" open>
+  <summary>
+    <span class="sec-num">B8</span>
+    <h2>植物运输<span class="en">Transport in Plants</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="b8-jump" class="jump-anchor" aria-hidden="true"></span>
+  <div class="card">
+    <h3>木质部 vs 韧皮部（必背区分）<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <table>
+      <tr><th></th><th>Xylem <span style="font-weight:400;">木质部</span></th><th>Phloem <span style="font-weight:400;">韧皮部</span></th></tr>
+      <tr><td>运输方向</td><td>只能<b>向上</b>（根→叶，单向）</td><td>双向（源 source → 库 sink）</td></tr>
+      <tr><td>运输内容</td><td>水（water）和矿物质离子（mineral ions）</td><td>蔗糖（sucrose）和氨基酸（amino acids），此过程叫 <b>translocation（转运）</b></td></tr>
+      <tr><td>运输动力</td><td>蒸腾作用产生的拉力（Extended）</td><td>由源到库的压力差（Extended）</td></tr>
+      <tr><td>额外功能</td><td class="yn-cell"><span class="yn yes">✓</span><br><span class="zh" style="font-size:0.78rem;">支撑：细胞壁木质化，增加强度</span></td><td class="yn-cell"><span class="yn no">✗</span></td></tr>
+    </table>
+    <div class="note"><b>Source / sink 概念：</b>source（源）指制造/储存养分的部位（如叶片、储藏根），sink（库）指消耗/储存养分的部位（如正在生长的芽、果实、储藏器官）。蔗糖沿韧皮部从 source 运往 sink，方向会随植物生长阶段改变——所以韧皮部运输是"双向"的。</div>
+  </div>
+
+  <div class="card green">
+    <h3>蒸腾作用 Transpiration<span class="tag core">Core</span><span class="tag y8">Stage 9</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;color:var(--ink-soft);">Transpiration（蒸腾作用）：叶片（主要通过气孔）失去水蒸气的过程（loss of water vapour from a plant, mainly through the stomata）。</p>
+    <ul class="compact">
+      <li><b>温度升高</b> → 水分子动能增加，蒸发和扩散更快 → 蒸腾加快</li>
+      <li><b>湿度降低</b> → 叶片内外水蒸气浓度差更大 → 蒸腾加快</li>
+      <li><b>风速加大</b> → 及时带走叶片表面的水蒸气，维持浓度梯度 → 蒸腾加快</li>
+      <li><b>光照增强</b> → 促使更多气孔张开（便于CO₂进入用于光合作用）→ 间接加快蒸腾</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>根毛细胞的吸水适应<span class="tag core">Core</span><span class="tag y8">Stage 9</span></h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">根毛细胞（root hair cell）向外突出成细长的毛状结构，<b>大大增加了表面积</b>，有利于通过渗透（osmosis）吸收水分、通过主动运输（active transport）吸收矿物质离子。</p>
+  </div>
+
+  <div class="card red">
+    <h3>蒸腾拉力（水柱理论）Transpiration Pull<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0;font-size:0.92rem;">叶片蒸腾失水，使叶肉细胞水势降低 → 从相邻木质部导管吸水 → 沿导管内连续的水柱向上传递一股拉力（transpiration pull）→ 这股拉力一路传到根部，促使根部持续从土壤吸水。这解释了木质部内水分运输的<b>动力来源</b>，也是"蒸腾-内聚力-张力学说（cohesion-tension theory）"的简化版本。</p>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: Explain why a plant loses more water on a hot, windy day than on a cool, still day.<br>A: Higher temperature gives water molecules more kinetic energy, increasing the rate of evaporation from cells inside the leaf. Wind removes water vapour from around the stomata, <b>maintaining a steep concentration gradient</b> and speeding up diffusion of water vapour out of the leaf. Both effects increase the rate of transpiration.</p>
+  </div>
+  </div>
+</details>
+
+<details class="topic" id="b9" open>
+  <summary>
+    <span class="sec-num">B9.1</span>
+    <h2>动物运输 · 循环系统<span class="en">Transport in Animals — Circulatory System</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="b9-jump" class="jump-anchor" aria-hidden="true"></span>
+  <div class="card">
+    <h3>核心定义 Definition<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0;font-size:0.92rem;"><b>Circulatory system</b>（循环系统）：由血管（blood vessels）、泵（pump，也就是心脏 heart）和瓣膜（valves）组成的系统，作用是让血液朝一个方向流动（one-way flow）。</p>
+  </div>
+
+  <div class="card">
+    <h3>双循环 Double Circulation<span class="tag bg">背景</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">人类（哺乳动物）的血液在一次完整循环中会经过心脏两次，这叫<b>双循环系统（double circulatory system）</b>。好处：血液可以维持较高的压力，运输速度更快。</p>
+    <div class="flow">
+      <span class="step blue">心脏 Heart</span><span class="arrow">→</span>
+      <span class="step blue">肺 Lungs</span><span class="arrow">（肺循环 pulmonary circulation）→</span>
+      <span class="step red">心脏 Heart</span><span class="arrow">→</span>
+      <span class="step red">身体各处 Rest of body</span><span class="arrow">（体循环 systemic circulation）→</span>
+      <span class="step blue">回到心脏 Back to heart</span>
+    </div>
+  </div>
+
+  <div class="topic-head" style="margin-top:0.3rem;"><span class="sec-num">B9.2</span></div>
+  <h2 style="margin-top:0;">心脏<span class="en">Heart</span></h2>
+
+  <div class="card">
+    <h3>心脏结构 Structure<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <dl>
+      <div><dt>Atrium (atria)<span class="zh">心房（复数：atria）</span></dt><dd>心脏上方的两个腔室，负责<b>接收</b>血液（左心房、右心房）。</dd></div>
+      <div><dt>Ventricle<span class="zh">心室</span></dt><dd>心脏下方的两个腔室，负责把血液<b>泵出</b>心脏（左心室、右心室）。</dd></div>
+      <div><dt>Septum<span class="zh">室间隔</span></dt><dd>把心脏左右两边分开的肌肉墙，防止含氧血和缺氧血混合。</dd></div>
+      <div><dt>Valve<span class="zh">瓣膜</span></dt><dd>单向阀门，防止血液倒流（backflow）。</dd></div>
+      <div><dt>Coronary artery<span class="zh">冠状动脉</span></dt><dd>给心脏自己的肌肉供血的血管。</dd></div>
+    </dl>
+    <div class="note green">Core 还要求知道：心脏活动可以通过 <b>ECG（心电图）、pulse rate（脉搏）、听瓣膜关闭的声音</b>来监测。</div>
+  </div>
+
+  <div class="card">
+    <h3>心脏结构图 Labelled Diagram<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <img src="../../shared/images/biology/heart-structure.jpg" alt="心脏结构与血流方向标注图 Heart structure and blood flow diagram" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--line);display:block;">
+    <p style="margin-top:0.6rem;font-size:0.82rem;color:var(--ink-soft);">图中红色箭头 = 含氧血流向；蓝色箭头 = 缺氧血流向。图上"右侧"画在图的左边——这是解剖学的标准画法（面对着这颗心脏看过去）。</p>
+  </div>
+
+  <div class="card blue-video">
+    <h3>视频讲解 Video — 心脏结构与血液循环路径<span class="tag y8">Stage 8</span></h3>
+    <p style="margin:0 0 0.7rem 0;font-size:0.9rem;color:var(--ink-soft);">B站视频，直观讲解心脏结构和血液循环路径，适合先看视频建立空间概念，再回来看下面的文字和血流路径图。</p>
+    <a href="https://www.bilibili.com/video/BV17AX7YJEBi/?spm_id_from=333.337.search-card.all.click" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;font-size:0.9rem;font-weight:600;color:var(--deoxy-blue);text-decoration:none;border:1px solid var(--line);background:#fff;padding:0.5rem 0.9rem;border-radius:8px;">
+      ▶ 在 Bilibili 观看 / Watch on Bilibili
+    </a>
+  </div>
+
+
+  <div class="card red">
+    <h3>血流路径（背诵重点）Blood Flow Route<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <div class="flow">
+      <span class="step blue">Vena cava 腔静脉</span><span class="arrow">→</span>
+      <span class="step blue">Right atrium 右心房</span><span class="arrow">→</span>
+      <span class="step blue">Right ventricle 右心室</span><span class="arrow">→</span>
+      <span class="step blue">Pulmonary artery 肺动脉</span><span class="arrow">→</span>
+      <span class="step">Lungs 肺（气体交换）</span><span class="arrow">→</span>
+      <span class="step red">Pulmonary vein 肺静脉</span><span class="arrow">→</span>
+      <span class="step red">Left atrium 左心房</span><span class="arrow">→</span>
+      <span class="step red">Left ventricle 左心室</span><span class="arrow">→</span>
+      <span class="step red">Aorta 主动脉</span><span class="arrow">→</span>
+      <span class="step red">身体各处 Body</span>
+    </div>
+    <div class="note"><b>记忆技巧：</b>蓝色代表缺氧血（deoxygenated），红色代表含氧血（oxygenated）。血液从身体回来（缺氧）→ 右边心脏 → 去肺换氧气 → 变含氧血 → 左边心脏 → 泵到全身。</div>
+  </div>
+
+  <div class="card">
+    <h3>为什么左心室壁比右心室厚？<span style="font-weight:400;">Why is the left ventricle wall thicker?</span><span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0 0 0.7rem 0;font-size:0.92rem;">因为左心室要把血液泵到<b>全身</b>（距离远），而右心室只需要把血液泵到<b>肺</b>（距离近），所以左心室需要更强的肌肉力量，壁更厚。</p>
+    <div class="model-answer">
+      <span class="ma-label">答题模板 Model Answer</span>
+      <p>The left ventricle has to pump blood <b>further</b> — <b>around the whole body</b> — while the right ventricle only pumps blood to the <b>lungs</b>, which are much closer. So the left ventricle needs <b>more muscle</b> to generate <b>higher pressure</b>, giving it a thicker wall.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>心脏如何运作 Functioning of the Heart<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">心跳的一个周期（cardiac cycle）：</p>
+    <ol style="margin:0;padding-left:1.2rem;font-size:0.9rem;color:var(--ink-soft);">
+      <li style="margin-bottom:0.4rem;"><b>心房收缩（Atria contract）</b> — 把血液压入心室，心房和心室之间的瓣膜打开。</li>
+      <li style="margin-bottom:0.4rem;"><b>心室收缩（Ventricles contract）</b> — 心室壁肌肉收缩，压力升高，把血液压出心脏（经动脉）；这时心房-心室瓣膜关闭，<b>防止血液倒流回心房</b>。</li>
+      <li><b>心脏放松（Relaxation）</b> — 心房和心室都放松，血液从静脉流回心房，准备下一个周期。</li>
+    </ol>
+    <div class="note ext-note"><span class="tag ext">Extended</span> 瓣膜的开合完全由压力差决定，不是"主动"控制——压力高的一侧会把瓣膜推开，压力低的一侧会让瓣膜关闭。</div>
+  </div>
+
+  <div class="card">
+    <h3>运动对心率的影响 Physical Activity &amp; Heart Rate<span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0;font-size:0.92rem;"><span class="tag core">Core</span> 通过实验（如运动前后测脉搏）<b>描述</b>运动会让心率上升。</p>
+    <p style="margin:0.6rem 0 0 0;font-size:0.92rem;"><span class="tag ext">Extended</span> 还要能<b>解释</b>原因：运动时肌肉需要更多能量，也就是需要更多氧气进行呼吸作用（respiration）→ 心脏跳得更快，把含氧血更快地运送到肌肉，同时更快带走二氧化碳。</p>
+  </div>
+
+  <div class="card red">
+    <h3>冠心病 Coronary Heart Disease (CHD)<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">冠状动脉（coronary artery，给心脏肌肉自己供血的血管）被<b>堵塞（blockage）</b>，导致心脏肌肉得不到足够的氧气和养分。</p>
+    <p style="margin:0 0 0.5rem 0;font-size:0.88rem;font-weight:600;">风险因素 Risk factors（必背）：</p>
+    <ul class="compact">
+      <li><b>Diet 饮食</b>（高脂肪饮食）</li>
+      <li><b>Lack of exercise 缺乏运动</b></li>
+      <li><b>Stress 压力</b></li>
+      <li><b>Smoking 吸烟</b></li>
+      <li><b>Genetic predisposition 遗传易感性</b></li>
+      <li><b>Age 年龄</b></li>
+      <li><b>Sex 性别</b></li>
+    </ul>
+    <div class="note">健康饮食（少脂肪）和规律运动，都可以<b>降低</b>患冠心病的风险——这是常见的简答题，答案要能落到"降低血脂/维持健康体重/增强心脏耐力"这几个点上。</div>
+    <div class="model-answer">
+      <span class="ma-label">答题模板 Model Answer</span>
+      <p>A healthy diet (low in fat) and regular exercise can <b>reduce the risk of coronary heart disease</b> by lowering blood cholesterol, maintaining a healthy body weight, and improving the strength and efficiency of the heart muscle.</p>
+    </div>
+  </div>
+
+  <div class="topic-head" style="margin-top:0.3rem;"><span class="sec-num">B9.3</span></div>
+  <h2 style="margin-top:0;">血管<span class="en">Blood Vessels</span><span class="tag core">Core</span></h2>
+
+  <table>
+    <tr><th>类型 Type</th><th>管壁 Wall</th><th>管腔 Lumen</th><th class="yn-head">瓣膜 Valves</th><th>功能 Function</th></tr>
+    <tr>
+      <td><b>Artery</b><span class="zh">动脉</span></td>
+      <td>厚，含大量<b>肌肉</b>和<b>弹性纤维</b></td>
+      <td><b>小</b>（narrow lumen）</td>
+      <td class="yn-cell"><span class="yn no">✗</span></td>
+      <td>把血液从心脏运<b>出去</b>，能承受高压</td>
+    </tr>
+    <tr>
+      <td><b>Vein</b><span class="zh">静脉</span></td>
+      <td>薄，肌肉和弹性纤维少</td>
+      <td><b>大</b>（wide lumen，帮助血液低压下流动）</td>
+      <td class="yn-cell"><span class="yn yes">✓</span></td>
+      <td>把血液运<b>回</b>心脏，瓣膜防止血液倒流</td>
+    </tr>
+    <tr>
+      <td><b>Capillary</b><span class="zh">毛细血管</span></td>
+      <td>只有<b>一层细胞</b>那么薄</td>
+      <td>极<b>窄</b>（约等于一个红细胞的宽度）</td>
+      <td class="yn-cell"><span class="yn no">✗</span><br><span class="zh" style="font-size:0.78rem;">数量极多、分布密集</span></td>
+      <td>连接动脉和静脉，是物质交换（氧气/养分/废物）真正发生的地方</td>
+    </tr>
+  </table>
+
+  <figure style="margin:1.2rem 0;text-align:center;">
+    <img src="../../shared/images/biology/blood-vessels.jpg" alt="动脉/毛细血管/静脉 结构对比图" style="max-width:100%;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.08);" />
+    <figcaption style="font-size:0.8rem;color:var(--ink-soft,#777);margin-top:0.4rem;">动脉 Artery → 毛细血管 Capillaries → 静脉 Vein</figcaption>
+  </figure>
+
+  <div class="card">
+    <h3>结构如何适应功能 Adaptations of Blood Vessels<span class="tag ext" style="margin-left:0.4rem;">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <dl>
+      <div><dt>Artery<span class="zh">动脉的适应</span></dt><dd><b>管壁厚 + 弹性纤维多</b>：能承受心脏泵血产生的高压，并在心跳间隙靠弹性回缩维持血流；<b>肌肉多</b>：可以收缩/舒张来调节血流量；<b>管腔小（lumen narrow）</b>：因为血液本来压力就高，不需要很大的通道。</dd></div>
+      <div><dt>Vein<span class="zh">静脉的适应</span></dt><dd>血液流到这里压力已经很低，所以<b>管壁可以薄</b>（省组织）；<b>管腔大（lumen wide）</b>，降低血流阻力，帮助低压血液顺利回流；<b>瓣膜（valves）</b>防止血液因重力或压力不足而倒流，尤其重要（比如腿部静脉，血要克服重力往上流回心脏）。</dd></div>
+      <div><dt>Capillary<span class="zh">毛细血管的适应</span></dt><dd><b>管壁只有一层细胞厚</b>：扩散距离最短，交换效率高；<b>管腔极窄</b>，红细胞几乎要挤着通过，这样血细胞离管壁（也就是离要交换物质的组织）更近；数量多、分支密集，<b>总表面积巨大</b>，让每个细胞附近都有毛细血管经过。</dd></div>
+    </dl>
+  </div>
+
+  <div class="note ext-note"><span class="tag ext">Extended</span> 为什么动脉管壁比静脉厚？因为动脉里的血液压力（pressure）更高，需要更强的管壁来承受，防止血管破裂。（Core 学生只需要知道"动脉壁厚、静脉壁薄"这个事实，不需要解释原因。）</div>
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Arteries carry blood at a <b>higher pressure</b> than veins, so they need a <b>thicker, more muscular wall</b> and a <b>narrower lumen</b> to withstand this pressure without bursting. Veins carry blood at a much <b>lower pressure</b>, so they have a <b>thin wall</b>, a <b>wide lumen</b> to reduce resistance, and <b>valves</b> to stop blood flowing backwards.</p>
+  </div>
+
+  <div class="topic-head" style="margin-top:1.8rem;"><span class="sec-num">B9.4</span></div>
+  <h2 style="margin-top:0;">血液<span class="en">Blood</span><span class="tag core">Core</span></h2>
+
+  <div class="card">
+    <h3>血液的四种成分 Four Components<span class="tag y8">Stage 8</span></h3>
+    <dl>
+      <div><dt>Red blood cells<span class="zh">红细胞</span></dt><dd>运输氧气（含 haemoglobin 血红蛋白，负责携带氧气）。</dd></div>
+      <div><dt>White blood cells<span class="zh">白细胞</span></dt><dd>负责免疫：吞噬病原体（phagocytosis）+ 产生抗体（antibody production）。</dd></div>
+      <div><dt>Platelets<span class="zh">血小板</span></dt><dd>负责血液凝固（clotting）。<span class="tag ext" style="margin-left:0.3rem;">Extended</span> 凝固的作用是防止失血、防止病原体进入伤口。</dd></div>
+      <div><dt>Plasma<span class="zh">血浆</span></dt><dd>血液的液体部分，运输血细胞、离子、营养、尿素、激素、二氧化碳。</dd></div>
+    </dl>
+  </div>
+
+  <div class="card">
+    <h3>容易混淆的词汇 Commonly Confused Terms<span class="tag y8">Stage 8</span></h3>
+    <dl>
+      <div><dt>Artery <span class="zh">动脉</span> vs Vein <span class="zh">静脉</span></dt><dd>动脉离开心脏（away from heart），静脉回到心脏（towards heart）——和含不含氧无关！肺动脉里其实是缺氧血。</dd></div>
+      <div><dt>Atrium <span class="zh">心房</span> vs Ventricle <span class="zh">心室</span></dt><dd>心房在上方、负责接收；心室在下方、负责泵出。</dd></div>
+      <div><dt>Oxygenated <span class="zh">含氧的</span> vs Deoxygenated <span class="zh">缺氧的</span></dt><dd>含氧血在心脏左边和体循环里；缺氧血在心脏右边和肺循环里。</dd></div>
+    </dl>
+  </div>
+  </div>
+</details>
+
+<details class="topic" id="b10" open>
+  <summary>
+    <span class="sec-num">B10</span>
+    <h2>疾病与免疫<span class="en">Diseases and Immunity</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="b10-jump" class="jump-anchor" aria-hidden="true"></span>
+  <div class="card">
+    <h3>核心定义<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <dl>
+      <div><dt>Pathogen<span class="zh">病原体</span></dt><dd>引起疾病的生物体（an organism that causes disease），包括细菌（bacteria）、病毒（viruses）、真菌（fungi）、原生生物（protoctists）。</dd></div>
+      <div><dt>Transmissible disease<span class="zh">传染病</span></dt><dd>病原体可以从一个宿主传给另一个宿主的疾病（a disease in which the pathogen can be passed from one host to another）。</dd></div>
+    </dl>
+  </div>
+
+  <div class="card">
+    <h3>传播方式 Transmission<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <ul class="compact">
+      <li><b>Direct contact 直接接触</b> — 包括血液和体液（body fluids）</li>
+      <li><b>Indirect 间接传播</b> — 通过污染的表面（surfaces）、食物（food）、水（water）、空气（air，飞沫）、动物媒介（vectors，如蚊子）</li>
+    </ul>
+  </div>
+
+  <div class="card green">
+    <h3>身体的天然防御 Body Defences<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <ul class="compact">
+      <li><b>Skin 皮肤</b> — 物理屏障（physical barrier），阻挡病原体进入</li>
+      <li><b>Hairs and mucus in air passages 呼吸道内的鼻毛/黏液</b> — 阻挡并粘住病原体和灰尘颗粒</li>
+      <li><b>Stomach acid 胃酸</b> — 强酸环境杀死随食物进入的病原体</li>
+      <li><b>Blood clotting 血液凝固</b> — 伤口处形成血凝块，防止病原体经伤口进入</li>
+      <li><b>White blood cells 白细胞</b> — 吞噬病原体（phagocytosis）、产生抗体（antibody production）</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>白细胞的两种防御方式<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <dl>
+      <div><dt>Phagocytosis<span class="zh">吞噬作用</span></dt><dd>由 phagocyte（吞噬细胞）执行，包围并吞噬病原体，再用酶将其分解——这是一种<b>非特异性（non-specific）</b>防御，对各种病原体都有效。</dd></div>
+      <div><dt>Antibody production<span class="zh">抗体产生</span></dt><dd>由 lymphocyte（淋巴细胞）执行，识别病原体表面特定的 antigen（抗原），产生与之互补、专门针对该抗原的 antibody（抗体）——这是一种<b>特异性（specific）</b>防御，同"锁和钥匙"（类比B5酶的特异性）。</dd></div>
+    </dl>
+  </div>
+
+  <div class="card">
+    <h3>主动免疫 vs 被动免疫<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <table>
+      <tr><th></th><th>Active immunity <span style="font-weight:400;">主动免疫</span></th><th>Passive immunity <span style="font-weight:400;">被动免疫</span></th></tr>
+      <tr><td>抗体来源</td><td>身体<b>自己产生</b>抗体</td><td>从外部<b>获得</b>现成抗体（不是自己产生）</td></tr>
+      <tr><td>获得途径</td><td>感染病原体，或接种疫苗（vaccination）</td><td>母乳喂养（breast milk）、胎盘（placenta）、注射抗体</td></tr>
+      <tr><td>持续时间</td><td>较长（有免疫记忆）</td><td>较短（没有免疫记忆细胞）</td></tr>
+    </table>
+    <div class="note">Vaccination（接种疫苗）：注入少量无害化的病原体/抗原，刺激身体<b>自己产生</b>抗体和记忆细胞——属于<b>主动</b>免疫的一种途径，不要误以为疫苗就是"打抗体进去"。</div>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: Explain how vaccination protects a person from a disease.<br>A: A vaccine contains a harmless/inactive form of the pathogen (or its antigens). This stimulates <b>white blood cells (lymphocytes)</b> to produce <b>antibodies</b> specific to that pathogen, and produces <b>memory cells</b>. If the person is later exposed to the real pathogen, memory cells allow a <b>faster, stronger secondary immune response</b>, so the person does not become ill.</p>
+  </div>
+  </div>
+</details>
+
+<details class="topic" id="b11" open>
+  <summary>
+    <span class="sec-num">B11.1</span>
+    <h2>人体气体交换 · 呼吸道结构<span class="en">Gas Exchange in Humans — Structure</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="b11-jump" class="jump-anchor" aria-hidden="true"></span>
+  <div class="card">
+    <h3>气体的路径（吸气时）Air Pathway<span class="tag core">Core</span><span class="tag y8">Stage 8</span></h3>
+    <div class="flow">
+      <span class="step">Nose/mouth 鼻/口</span><span class="arrow">→</span>
+      <span class="step">Larynx 喉</span><span class="arrow">→</span>
+      <span class="step">Trachea 气管</span><span class="arrow">→</span>
+      <span class="step">Bronchi 支气管</span><span class="arrow">→</span>
+      <span class="step">Bronchioles 细支气管</span><span class="arrow">→</span>
+      <span class="step blue">Alveoli 肺泡</span>
+    </div>
+    <div class="note blue">注意：<b>larynx（喉）不是喉结</b>——喉结（Adam's apple）只是喉软骨向外突出的部分，larynx 是包含声带的整个器官，负责发声和保护气道。</div>
+  </div>
+
+  <div class="card">
+    <h3>运动对呼吸的影响 Physical Activity &amp; Breathing<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0;font-size:0.92rem;">通过实验（如运动前后数呼吸次数）<b>描述</b>运动会让呼吸的<b>频率（rate）</b>和<b>深度（depth）</b>都增加——身体需要吸入更多氧气、排出更多二氧化碳。</p>
+  </div>
+
+  <div class="card">
+    <h3>各结构名称与功能 Structures &amp; Functions<span class="tag bg">背景</span><span class="tag y8">Stage 8</span></h3>
+    <dl>
+      <div><dt>Lungs<span class="zh">肺</span></dt><dd>进行气体交换的主要器官。</dd></div>
+      <div><dt>Diaphragm<span class="zh">横膈膜</span></dt><dd>胸腔底部的肌肉，收缩/放松来改变胸腔体积，驱动呼吸。</dd></div>
+      <div><dt>Ribs / Intercostal muscles<span class="zh">肋骨 / 肋间肌</span></dt><dd>肋间肌收缩会提起肋骨，帮助胸腔扩张。</dd></div>
+      <div><dt>Trachea<span class="zh">气管</span></dt><dd>连接喉和支气管的管道，管壁有软骨环支撑，防止塌陷。</dd></div>
+      <div><dt>Bronchi / Bronchioles<span class="zh">支气管 / 细支气管</span></dt><dd>气管向下分支变细，最终连接到肺泡。</dd></div>
+    </dl>
+  </div>
+
+  <div class="card">
+    <h3>呼吸系统结构图 Respiratory System Diagram<span class="tag bg">背景</span><span class="tag y8">Stage 8</span></h3>
+    <img src="../../shared/images/biology/respiratory-system.jpg" alt="呼吸系统结构图" style="width:100%;height:auto;border-radius:8px;margin-top:0.5rem;" />
+    <p style="margin:0.6rem 0 0 0;font-size:0.85rem;color:var(--ink-soft);">从鼻腔到肺泡的完整气体通路：鼻腔（Nasal cavity）→ 喉（Larynx）→ 气管（Trachea）→ 支气管（Bronchus）→ 细支气管（Bronchiole）→ 肺泡（Alveoli，气体交换的部位），肺泡周围包裹着毛细血管（Capillaries）。</p>
+  </div>
+
+  <h2 style="margin-top:1.8rem;">呼吸机制<span class="en">Mechanism of Breathing</span><span class="tag bg">背景</span></h2>
+  <p style="margin:0 0 0.3rem 0;font-size:0.85rem;color:var(--ink-soft);">提示：这部分机制细节不在 Cambridge Combined Science 0653 syllabus 明确列出的考点内（该 syllabus 只要求"识别结构"+"描述运动对呼吸频率/深度的影响"），但理解它有助于建立整体概念，如果学校教材另有要求，可以保留讲解。</p>
+
+  <table>
+    <tr><th>&nbsp;</th><th>Inhalation<span class="zh">吸气</span></th><th>Exhalation<span class="zh">呼气</span></th></tr>
+    <tr>
+      <td><b>Diaphragm 横膈膜</b></td>
+      <td>收缩、变平（contracts, flattens）</td>
+      <td>放松、向上拱起（relaxes, domes upward）</td>
+    </tr>
+    <tr>
+      <td><b>Intercostal muscles 肋间肌</b></td>
+      <td>收缩，肋骨向上向外移动</td>
+      <td>放松，肋骨向下向内移动</td>
+    </tr>
+    <tr>
+      <td><b>胸腔体积 Volume</b></td>
+      <td>增大（increases）</td>
+      <td>减小（decreases）</td>
+    </tr>
+    <tr>
+      <td><b>胸腔压力 Pressure</b></td>
+      <td>降低，空气被吸入</td>
+      <td>升高，空气被排出</td>
+    </tr>
+  </table>
+  <div class="note"><b>逻辑链：</b>体积变化 → 压力变化 → 空气流动方向。体积增大 = 压力降低 = 空气从外面（高压）流向肺里（低压）。</div>
+
+  <h2 style="margin-top:1.8rem;">肺泡与气体交换<span class="en">Alveoli &amp; Gas Exchange</span><span class="tag ext">Extended</span></h2>
+
+  <div class="card red">
+    <h3>肺泡为什么适合气体交换？<span class="tag y8">Stage 8</span></h3>
+    <p style="margin:0 0 0.5rem 0;font-size:0.85rem;color:var(--ink-soft);">这是 Supplement 内容——只有 Extended 学生需要掌握这四个特征并能写出来；Core 学生不需要。</p>
+    <ul class="compact">
+      <li><b>Large surface area 表面积大</b> — 数以亿计的肺泡，总表面积巨大，能同时进行大量气体交换。</li>
+      <li><b>Thin surface (wall) 管壁薄</b> — 肺泡壁和毛细血管壁都只有一层细胞厚，气体扩散距离短。</li>
+      <li><b>Good blood supply 血供好</b> — 肺泡外包裹着密集的毛细血管网（capillaries），不断带走氧气、带来二氧化碳。</li>
+      <li><b>Good ventilation 通气好</b> — 呼吸动作持续更新肺泡内的空气，维持浓度梯度（concentration gradient）。</li>
+    </ul>
+    <div class="model-answer">
+      <span class="ma-label">答题模板 Model Answer</span>
+      <p>Alveoli are well adapted for gas exchange because they have a <b>large surface area</b>, a <b>thin wall</b> (one cell thick), a <b>good blood supply</b>, and <b>good ventilation</b> — all of which speed up the rate of diffusion of oxygen and carbon dioxide.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>气体交换的方向 Direction of Exchange<span class="tag bg">背景</span><span class="tag igcse">IGCSE专属</span></h3>
+    <div class="flow">
+      <span class="step blue">肺泡内 O₂ 浓度高</span><span class="arrow">扩散进入 →</span>
+      <span class="step red">毛细血管（血液）</span>
+    </div>
+    <div class="flow" style="margin-top:0.5rem;">
+      <span class="step red">血液中 CO₂ 浓度高</span><span class="arrow">扩散进入 →</span>
+      <span class="step blue">肺泡（呼出体外）</span>
+    </div>
+    <p style="margin-top:0.8rem;font-size:0.9rem;color:var(--ink-soft);">气体交换靠的是<b>扩散（diffusion）</b>：气体从浓度高的地方移动到浓度低的地方，不需要消耗能量。</p>
+  </div>
+
+  <div class="card">
+    <h3>容易混淆的词汇 Commonly Confused Terms<span class="tag y8">Stage 8</span></h3>
+    <dl>
+      <div><dt>Larynx <span class="zh">喉</span> vs <span class="zh" style="display:inline;">喉结</span></dt><dd>Larynx 是包含声带的整个器官；喉结只是软骨外部突起，两者不是同一个概念。</dd></div>
+      <div><dt>Bronchus <span class="zh">支气管（单数）</span> vs Bronchi <span class="zh">（复数）</span></dt><dd>一个是 bronchus，两个以上是 bronchi。</dd></div>
+      <div><dt>Breathing <span class="zh">呼吸动作</span> vs Respiration <span class="zh">细胞呼吸</span></dt><dd>Breathing 指吸气呼气的物理动作（B11 内容）；respiration 指细胞内分解葡萄糖释放能量的化学反应（属于 B12，是完全不同的概念，考试中很容易被混淆）。</dd></div>
+    </dl>
+  </div>
+  </div>
+</details>
+
+<details class="topic" id="b12" open>
+  <summary>
+    <span class="sec-num">B12</span>
+    <h2>呼吸作用<span class="en">Respiration</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="b12-jump" class="jump-anchor" aria-hidden="true"></span>
+  <div class="card red">
+    <h3>有氧呼吸方程式（必背）<span class="tag core">Core</span><span class="tag y8">Stage 8</span></h3>
+    <div class="flow">
+      <span class="step red">Glucose 葡萄糖</span><span class="arrow">+</span><span class="step red">Oxygen 氧气</span>
+      <span class="arrow">→</span><span class="step">Carbon dioxide 二氧化碳</span><span class="arrow">+</span><span class="step">Water 水</span>
+    </div>
+    <p style="margin-top:0.6rem;font-size:0.88rem;color:var(--ink-soft);">符号方程式：C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O。Aerobic respiration（有氧呼吸）：在细胞内利用氧气分解葡萄糖释放能量的化学反应（the chemical reactions in cells that use oxygen to break down nutrient molecules to release energy）。</p>
+  </div>
+
+  <div class="card">
+    <h3>能量的用途 Uses of Energy<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">肌肉收缩（muscle contraction）、蛋白质合成（protein synthesis）、细胞分裂（cell division）、生长（growth）、主动运输（active transport，见B3）、维持体温恒定（maintenance of constant body temperature）。</p>
+  </div>
+
+  <div class="card green">
+    <h3>无氧呼吸 Anaerobic Respiration<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0 0 0.7rem 0;font-size:0.92rem;">在<b>没有氧气</b>时进行的呼吸方式，释放的能量比有氧呼吸<b>少得多</b>（因为葡萄糖没有被完全分解）。</p>
+    <table>
+      <tr><th></th><th>人体肌肉细胞</th><th>酵母菌（yeast）</th></tr>
+      <tr><td>方程式</td><td>Glucose → Lactic acid（乳酸）</td><td>Glucose → Ethanol（乙醇）+ Carbon dioxide</td></tr>
+      <tr><td>应用场景</td><td>剧烈运动、供氧不足时</td><td>发酵（fermentation）：酿酒、面包发酵</td></tr>
+    </table>
+    <div class="note green"><b>乳酸的后果：</b>剧烈运动后肌肉中乳酸堆积会引起肌肉疲劳、酸痛（muscle fatigue）。运动后需要额外摄氧来分解乳酸，这部分额外需要的氧气叫 <b>oxygen debt（氧债）</b>——也解释了为什么剧烈运动后即使停下来，仍会继续喘气一段时间。</div>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: Explain why a person continues to breathe deeply and quickly for a while after finishing a sprint.<br>A: During intense exercise, the muscles could not get enough oxygen for aerobic respiration, so they respired <b>anaerobically</b>, producing <b>lactic acid</b>. After exercise, extra oxygen is needed to break down this lactic acid — this is called the <b>oxygen debt</b>. Fast, deep breathing continues to supply this extra oxygen.</p>
+  </div>
+
+  <div class="note"><b>易混淆：</b>Respiration（呼吸作用）是细胞内的化学反应，不是"呼吸动作 breathing"——中文都叫"呼吸"，但英文是完全不同的两个词，答题时一定要用对词。</div>
+  </div>
+</details>
+
+<details class="topic" id="b13" open>
+  <summary>
+    <span class="sec-num">B13</span>
+    <h2>药物<span class="en">Drugs</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="b13-jump" class="jump-anchor" aria-hidden="true"></span>
+  <div class="card">
+    <h3>核心定义<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0;font-size:0.92rem;">Drug（药物）：任何摄入体内、能改变或影响体内化学反应的物质（a substance taken into the body that modifies or affects chemical reactions in the body）。</p>
+  </div>
+
+  <div class="card red">
+    <h3>抗生素 Antibiotics<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <ul class="compact">
+      <li>用于治疗<b>细菌感染</b>（bacterial infections），常见如 penicillin（青霉素）</li>
+      <li><b>只能杀死/抑制细菌，对病毒无效</b>（重要考点——不能用抗生素治感冒，感冒多由病毒引起）</li>
+      <li>部分细菌具有<b>抗药性（resistant）</b>，如 MRSA，会降低抗生素效果，甚至完全失效</li>
+      <li>只在必要时使用抗生素、并按疗程服完，可以减缓耐药菌（antibiotic-resistant bacteria）的产生</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>抗药性细菌的产生机制<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0;font-size:0.92rem;">这是一个天然选择（自然选择，见考纲之外但常联动理解）的例子：细菌群体中天生存在<b>随机变异</b>，个别细菌可能天生对某种抗生素有抗性。使用抗生素时，<b>没有抗性的细菌被杀死</b>，<b>有抗性的细菌存活并大量繁殖</b>，久而久之整个细菌群体的抗药性比例越来越高。滥用/不规范使用抗生素（如不遵医嘱提前停药）会加速这个过程。</p>
+  </div>
+
+  <div class="card green">
+    <h3>酒精 &amp; 烟草对健康的影响<span class="tag core">Core</span><span class="tag y8">Stage 8</span></h3>
+    <dl>
+      <div><dt>Alcohol<span class="zh">酒精</span></dt><dd>会减慢反应速度（slows down reactions）、损害判断力，长期过量摄入会损伤肝脏（liver damage / cirrhosis 肝硬化）。</dd></div>
+      <div><dt>Nicotine<span class="zh">尼古丁</span></dt><dd>香烟中的成瘬性物质（addictive substance），会使人心率加快、血压升高，产生依赖性。</dd></div>
+      <div><dt>Tar<span class="zh">焦油</span></dt><dd>香烟燃烧产生的物质，是致癌物（carcinogen），会损伤呼吸道纤毛（cilia）和肺部组织，与肺癌（lung cancer）密切相关。</dd></div>
+      <div><dt>Carbon monoxide<span class="zh">一氧化碳</span></dt><dd>香烟烟雾中的成分，与血红蛋白结合能力比氧气更强，会降低血液的携氧能力（reduces the oxygen-carrying capacity of blood）。</dd></div>
+    </dl>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: Explain why antibiotics should only be used when necessary.<br>A: Overusing antibiotics increases the chance that <b>resistant bacteria</b> will survive and reproduce, passing on their resistance. Over time this leads to populations of bacteria that are no longer killed by the antibiotic, making infections <b>harder to treat</b> in the future.</p>
+  </div>
+  </div>
+</details>
+
+<details class="topic" id="b14" open>
+  <summary>
+    <span class="sec-num">B14</span>
+    <h2>生殖<span class="en">Reproduction</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="b14-jump" class="jump-anchor" aria-hidden="true"></span>
+  <div class="card">
+    <h3>有性 vs 无性生殖（必背区分）<span class="tag core">Core</span><span class="tag y8">Stage 9</span></h3>
+    <table>
+      <tr><th></th><th>Sexual reproduction <span style="font-weight:400;">有性生殖</span></th><th>Asexual reproduction <span style="font-weight:400;">无性生殖</span></th></tr>
+      <tr><td>是否涉及配子融合</td><td class="yn-cell"><span class="yn yes">✓</span><br><span class="zh" style="font-size:0.78rem;">两个配子（gametes）融合（受精）</span></td><td class="yn-cell"><span class="yn no">✗</span></td></tr>
+      <tr><td>亲本数量</td><td>通常两个亲本（parents）</td><td>一个亲本</td></tr>
+      <tr><td>后代基因变异</td><td class="yn-cell"><span class="yn yes">✓</span><br><span class="zh" style="font-size:0.78rem;">后代基因是两个亲本的混合</span></td><td class="yn-cell"><span class="yn no">✗</span><br><span class="zh" style="font-size:0.78rem;">与亲本基因完全相同（clone 克隆）</span></td></tr>
+    </table>
+  </div>
+
+  <div class="card green">
+    <h3>植物有性生殖 Sexual Reproduction in Plants<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <dl>
+      <div><dt>Pollination<span class="zh">传粉</span></dt><dd>花粉从花药（anther）转移到（同种植物的）柱头（stigma）的过程（transfer of pollen grains from the anther to the stigma）。</dd></div>
+      <div><dt>Fertilisation<span class="zh">受精</span></dt><dd>花粉细胞核与胚珠（ovule）内的卵细胞核融合（fusion of the nuclei of a male and female gamete）。</dd></div>
+      <div><dt>Germination<span class="zh">发芽</span></dt><dd>种子萌发生长，需要水（water）、氧气（oxygen）和适宜温度（suitable temperature）三个条件——注意<b>不需要光照</b>，因为种子萌发初期靠的是储存的养分，不是光合作用。</dd></div>
+    </dl>
+  </div>
+
+  <div class="card">
+    <h3>花的结构 Flower Structure<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <dl>
+      <div><dt>Anther<span class="zh">花药</span></dt><dd>雄性部分，产生并释放花粉（pollen，含雄配子）。</dd></div>
+      <div><dt>Filament<span class="zh">花丝</span></dt><dd>支撑花药。</dd></div>
+      <div><dt>Stigma<span class="zh">柱头</span></dt><dd>雌性部分，接收花粉的部位。</dd></div>
+      <div><dt>Ovary<span class="zh">子房</span></dt><dd>内含一个或多个 ovule（胚珠），胚珠内含雌配子（卵细胞）；受精后子房发育成 fruit（果实），胚珠发育成 seed（种子）。</dd></div>
+      <div><dt>Petals<span class="zh">花瓣</span></dt><dd>虫媒花通常颜色鲜艳、有气味，用来吸引传粉昆虫（insect-pollinated flowers）；风媒花（wind-pollinated）花瓣通常不显眼甚至没有。</dd></div>
+    </dl>
+  </div>
+
+  <div class="card">
+    <h3>人体生殖系统 Human Reproductive System<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <table>
+      <tr><th>男性 Male</th><th>女性 Female</th></tr>
+      <tr><td>Testes 睾丸（产生精子）、scrotum 阴囊、sperm ducts 输精管、prostate gland 前列腺、urethra 尿道、penis 阴茎</td>
+          <td>Ovaries 卵巢（产生卵细胞）、oviducts 输卵管（受精发生处）、uterus 子宫、cervix 子宫颈、vagina 阴道</td></tr>
+    </table>
+    <p style="margin:0.6rem 0 0 0;font-size:0.9rem;color:var(--ink-soft);">Fertilisation（受精）= 精子（sperm）细胞核与卵细胞（egg cell）细胞核融合，通常发生在输卵管（oviduct）内。</p>
+  </div>
+
+  <div class="card green">
+    <h3>月经周期 Menstrual Cycle<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">大约28天为一个周期，涉及子宫内膜（uterus lining）的周期性变化：子宫内膜增厚（为可能的受精卵着床做准备）→ 排卵（ovulation，卵巢释放卵细胞）→ 若未受精，子宫内膜脱落、随经血排出（menstruation）→ 周期重新开始。本 syllabus 不要求记忆具体激素名称和数值。</p>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: State two differences between sexual and asexual reproduction.<br>A: Sexual reproduction involves the <b>fusion of gametes</b> from (usually) two parents, producing offspring with <b>genetic variation</b>. Asexual reproduction involves only <b>one parent</b> and no fusion of gametes, producing offspring that are <b>genetically identical</b> to the parent (clones).</p>
+  </div>
+  </div>
+</details>
+
+<details class="topic" id="b15" open>
+  <summary>
+    <span class="sec-num">B15</span>
+    <h2>生物与环境<span class="en">Organisms and Their Environment</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="b15-jump" class="jump-anchor" aria-hidden="true"></span>
+  <div class="card green">
+    <h3>食物链角色（必背区分）<span class="tag core">Core</span><span class="tag y8">Stage 7</span></h3>
+    <dl>
+      <div><dt>Producer<span class="zh">生产者</span></dt><dd>通过光合作用自己制造有机养分（an organism that makes its own organic nutrients, usually using energy from sunlight）——通常是植物或藻类，食物链的起点。</dd></div>
+      <div><dt>Consumer<span class="zh">消费者</span></dt><dd>通过摄食其他生物获取能量的生物体，分 primary（初级，吃生产者）、secondary（次级，吃初级消费者）、tertiary（三级消费者）。</dd></div>
+      <div><dt>Herbivore<span class="zh">植食动物</span></dt><dd>只以植物为食的动物（an animal that gets its energy by eating plants）。</dd></div>
+      <div><dt>Carnivore<span class="zh">肉食动物</span></dt><dd>以其他动物为食的动物（an animal that gets its energy by eating other animals）。</dd></div>
+      <div><dt>Decomposer<span class="zh">分解者</span></dt><dd>从死亡或废弃的有机物（dead or waste organic material）中获取能量的生物体，如真菌、细菌，把有机物分解为可被再吸收的简单物质。</dd></div>
+    </dl>
+  </div>
+
+  <div class="card">
+    <h3>食物链 &amp; 食物网 Food Chains &amp; Food Webs<span class="tag core">Core</span><span class="tag y8">Stage 7</span></h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">Food chain（食物链）：用箭头表示能量流动方向的一条链，箭头<b>指向能量流向的下一个生物</b>（如：grass → rabbit → fox，箭头方向表示"被吃/能量流动方向"，不是"谁吃谁"的方向）。Food web（食物网）：多条食物链互相连接、交织形成的网络，更真实反映一个生态系统中的取食关系。</p>
+  </div>
+
+  <div class="card red">
+    <h3>能量流动 Energy Flow<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">能量沿食物链流动时，<b>每经过一个营养级（trophic level），能量大幅减少（大约只剩10%左右传递到下一级）</b>。能量损失的途径：</p>
+    <ul class="compact">
+      <li>大量能量用于<b>呼吸作用</b>（respiration），最终以<b>热能</b>形式散失到环境中</li>
+      <li>部分身体结构（如骨骼、毛发）<b>不会被下一级完全摄食</b></li>
+      <li>摄食后仍有<b>未消化的部分随粪便排出</b>（egestion，见B7）</li>
+    </ul>
+    <div class="note red">这解释了为什么<b>食物链通常不超过4-5个营养级</b>——能量逐级递减，到后面的营养级能量太少，不足以支撑更高一级的生物存活。</div>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: Explain why there is usually a decrease in energy at each stage of a food chain.<br>A: A large amount of energy is lost as <b>heat</b> from respiration at each trophic level. Some parts of organisms (e.g. bones, roots) are <b>not eaten</b> by the next consumer, and some food is <b>not digested</b> and is egested. This means only a small percentage of energy (around 10%) is transferred to the next trophic level.</p>
+  </div>
+
+  <div class="card">
+    <h3>能量流动 &amp; 碳循环<span class="tag core">Core</span><span class="tag y8">Stage 9</span></h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">太阳（sunlight）是生物系统能量输入的主要来源，经生产者光合作用转化为化学能进入食物链。碳循环（carbon cycle）涉及：photosynthesis（光合作用，把大气CO₂固定为有机物）、respiration（呼吸作用，把有机物中的碳以CO₂释放回大气）、feeding（摄食，碳沿食物链传递）、decomposition（分解者分解遗体和废物，释放CO₂）、化石燃料的形成（formation of fossil fuels，古代生物遗体经长期地质作用形成）、combustion（燃烧化石燃料，把碳重新释放到大气中）。</p>
+  </div>
+  </div>
+</details>
+
+<details class="topic" id="b16" open>
+  <summary>
+    <span class="sec-num">B16</span>
+    <h2>人类对生态系统的影响<span class="en">Human Influences on Ecosystems</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="b16-jump" class="jump-anchor" aria-hidden="true"></span>
+  <div class="card red">
+    <h3>栖息地破坏 Habitat Destruction<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">原因：住房和农业用地扩张（land for housing/farming）、自然资源开采（extraction of resources）、水污染（water pollution）。森林砍伐（deforestation）的后果：<b>生物多样性下降（reducing biodiversity）、物种灭绝（extinction）、水土流失（loss of soil，无植被固定土壤）、洪水（flooding，无植被截留雨水）、大气二氧化碳增加（燃烧或分解被砍伐的树木、光合作用固碳能力下降）</b>。</p>
+  </div>
+
+  <div class="card">
+    <h3>大气污染物 Air Pollutants<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <dl>
+      <div><dt>Sulfur dioxide<span class="zh">二氧化硫</span></dt><dd>燃烧化石燃料产生，溶于雨水中形成 <b>acid rain（酸雨）</b>，会破坏水生生态系统、腐蚀建筑物、损伤植物叶片。</dd></div>
+      <div><dt>Carbon dioxide<span class="zh">二氧化碳</span></dt><dd>燃烧化石燃料、森林砍伐都会增加大气CO₂浓度，是主要的<b>温室气体（greenhouse gas）</b>，导致全球变暖（见下方）。</dd></div>
+      <div><dt>Methane<span class="zh">甲烷</span></dt><dd>来自畜牧业（牛羊反刍）、稻田、垃圾填埋场腐烂产生，也是温室气体，<b>增温效应比等量CO₂更强</b>。</dd></div>
+    </dl>
+  </div>
+
+  <div class="card red">
+    <h3>温室效应与全球变暖 Greenhouse Effect &amp; Global Warming<span class="tag ext">Extended</span><span class="tag y8">Stage 8-9</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">大气中的温室气体（CO₂、甲烷等）会吸收地球表面反射出的热量，阻止其散逸到太空——这是天然存在的<b>温室效应（greenhouse effect）</b>，本身维持了地球适宜生存的温度。但人类活动（燃烧化石燃料、森林砍伐、畜牧业）大幅增加了温室气体浓度，导致<b>温室效应增强、全球气温上升（global warming）</b>。</p>
+    <ul class="compact">
+      <li>可能后果：极地冰盖融化（melting of polar ice）、<b>海平面上升（rising sea levels）</b>、极端天气增多、物种分布改变、部分栖息地消失</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>水污染 Water Pollution<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">未经处理的污水、化肥（fertilisers）随雨水径流入河湖，会造成<b>富营养化（eutrophication）</b>：营养物质过多 → 藻类大量繁殖（algal bloom）→ 遮挡阳光，水下植物因无法光合而死亡 → 分解者（微生物）大量分解死亡植物、消耗水中溶解氧 → 溶解氧下降 → 水生动物（鱼类等）缺氧死亡。</p>
+  </div>
+
+  <div class="card green">
+    <h3>保护措施 Conservation<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <ul class="compact">
+      <li><b>Monitoring and protecting 监测与保护</b> — 定期调查物种数量与栖息地状况，设立保护区</li>
+      <li><b>Education 教育</b> — 提高公众对保护重要性的认识</li>
+      <li><b>Captive breeding programmes 圈养繁殖计划</b> — 人工繁殖濒危物种，再放归野外</li>
+      <li><b>Seed banks 种子库</b> — 保存植物种子，防止基因资源永久丧失</li>
+    </ul>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: Explain how excess fertiliser washed into a river can lead to the death of fish.<br>A: Excess nutrients cause <b>algae to grow rapidly</b> (algal bloom), blocking light from reaching plants below the surface. These plants die and are broken down by <b>decomposers</b>, which use up <b>oxygen</b> in the water through respiration. The resulting low oxygen level means fish cannot respire properly and die.</p>
+  </div>
+  </div>
+</details>
+
+<details class="topic" id="c1" open>
+  <summary>
+    <span class="sec-num">C1</span>
+    <h2>状态与粒子模型<span class="en">States of Matter</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="c1-jump" class="jump-anchor" aria-hidden="true"></span>
+
+  <div class="card">
+    <h3>三态的粒子模型（必背）<span class="tag core">Core</span><span class="tag y8">Stage 7</span></h3>
+    <table>
+      <tr><th></th><th>Solid 固态</th><th>Liquid 液态</th><th>Gas 气态</th></tr>
+      <tr><td>粒子排列</td><td>紧密、规则排列</td><td>紧密、无规则排列</td><td>间距大、无规则排列</td></tr>
+      <tr><td>粒子运动</td><td>只能在固定位置<b>振动</b>（vibrate）</td><td>可以<b>滑动</b>越过彼此</td><td>自由、快速、随机运动</td></tr>
+      <tr><td>粒子间作用力</td><td>强</td><td>中等</td><td>极弱（几乎可忽略）</td></tr>
+      <tr><td>是否易被压缩</td><td><span class="yn no">✗</span></td><td><span class="yn no">✗</span></td><td><span class="yn yes">✓</span></td></tr>
+    </table>
+    <div class="note">这套"粒子模型"（particle model）的语言会在B3（扩散、渗透）反复用到——生物里讲的"粒子随机运动、从高浓度到低浓度"，本质就是这里讲的气体/液体粒子运动规律。</div>
+  </div>
+
+  <div class="card">
+    <h3>原子、分子、离子——三个基本术语（必背）<span class="tag core">Core</span><span class="tag y8">Stage 7/9</span></h3>
+    <dl>
+      <div><dt>Atom<span class="zh">原子</span></dt><dd>元素能保持其化学性质的最小粒子（the smallest particle of an element that can exist），由质子、中子、电子构成（详见C3）。</dd></div>
+      <div><dt>Molecule<span class="zh">分子</span></dt><dd>两个或以上原子通过共价键结合而成的粒子（two or more atoms chemically joined together），可以是同种原子（如O₂）也可以是不同种原子（如H₂O）。</dd></div>
+      <div><dt>Ion<span class="zh">离子</span></dt><dd>原子（或原子团）因得失电子而带电荷的粒子（an atom or group of atoms that has gained or lost electrons and so carries an electric charge），详见C3。</dd></div>
+    </dl>
+  </div>
+
+  <div class="card red">
+    <h3>用粒子运动解释气体的压强和温度<span class="tag core">Core</span><span class="tag y8">Stage 8</span></h3>
+    <ul class="compact">
+      <li><b>气体压强（pressure）的来源：</b>气体粒子不断做随机运动，持续撞击容器内壁——大量粒子撞击产生的力，就是气体的压强。粒子撞击越频繁、撞击力越大，压强越大。</li>
+      <li><b>温度（temperature）的本质：</b>温度反映的是粒子平均动能的高低——温度越高，粒子运动越快、动能越大。</li>
+    </ul>
+    <div class="note red">这两点解释了为什么<b>给气体加热，压强会上升</b>（容器体积不变时）：温度升高 → 粒子动能增加、运动更快 → 撞击容器内壁更频繁、力度更大 → 压强增大。</div>
+  </div>
+
+  <div class="card green">
+    <h3>物态变化（必背术语）<span class="tag core">Core</span><span class="tag y8">Stage 7</span></h3>
+    <div class="flow">
+      <span class="step">Solid 固态</span><span class="arrow">melting 熔化 →</span>
+      <span class="step">Liquid 液态</span><span class="arrow">boiling/evaporating 沸腾/蒸发 →</span>
+      <span class="step">Gas 气态</span>
+    </div>
+    <div class="flow" style="margin-top:0.6rem;">
+      <span class="step">Gas 气态</span><span class="arrow">condensing 凝结 →</span>
+      <span class="step">Liquid 液态</span><span class="arrow">freezing 凝固 →</span>
+      <span class="step">Solid 固态</span>
+    </div>
+    <p style="margin-top:0.8rem;font-size:0.88rem;color:var(--ink-soft);"><b>Sublimation（升华）</b>：固态<b>直接</b>变成气态，不经过液态（例：干冰 dry ice / solid carbon dioxide）。</p>
+    <div class="note green"><b>能量角度理解：</b>加热 → 粒子获得动能、运动加快 → 克服粒子间作用力 → 从固态变液态变气态；冷却则相反。发生物态变化时，温度会<b>暂时保持不变</b>（能量用来克服/建立粒子间作用力，而不是用来升降温），这是画"加热曲线（heating curve）"图时的常考细节。</div>
+  </div>
+
+  <div class="card">
+    <h3>扩散 Diffusion<span class="tag y8">Stage 8</span></h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">Diffusion（扩散）：粒子由于随机运动，从高浓度区域<b>净移动</b>到低浓度区域的过程——在气体和液体中都会发生（固体粒子只能原地振动，不会扩散）。温度升高，粒子动能增加，扩散速率加快。<b>注：</b>在现行0653大纲里，diffusion的正式定义和考点被归在<b>生物B3（Movement in and out of cells）</b>而不是化学C1，这里放出来是帮助建立粒子模型的整体图景，正式默写定义以B3为准。</p>
+  </div>
+
+  <div class="card red">
+    <h3>布朗运动 Brownian Motion<span class="tag bg">背景拓展</span></h3>
+    <p style="margin:0;font-size:0.92rem;">观察悬浮在空气或水中的微小颗粒（如烟雾颗粒），会发现它们做无规则的"之字形"随机运动（random, erratic movement）。这是因为颗粒不断被周围<b>肉眼看不见、快速运动的气体/液体分子</b>从四面八方随机撞击。布朗运动是<b>粒子确实在不断随机运动</b>这一模型的实验证据（evidence for the particle model / kinetic theory）。</p>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: Explain, in terms of particles, why a gas can be compressed much more easily than a solid.<br>A: In a gas, the particles are <b>far apart</b> with large spaces between them, and there are almost no forces of attraction between them. When pressure is applied, particles can be pushed <b>closer together</b>, reducing the volume. In a solid, particles are already <b>packed closely together</b>, so there is very little space for them to move into.</p>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: Explain, in terms of particles, why the pressure of a fixed volume of gas increases when it is heated.<br>A: When the gas is heated, its particles gain <b>kinetic energy</b> and move <b>faster</b>. This means the particles collide with the walls of the container <b>more frequently</b> and with <b>greater force</b>, which increases the pressure.</p>
+  </div>
+
+  </div>
+</details>
+
+<details class="topic" id="c2" open>
+  <summary>
+    <span class="sec-num">C2</span>
+    <h2>原子、元素与化合物<span class="en">Atoms, Elements and Compounds</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="c2-jump" class="jump-anchor" aria-hidden="true"></span>
+
+  <div class="card">
+    <h3>原子的基本结构（必背）<span class="tag core">Core</span><span class="tag y8">Stage 8</span></h3>
+    <table>
+      <tr><th>粒子 Particle</th><th>相对电荷 Relative charge</th><th>相对质量 Relative mass</th><th>位置 Location</th></tr>
+      <tr><td><b>Proton</b> 质子</td><td>+1</td><td>1</td><td>原子核 nucleus</td></tr>
+      <tr><td><b>Neutron</b> 中子</td><td>0</td><td>1</td><td>原子核 nucleus</td></tr>
+      <tr><td><b>Electron</b> 电子</td><td>−1</td><td>约为质子的1/2000（几乎可忽略）</td><td>核外电子层 electron shells</td></tr>
+    </table>
+    <div class="note"><b>整个原子不带电：</b>因为质子数（正电荷）= 电子数（负电荷），正负相互抵消。原子的<b>几乎全部质量</b>都集中在原子核（因为电子质量太小可忽略），但原子的<b>体积</b>几乎全部是核外电子占据的空间——原子核相对整个原子来说非常非常小。</div>
+  </div>
+
+  <div class="card">
+    <h3>原子序数与质量数<span class="tag core">Core</span><span class="tag y8">Stage 9</span></h3>
+    <dl>
+      <div><dt>Proton number (Z)<span class="zh">原子序数/质子数</span></dt><dd>原子核内的质子数量，决定了这是什么元素——元素周期表就是按原子序数从小到大排列的。</dd></div>
+      <div><dt>Nucleon number (A)<span class="zh">质量数/核子数</span></dt><dd>原子核内质子数 + 中子数的总和。</dd></div>
+    </dl>
+    <p style="margin:0.6rem 0 0 0;font-size:0.9rem;color:var(--ink-soft);">符号写法：质量数写在元素符号左上角，原子序数写在左下角，例如 <sup>23</sup><sub>11</sub>Na 表示钠原子：质子数=11，中子数 = 23 − 11 = 12。</p>
+  </div>
+
+  <div class="card red">
+    <h3>同位素 Isotopes<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0;font-size:0.92rem;">Isotopes（同位素）：同一种元素的不同原子形式，<b>质子数相同</b>（所以化学性质相同），但<b>中子数不同</b>（所以质量数不同）。例：碳的同位素 ¹²C（6个质子+6个中子）和 ¹⁴C（6个质子+8个中子）——两者化学性质一样，但质量不同，¹⁴C还具有放射性，常用于考古测年。</p>
+  </div>
+
+  <div class="card green">
+    <h3>元素、化合物、混合物（必背区分）<span class="tag core">Core</span><span class="tag y8">Stage 7</span></h3>
+    <dl>
+      <div><dt>Element<span class="zh">元素</span></dt><dd>只由一种原子构成的物质，不能通过化学方法再分解成更简单的物质（例：氧气 O₂、铁 Fe）。</dd></div>
+      <div><dt>Compound<span class="zh">化合物</span></dt><dd>两种或以上不同元素<b>通过化学反应结合</b>而成的物质，各元素比例固定，性质与原来的元素完全不同（例：水 H₂O 是氢和氧化合而成，性质和氢气、氧气都不一样）。</dd></div>
+      <div><dt>Mixture<span class="zh">混合物</span></dt><dd>两种或以上物质<b>没有经过化学反应</b>、只是物理混合在一起，各组分保留各自原来的性质，比例不固定，可以用物理方法（如过滤、蒸馏）分离（例：盐水、空气）。</dd></div>
+    </dl>
+    <div class="note green"><b>易考陷阱：</b>判断"是化合物还是混合物"，关键看有没有发生<b>化学反应</b>、组分比例是否<b>固定</b>——铁和硫粉末混在一起是混合物（比例任意、用磁铁能分离），但加热后生成硫化亚铁（iron sulfide）就是化合物了（比例固定、不能再用磁铁分离，因为铁已经不再是磁性单质铁）。</div>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: Explain the difference between a mixture and a compound, using air and water as examples.<br>A: Air is a <b>mixture</b> of gases (mainly nitrogen and oxygen) that are not chemically combined — each gas keeps its own properties, and the proportions can vary. Water is a <b>compound</b> — hydrogen and oxygen are chemically combined in a <b>fixed ratio</b> (H₂O), forming a substance with completely different properties from either hydrogen or oxygen gas.</p>
+  </div>
+
+  </div>
+</details>
+
+<details class="topic" id="c3" open>
+  <summary>
+    <span class="sec-num">C3</span>
+    <h2>计量化学<span class="en">Stoichiometry</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="c3-jump" class="jump-anchor" aria-hidden="true"></span>
+
+  <div class="card">
+    <h3>相对原子质量与相对分子质量<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <dl>
+      <div><dt>Relative atomic mass (Aᵣ)<span class="zh">相对原子质量</span></dt><dd>一个原子的平均质量，相对于¹²C原子质量的1/12——周期表里每个元素下方那个数字就是它。</dd></div>
+      <div><dt>Relative molecular mass (Mᵣ)<span class="zh">相对分子质量</span></dt><dd>一个分子中所有原子的相对原子质量<b>加总</b>。</dd></div>
+    </dl>
+    <div class="model-answer">
+      <span class="ma-label">答题模板 Model Answer — 计算题</span>
+      <p>Q: 求 CO₂（Aᵣ: C=12, O=16）的相对分子质量。<br>A: Mᵣ(CO₂) = 12 + (16 × 2) = 12 + 32 = <b>44</b>。</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>化学方程式的书写与配平（必背）<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <dl>
+      <div><dt>Word equation<span class="zh">文字方程式</span></dt><dd>用反应物和生成物的名称表示反应，例：magnesium + oxygen → magnesium oxide。</dd></div>
+      <div><dt>Symbol equation<span class="zh">符号方程式</span></dt><dd>用化学式表示反应，且必须<b>配平（balanced）</b>——方程式两边每种原子的数量必须相等，例：2Mg + O₂ → 2MgO。</dd></div>
+    </dl>
+    <div class="note"><b>配平技巧：</b>只能改变化学式前面的<b>系数（coefficient）</b>，绝不能改动化学式本身的<b>下标</b>（比如不能把O₂改成O₃来凑数）——下标一旦改变，就变成了完全不同的物质。建议从数量最"特殊"或出现次数最少的原子开始配平，最后再检查O和H。<b>State symbols（状态符号）</b>：(s)固态、(l)液态、(g)气态、(aq)水溶液——Extended答题经常要求写全。</div>
+  </div>
+
+  <div class="card red">
+    <h3>摩尔 The Mole<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">Mole（摩尔，符号 mol）是化学中"数粒子个数"的计量单位，1 mol 任何物质都含有 <b>6.02 × 10²³</b> 个粒子（阿伏伽德罗常数 Avogadro constant）。</p>
+    <p style="margin:0;font-size:0.92rem;">核心公式：<b>moles = mass ÷ Mᵣ</b>（摩尔数 = 质量 ÷ 相对分子质量）</p>
+    <div class="note red"><b>常温常压下（r.t.p.）气体的摩尔体积：</b>任何气体，1 mol 在常温常压下的体积都约等于 <b>24 dm³</b>（24,000 cm³）——这个数字不需要推导，直接记住。</div>
+    <div class="model-answer">
+      <span class="ma-label">答题模板 Model Answer — 计算题</span>
+      <p>Q: 求 8.8g CO₂（Mᵣ=44）的物质的量（摩尔数）。<br>A: moles = mass ÷ Mᵣ = 8.8 ÷ 44 = <b>0.2 mol</b>。</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>从方程式计算<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">配平后的方程式里，各物质前的系数就是它们反应/生成时的<b>摩尔比</b>。步骤：① 把已知质量转换成摩尔数（moles = mass ÷ Mᵣ）→ ② 按方程式系数比例算出目标物质的摩尔数 → ③ 把摩尔数换算回质量（mass = moles × Mᵣ）。</p>
+    <div class="model-answer">
+      <span class="ma-label">答题模板 Model Answer — 计算题</span>
+      <p>Q: 2Mg + O₂ → 2MgO。已知 4.8g 镁（Mᵣ=24）完全反应，求生成氧化镁（Mᵣ=40）的质量。<br>A: moles of Mg = 4.8 ÷ 24 = 0.2 mol。由方程式比例 Mg : MgO = 2 : 2 = 1 : 1，所以 moles of MgO = 0.2 mol。mass of MgO = 0.2 × 40 = <b>8g</b>。</p>
+    </div>
+  </div>
+
+  <div class="card green">
+    <h3>溶液浓度 Concentration<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">Concentration（浓度）= moles ÷ volume（摩尔数 ÷ 体积，单位 mol/dm³）。溶液体积一定时，溶质的摩尔数越多，浓度越高；同一瓶溶液，取出的体积不管多少，浓度都不变（浓度是"每单位体积含多少摩尔"这个比例，不是总量）。</p>
+  </div>
+
+  </div>
+</details>
+
+<details class="topic" id="c4" open>
+  <summary>
+    <span class="sec-num">C4</span>
+    <h2>电化学<span class="en">Electrochemistry</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="c4-jump" class="jump-anchor" aria-hidden="true"></span>
+
+  <div class="card">
+    <h3>电解的基本概念（必背）<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <dl>
+      <div><dt>Electrolysis<span class="zh">电解</span></dt><dd>用电流分解一种含离子的化合物（electrolyte）的过程（the breakdown of an ionic compound, molten or in aqueous solution, by electricity）。</dd></div>
+      <div><dt>Electrolyte<span class="zh">电解质</span></dt><dd>能导电、并在电解时发生分解的物质——必须是<b>熔融态</b>或<b>水溶液</b>状态（固态时离子不能自由移动，不导电）。</dd></div>
+      <div><dt>Electrode<span class="zh">电极</span></dt><dd>插入电解质、连接电源的导体。</dd></div>
+    </dl>
+    <table>
+      <tr><th>电极</th><th>连接电源</th><th>发生的反应</th></tr>
+      <tr><td><b>Cathode 阴极</b></td><td>负极</td><td>吸引<b>阳离子</b>（cation），阳离子在此<b>得到电子</b>（reduction 还原）</td></tr>
+      <tr><td><b>Anode 阳极</b></td><td>正极</td><td>吸引<b>阴离子</b>（anion），阴离子在此<b>失去电子</b>（oxidation 氧化）</td></tr>
+    </table>
+    <div class="note"><b>记忆技巧：</b>"阳离子去阴极，阴离子去阳极"——听起来反直觉，但记住原理就不会搞混：阳离子带正电，被带负电的阴极吸引；阴离子带负电，被带正电的阳极吸引，异性相吸。</div>
+  </div>
+
+  <div class="card red">
+    <h3>熔融化合物的电解（举例）<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">以电解熔融溴化铅（molten lead bromide, PbBr₂）为例：熔融状态下，Pb²⁺ 和 Br⁻ 离子都能自由移动。</p>
+    <ul class="compact">
+      <li><b>阴极</b>：Pb²⁺ 离子移向阴极，得到2个电子，被还原成<b>银白色的铅金属</b> — Pb²⁺ + 2e⁻ → Pb</li>
+      <li><b>阳极</b>：Br⁻ 离子移向阳极，失去电子，被氧化成<b>橙棕色的溴气</b> — 2Br⁻ → Br₂ + 2e⁻</li>
+    </ul>
+    <div class="note red">这是Extended常考的半反应式（half equation）写法基础——阴极得电子的反应叫reduction（还原），阳极失电子的反应叫oxidation（氧化），合起来叫redox reaction（氧化还原反应）。</div>
+  </div>
+
+  <div class="card">
+    <h3>电解的应用<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">最主要的应用是<b>提取活性很强的金属</b>（见C9活性顺序表）——钾、钠、钙、镁、铝这些金属活性太强，无法用碳还原法从其化合物中提取出来，只能用电解（例如电解熔融氧化铝提取铝）。虽然电解耗电量大、成本高，但对这些金属来说是唯一可行的提取方式。</p>
+  </div>
+
+  <div class="card green">
+    <h3>电镀 Electroplating<span class="tag bg">背景拓展</span></h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">Electroplating（电镀）：用电解的方法，在一种金属表面镀上一层薄薄的另一种金属。做法：把要镀的金属物件接<b>阴极</b>，镀层金属的纯金属块接<b>阳极</b>，电解质用含镀层金属离子的溶液（例如镀铜就用硫酸铜溶液）——阳极的铜不断溶解补充溶液中的Cu²⁺，阴极上的Cu²⁺不断被还原、沉积在物件表面，形成一层均匀的铜镀层。用途：防止腐蚀（如镀锌防锈，见C9）、增加美观（首饰镀金银）、提高导电性。</p>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: During the electrolysis of molten lead bromide, explain what happens at the cathode.<br>A: <b>Pb²⁺ ions</b> (cations) move towards the cathode, attracted by the negative electrode. At the cathode, each Pb²⁺ ion <b>gains two electrons</b> (reduction) and is discharged as <b>lead metal</b>: Pb²⁺ + 2e⁻ → Pb.</p>
+  </div>
+
+  </div>
+</details>
+
+<details class="topic" id="c5" open>
+  <summary>
+    <span class="sec-num">C5</span>
+    <h2>化学能量学<span class="en">Chemical Energetics</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="c5-jump" class="jump-anchor" aria-hidden="true"></span>
+
+  <div class="card red">
+    <h3>放热反应 vs 吸热反应（必背区分）<span class="tag core">Core</span><span class="tag y8">Stage 8</span></h3>
+    <table>
+      <tr><th></th><th>Exothermic <span style="font-weight:400;">放热反应</span></th><th>Endothermic <span style="font-weight:400;">吸热反应</span></th></tr>
+      <tr><td>能量变化</td><td><b>释放</b>能量到周围环境</td><td>从周围环境<b>吸收</b>能量</td></tr>
+      <tr><td>周围温度变化</td><td>周围温度<b>升高</b></td><td>周围温度<b>降低</b></td></tr>
+      <tr><td>常见例子</td><td>燃烧（combustion）、中和反应（neutralisation）</td><td>热分解（thermal decomposition）、光合作用（photosynthesis）</td></tr>
+    </table>
+    <div class="note red"><span class="tag bg">背景</span> 这里的"放热/吸热"和B6光合作用、B12呼吸作用是同一件事从化学角度的说法——呼吸作用释放能量（放热），光合作用需要吸收光能才能进行（吸热）。</div>
+  </div>
+
+  <div class="card">
+    <h3>能量变化图 Energy Level Diagrams<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">用图像表示反应物和生成物的能量高低：<b>放热反应</b>——生成物的能量线画得<b>比反应物低</b>（能量净释放）；<b>吸热反应</b>——生成物的能量线画得<b>比反应物高</b>（能量净吸收）。反应物能量线到图中最高点之间的差距，代表<b>活化能（activation energy）</b>——反应要发生所需跨过的能量门槛（见C6碰撞理论）。</p>
+  </div>
+
+  <div class="card green">
+    <h3>从化学键角度理解（为什么会放热/吸热）<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <ul class="compact">
+      <li><b>断开化学键（bond breaking）需要吸收能量</b> — 因为要克服原子间的吸引力</li>
+      <li><b>形成化学键（bond making）会释放能量</b> — 原子结合成更稳定的状态</li>
+    </ul>
+    <div class="note green"><b>净能量变化 = 断键吸收的能量 − 成键释放的能量</b>。如果成键释放的能量<b>大于</b>断键吸收的能量，多余的能量就以热的形式释放出来，整体表现为<b>放热反应</b>；反过来，如果断键需要的能量<b>大于</b>成键释放的能量，反应就需要持续从外界吸收能量，表现为<b>吸热反应</b>。</div>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: Explain, in terms of bond breaking and bond making, why combustion is an exothermic reaction.<br>A: During combustion, chemical bonds in the reactants are <b>broken</b>, which requires an input of energy. New bonds form in the products, which <b>releases</b> energy. In combustion, the energy released when the new bonds form is <b>greater than</b> the energy needed to break the original bonds, so there is a net release of energy to the surroundings — the temperature of the surroundings increases.</p>
+  </div>
+
+  </div>
+</details>
+
+<details class="topic" id="c6" open>
+  <summary>
+    <span class="sec-num">C6</span>
+    <h2>化学反应<span class="en">Chemical Reactions</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="c6-jump" class="jump-anchor" aria-hidden="true"></span>
+
+  <div class="card">
+    <h3>物理变化 vs 化学变化（必背区分）<span class="tag core">Core</span><span class="tag y8">Stage 7</span></h3>
+    <table>
+      <tr><th></th><th class="yn-head">物理变化 Physical</th><th class="yn-head">化学变化 Chemical</th></tr>
+      <tr><td>是否生成新物质</td><td class="yn-cell"><span class="yn no">✗</span></td><td class="yn-cell"><span class="yn yes">✓</span></td></tr>
+      <tr><td>是否容易逆转</td><td class="yn-cell"><span class="yn yes">✓</span><br><span class="zh" style="font-size:0.78rem;">通常容易逆转</span></td><td class="yn-cell"><span class="yn no">✗</span><br><span class="zh" style="font-size:0.78rem;">通常难以逆转</span></td></tr>
+      <tr><td>常见例子</td><td>物态变化（熔化/沸腾）、溶解、切割</td><td>燃烧、生锈、加热分解、沉淀反应</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>常见反应类型<span class="tag core">Core</span><span class="tag y8">Stage 7</span></h3>
+    <dl>
+      <div><dt>Combustion<span class="zh">燃烧</span></dt><dd>物质与氧气反应，放出能量（放热），常伴随光和热，例：甲烷燃烧 CH₄ + 2O₂ → CO₂ + 2H₂O。</dd></div>
+      <div><dt>Thermal decomposition<span class="zh">热分解</span></dt><dd>一种化合物受热分解成两种或以上更简单的物质，例：碳酸钙受热分解 CaCO₃ → CaO + CO₂。</dd></div>
+      <div><dt>Precipitation<span class="zh">沉淀反应</span></dt><dd>两种可溶性溶液混合，生成一种不溶性固体（沉淀 precipitate），例：硝酸银溶液 + 氯化钠溶液 → 氯化银沉淀（白色）+ 硝酸钠溶液。</dd></div>
+    </dl>
+  </div>
+
+  <div class="card red">
+    <h3>反应速率的影响因素（必背，碰撞理论）<span class="tag core">Core</span><span class="tag y8">Stage 9</span></h3>
+    <ul class="compact">
+      <li><b>Concentration 浓度升高</b> — 单位体积内粒子数增多，碰撞频率增加 → 反应加快</li>
+      <li><b>Temperature 温度升高</b> — 粒子动能增大、运动更快，碰撞更频繁<b>且更有效</b>（更多碰撞能量超过反应所需的最低能量）→ 反应加快</li>
+      <li><b>Surface area 表面积增大</b>（如把固体磨成粉末）— 暴露在外、能接触到其他反应物的粒子增多 → 反应加快</li>
+      <li><b>Catalyst 加入催化剂</b> — 降低反应所需的最低能量门槛 → 反应加快（见下方）</li>
+    </ul>
+    <div class="note red"><b>碰撞理论（collision theory）核心逻辑：</b>反应要发生，粒子之间必须<b>碰撞</b>，而且碰撞时的能量要达到<b>活化能（activation energy）</b>这个最低门槛，这样的碰撞才叫"有效碰撞"。上面四个因素本质上都是在增加"碰撞频率"或"有效碰撞比例"，没有第三条路。</div>
+  </div>
+
+  <div class="card">
+    <h3>催化剂 Catalysts<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">Catalyst（催化剂）：能加快化学反应速率、但<b>反应前后本身质量和化学性质不变</b>（不被消耗）的物质。它的作用机制是<b>降低反应所需的活化能</b>，让更多碰撞能达到"有效碰撞"的门槛，而不是给粒子额外增加动能。<span class="tag bg">背景</span> 这个概念和B5讲的"酶"本质上是同一回事——酶就是一种生物催化剂，作用原理相通。</p>
+  </div>
+
+  <div class="card green">
+    <h3>可逆反应 Reversible Reactions<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">Reversible reaction（可逆反应）：反应生成的产物，在一定条件下又能<b>反过来</b>重新生成原来的反应物，用符号 ⇌ 表示（而不是普通的单向箭头 →）。当正反应速率和逆反应速率相等时，反应达到<b>平衡（equilibrium）</b>——此时反应物和生成物的量不再随时间变化（但反应本身并没有停止，是动态平衡）。</p>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: Explain, using collision theory, why increasing the temperature increases the rate of a reaction.<br>A: At a higher temperature, particles have <b>more kinetic energy</b> and move faster. This means they collide <b>more frequently</b>, and a <b>greater proportion of collisions have energy equal to or greater than the activation energy</b>, so more collisions are successful. Both effects increase the rate of reaction.</p>
+  </div>
+
+  </div>
+</details>
+
+<details class="topic" id="c7" open>
+  <summary>
+    <span class="sec-num">C7</span>
+    <h2>酸、碱与盐<span class="en">Acids, Bases and Salts</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="c7-jump" class="jump-anchor" aria-hidden="true"></span>
+
+  <div class="card">
+    <h3>酸、碱、碱性物质的定义（必背）<span class="tag core">Core</span><span class="tag y8">Stage 7</span></h3>
+    <dl>
+      <div><dt>Acid<span class="zh">酸</span></dt><dd>溶于水时释放出<b>H⁺离子</b>（氢离子）的物质（a substance that forms aqueous solutions with a pH of less than 7）。</dd></div>
+      <div><dt>Base<span class="zh">碱性物质</span></dt><dd>能中和酸的物质（a substance that can neutralise an acid），氧化物和氢氧化物都可能是base。</dd></div>
+      <div><dt>Alkali<span class="zh">碱</span></dt><dd>能<b>溶于水</b>的base，溶于水时释放出<b>OH⁻离子</b>（氢氧根离子）（a soluble base that forms aqueous solutions with a pH greater than 7）。</dd></div>
+    </dl>
+    <div class="note"><b>Base 和 Alkali 的关系：</b>所有alkali都是base，但不是所有base都是alkali——base只有能<b>溶于水</b>才叫alkali（比如氧化铜CuO是base但不溶于水，所以不是alkali；氢氧化钠NaOH是base且能溶于水，所以是alkali）。</div>
+  </div>
+
+  <div class="card">
+    <h3>pH值与指示剂<span class="tag core">Core</span><span class="tag y8">Stage 7</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">pH scale（pH值范围）：0-14，<b>pH &lt; 7</b> 为酸性，<b>pH = 7</b> 为中性，<b>pH &gt; 7</b> 为碱性。数值越接近0酸性越强，越接近14碱性越强。</p>
+    <div class="note">Universal indicator（通用指示剂）遇不同pH会显示不同颜色，从红（强酸）→橙→黄→绿（中性）→蓝→紫（强碱），是判断溶液酸碱性最直接的实验工具。Litmus（石蕊）更简单，只能粗略判断：酸使石蕊变红，碱使石蕊变蓝。</div>
+  </div>
+
+  <div class="card red">
+    <h3>酸的三大通用反应（必背）<span class="tag core">Core</span><span class="tag y8">Stage 9</span></h3>
+    <table>
+      <tr><th>反应类型</th><th>反应物</th><th>生成物</th></tr>
+      <tr><td>与活泼金属反应</td><td>Acid + Metal</td><td>Salt + <b>Hydrogen 氢气</b></td></tr>
+      <tr><td>与碱/金属氧化物反应（中和）</td><td>Acid + Base</td><td>Salt + <b>Water 水</b></td></tr>
+      <tr><td>与碳酸盐反应</td><td>Acid + Carbonate</td><td>Salt + Water + <b>Carbon dioxide 二氧化碳</b></td></tr>
+    </table>
+    <div class="note red"><b>三个反应共同点：</b>都会生成一种<b>盐（salt）</b>，只是另一个生成物不同——记住"和金属反应产气体氢气""和碳酸盐反应产气体二氧化碳""和碱反应只产水（中和）"这三条，考试常要求写出对应的气体检验方法：氢气用点燃的木条靠近，会发出"噗"的一声（squeaky pop）；二氧化碳通入澄清石灰水会使其变浑浊。</div>
+  </div>
+
+  <div class="card green">
+    <h3>盐的命名规则<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <table>
+      <tr><th>使用的酸</th><th>生成的盐后缀</th></tr>
+      <tr><td>Hydrochloric acid 盐酸</td><td>-chloride 氯化物</td></tr>
+      <tr><td>Sulfuric acid 硫酸</td><td>-sulfate 硫酸盐</td></tr>
+      <tr><td>Nitric acid 硝酸</td><td>-nitrate 硝酸盐</td></tr>
+    </table>
+    <p style="margin:0.6rem 0 0 0;font-size:0.9rem;color:var(--ink-soft);">盐的前半部分名称来自参与反应的金属/碱，例：氢氧化铜 + 盐酸 → <b>copper chloride</b>（氯化铜）+ 水。</p>
+  </div>
+
+  <div class="card">
+    <h3>可溶性盐的制备<span class="tag ext">Extended</span><span class="tag y8">Stage 9</span></h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">常用"过量固体法（excess solid method）"制备可溶性盐（当金属或不溶碱可以和酸反应时）：① 把不溶性的碱/金属/碳酸盐<b>过量</b>加入酸中，确保酸完全反应完；② 过滤（filter）去除多余未反应的固体；③ 把得到的盐溶液加热蒸发浓缩（evaporate），再冷却结晶（crystallise），得到盐的固体晶体。</p>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: Describe a test to show that a gas produced is carbon dioxide.<br>A: Bubble the gas through <b>limewater</b> (calcium hydroxide solution). If carbon dioxide is present, the limewater turns from colourless to <b>cloudy/milky</b>.</p>
+  </div>
+
+  </div>
+</details>
+
+<details class="topic" id="c8" open>
+  <summary>
+    <span class="sec-num">C8</span>
+    <h2>元素周期表<span class="en">The Periodic Table</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="c8-jump" class="jump-anchor" aria-hidden="true"></span>
+
+  <div class="card">
+    <h3>周期表结构（必背）<span class="tag core">Core</span><span class="tag y8">Stage 7</span></h3>
+    <dl>
+      <div><dt>Group<span class="zh">族（纵列）</span></dt><dd>周期表中的<b>竖列</b>。同一族的元素<b>最外层电子数相同</b>，所以化学性质相似——族数（如Group I、Group VII）通常就等于最外层电子数。</dd></div>
+      <div><dt>Period<span class="zh">周期（横行）</span></dt><dd>周期表中的<b>横行</b>。同一周期的元素<b>电子层数相同</b>（比如Period 3的元素都是3个电子层）。</dd></div>
+    </dl>
+    <p style="margin:0.6rem 0 0 0;font-size:0.9rem;color:var(--ink-soft);">元素按<b>原子序数（proton number）从小到大</b>排列。核外电子排布规则（electron shell filling）：由内到外依次排满，每层最多容纳的电子数依次是 2、8、8……（例：氯 Cl 原子序数17，电子排布是2, 8, 7）。</p>
+  </div>
+
+  <div class="card red">
+    <h3>金属 vs 非金属（位置与性质对比）<span class="tag core">Core</span><span class="tag y8">Stage 7</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.9rem;color:var(--ink-soft);">周期表左下方大部分区域是金属（metals），右上方是非金属（non-metals），中间用一条阶梯状分界线大致分开。</p>
+    <table>
+      <tr><th>性质 Property</th><th class="yn-head">金属 Metals</th><th class="yn-head">非金属 Non-metals</th></tr>
+      <tr><td>导电性 Conducts electricity</td><td class="yn-cell"><span class="yn yes">✓</span></td><td class="yn-cell"><span class="yn no">✗</span><br><span class="zh" style="font-size:0.78rem;">石墨例外</span></td></tr>
+      <tr><td>有光泽 Shiny/lustrous</td><td class="yn-cell"><span class="yn yes">✓</span></td><td class="yn-cell"><span class="yn no">✗</span></td></tr>
+      <tr><td>延展性 Malleable/ductile</td><td class="yn-cell"><span class="yn yes">✓</span><br><span class="zh" style="font-size:0.78rem;">可捶打延展成型</span></td><td class="yn-cell"><span class="yn no">✗</span><br><span class="zh" style="font-size:0.78rem;">固态时脆，易碎</span></td></tr>
+      <tr><td>熔点/沸点普遍较高</td><td class="yn-cell"><span class="yn yes">✓</span></td><td class="yn-cell"><span class="yn no">✗</span><br><span class="zh" style="font-size:0.78rem;">普遍较低</span></td></tr>
+      <tr><td>反应时倾向</td><td>失去电子，形成<b>正离子</b>（cation）</td><td>得到电子（或共用电子），形成<b>负离子</b>（anion）</td></tr>
+    </table>
+    <div class="note red"><b>石墨（graphite）是常考的例外</b>——它是非金属，但因为特殊的层状结构（每个碳原子有一个自由电子），<b>能导电</b>，是非金属里唯一的例外，经常被用来出"判断对错"类型的题。</div>
+  </div>
+
+  <div class="card">
+    <h3>Group I 碱金属 Alkali Metals<span class="tag core">Core</span><span class="tag y8">Stage 9</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">锂（Li）、钠（Na）、钾（K）等，最外层只有<b>1个电子</b>，非常容易失去这个电子形成+1价离子，所以反应活性很强。</p>
+    <ul class="compact">
+      <li>物理性质：质地软（可以用小刀切开）、密度低（钠、锂能浮在水面上）、熔点低</li>
+      <li>与水反应剧烈：碱金属 + 水 → 氢氧化物（碱性溶液）+ 氢气，常伴随浮动、嘶嘶声甚至燃烧</li>
+      <li><b>反应活性随族内向下（原子序数增大）而增强</b>（reactivity increases down the group）——越往下，最外层电子离核越远，越容易被"甩掉"</li>
+    </ul>
+  </div>
+
+  <div class="card green">
+    <h3>Group VII 卤素 Halogens<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">氟（F）、氯（Cl）、溴（Br）、碘（I）等，最外层有<b>7个电子</b>，只差1个电子就能达到稳定的8电子结构，所以容易得到1个电子形成−1价离子。以双原子分子形式存在（F₂、Cl₂等）。</p>
+    <table>
+      <tr><th>元素</th><th>常温状态</th><th>颜色</th></tr>
+      <tr><td>Chlorine 氯</td><td>气态</td><td>黄绿色</td></tr>
+      <tr><td>Bromine 溴</td><td>液态</td><td>红棕色</td></tr>
+      <tr><td>Iodine 碘</td><td>固态</td><td>深灰/紫黑色（升华时呈紫色蒸气）</td></tr>
+    </table>
+    <div class="note green"><b>易考陷阱——趋势方向和Group I正好相反：</b>卤素的<b>反应活性随族内向下而减弱</b>（reactivity <b>decreases</b> down the group）——越往下，最外层离核越远，越难"抢到"额外的1个电子。<b>置换反应（displacement reaction）</b>是这个趋势的常考验证方法：活性更强的卤素能把活性较弱的卤素从其化合物中置换出来，例如氯气能把溴从溴化钠溶液中置换出来（Cl₂ + 2NaBr → 2NaCl + Br₂），溶液颜色会从无色变成红棕色。</div>
+  </div>
+
+  <div class="card">
+    <h3>Group 0（VIII）惰性气体 Noble Gases<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">氦（He）、氖（Ne）、氩（Ar）等，最外层电子已经<b>排满（full outer shell）</b>，结构非常稳定，因此<b>几乎不参与化学反应（unreactive/inert）</b>。常温下都是单原子气体。用途：氦气用于填充气球和飞艇（密度小、不易燃）；氩气用于灯泡填充气体（防止灯丝被氧化）。</p>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: Explain why the reactivity of Group I metals increases down the group, while the reactivity of Group VII elements decreases down the group.<br>A: In Group I, elements react by <b>losing</b> their single outer electron. Going down the group, the outer electron is <b>further from the nucleus</b> and more shielded, so it is lost more easily — reactivity increases. In Group VII, elements react by <b>gaining</b> an electron. Going down the group, the outer shell is further from the nucleus, so the attraction for an additional electron is <b>weaker</b> — reactivity decreases.</p>
+  </div>
+
+  </div>
+</details>
+
+<details class="topic" id="c9" open>
+  <summary>
+    <span class="sec-num">C9</span>
+    <h2>金属<span class="en">Metals</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="c9-jump" class="jump-anchor" aria-hidden="true"></span>
+
+  <div class="card red">
+    <h3>金属活性顺序表（必背）<span class="tag core">Core</span><span class="tag y8">Stage 8</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">Reactivity series（活性顺序表）把常见金属按反应活性从强到弱排列：</p>
+    <div class="flow" style="flex-wrap:wrap;">
+      <span class="step">Potassium 钾</span><span class="arrow">&gt;</span>
+      <span class="step">Sodium 钠</span><span class="arrow">&gt;</span>
+      <span class="step">Calcium 钙</span><span class="arrow">&gt;</span>
+      <span class="step">Magnesium 镁</span><span class="arrow">&gt;</span>
+      <span class="step">Aluminium 铝</span><span class="arrow">&gt;</span>
+      <span class="step">(Carbon 碳)</span><span class="arrow">&gt;</span>
+      <span class="step">Zinc 锌</span><span class="arrow">&gt;</span>
+      <span class="step">Iron 铁</span><span class="arrow">&gt;</span>
+      <span class="step">(Hydrogen 氢)</span><span class="arrow">&gt;</span>
+      <span class="step">Copper 铜</span><span class="arrow">&gt;</span>
+      <span class="step">Silver 银</span><span class="arrow">&gt;</span>
+      <span class="step">Gold 金</span>
+    </div>
+    <div class="note red">Carbon（碳）和 Hydrogen（氢）虽然不是金属，但因为在<b>金属提取工艺</b>里经常被当作参照点插进活性顺序表中间（见下方"提取方法"），所以通常一并记住它们的相对位置。</div>
+  </div>
+
+  <div class="card">
+    <h3>金属与水/酸的反应<span class="tag core">Core</span><span class="tag y8">Stage 8</span></h3>
+    <ul class="compact">
+      <li><b>与冷水反应</b>：钾、钠、钙等活性很强的金属能与冷水剧烈反应，生成<b>氢氧化物 + 氢气</b>（例：2Na + 2H₂O → 2NaOH + H₂）</li>
+      <li><b>与稀酸反应</b>：镁、锌、铁等活性中等的金属能与稀酸反应，生成<b>盐 + 氢气</b>（例：Mg + 2HCl → MgCl₂ + H₂）</li>
+      <li><b>反应剧烈程度</b>随金属在活性顺序表中的位置而变化——越靠前反应越剧烈，铜、银、金这些活性极弱的金属<b>几乎不与稀酸反应</b></li>
+    </ul>
+  </div>
+
+  <div class="card green">
+    <h3>置换反应 Displacement Reactions<span class="tag core">Core</span><span class="tag y8">Stage 9</span></h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">活性<b>更强</b>的金属，能把活性<b>更弱</b>的金属从其化合物（溶液或氧化物）中<b>置换</b>出来，例：铁比铜活泼，把铁放入硫酸铜溶液中，铁会置换出铜：Fe + CuSO₄ → FeSO₄ + Cu（溶液由蓝色变浅绿色，铁表面出现红棕色铜）。这个反应可以反过来用来<b>比较两种金属的活性高低</b>——是常考的实验设计题。</p>
+  </div>
+
+  <div class="card">
+    <h3>金属的提取方法（与活性顺序表直接对应）<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <table>
+      <tr><th>活性顺序位置</th><th>提取方法</th><th>原理</th></tr>
+      <tr><td>Potassium ~ Aluminium（碳以上）</td><td><b>Electrolysis 电解</b></td><td>这些金属活性太强，碳无法把它们从化合物中还原出来，只能用电解（消耗大量能量，成本高）</td></tr>
+      <tr><td>Zinc ~ Copper（碳以下）</td><td><b>Reduction with carbon 用碳还原</b></td><td>碳的活性介于铝和锌之间，能把活性比碳弱的金属从其氧化物中还原出来（例：用碳还原氧化铁炼铁）</td></tr>
+      <tr><td>Silver, Gold（极不活泼）</td><td>天然以<b>游离态</b>存在</td><td>活性极低，不易与其他元素化合，常以纯金属形式存在于自然界，不太需要化学提取</td></tr>
+    </table>
+    <div class="note"><b>逻辑闭环：</b>金属活性越强，说明它原子越"想"失去电子形成化合物，也就<b>越难</b>被从化合物中"抢救"出来还原成金属单质——这正是电解成本高、只用于最活泼金属提取的原因。</div>
+  </div>
+
+  <div class="card">
+    <h3>铁的生锈 Rusting<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">Rusting（生锈）需要<b>同时</b>具备两个条件：<b>水（water）</b>和<b>氧气（oxygen）</b>，缺一不可——这是一个经典的对照实验考点（分别用干燥空气中的铁钉、只有水没有空气的铁钉、水+空气都有的铁钉做对比，只有第三组会生锈）。</p>
+    <ul class="compact">
+      <li><b>Painting/coating 涂漆/涂层</b> — 隔绝水和空气接触铁</li>
+      <li><b>Galvanising 镀锌</b> — 在铁表面镀一层锌，锌比铁活泼，即使镀层刮花，锌也会优先被腐蚀（牺牲阳极保护，sacrificial protection），保护里面的铁</li>
+      <li><b>Alloying 制成合金</b> — 如不锈钢（stainless steel），改变金属本身的抗腐蚀性</li>
+    </ul>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: Explain why galvanising (coating iron with zinc) protects iron from rusting, even if the zinc coating is scratched.<br>A: Zinc is <b>more reactive</b> than iron. Even when the coating is scratched and the iron is exposed, the zinc continues to react with water and oxygen in preference to the iron — this is called <b>sacrificial protection</b>. The zinc is corroded instead of the iron, so the iron underneath is protected.</p>
+  </div>
+
+  </div>
+</details>
+
+<details class="topic" id="c10" open>
+  <summary>
+    <span class="sec-num">C10</span>
+    <h2>环境化学<span class="en">Chemistry of the Environment</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="c10-jump" class="jump-anchor" aria-hidden="true"></span>
+
+  <div class="card">
+    <h3>大气组成（必背）<span class="tag core">Core</span><span class="tag y8">Stage 7</span></h3>
+    <table>
+      <tr><th>气体</th><th>大致比例</th></tr>
+      <tr><td>Nitrogen 氮气</td><td>约 78%</td></tr>
+      <tr><td>Oxygen 氧气</td><td>约 21%</td></tr>
+      <tr><td>其他（Argon氩气、CO₂、水蒸气等）</td><td>约 1%</td></tr>
+    </table>
+  </div>
+
+  <div class="card green">
+    <h3>碳循环 Carbon Cycle<span class="tag bg">背景</span><span class="tag y8">Stage 9</span></h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">这部分内容在B15/B16已经从生物角度讲过：photosynthesis（光合作用，固定CO₂）、respiration（呼吸作用，释放CO₂）、combustion（燃烧化石燃料，释放CO₂）、decomposition（分解，释放CO₂）——化学视角补充的重点是：<b>燃烧化石燃料是大气CO₂浓度上升的主要人为来源</b>，这也是C5讲的"燃烧是放热反应"在环境尺度上的体现。</p>
+  </div>
+
+  <div class="card red">
+    <h3>温室气体与全球变暖<span class="tag core">Core</span><span class="tag y8">Stage 8-9</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">主要温室气体（greenhouse gases）：<b>carbon dioxide 二氧化碳</b>（燃烧化石燃料、森林砍伐）、<b>methane 甲烷</b>（畜牧业、稻田、垃圾填埋场）。这些气体会吸收地表反射的热量，阻止其散逸到太空，导致全球气温上升（global warming）。</p>
+    <div class="note red">这一段和B16几乎是同一套内容从化学角度再讲一遍——建议和B16一起复习，能帮学生理解"原来两科在说同一件事"。</div>
+  </div>
+
+  <div class="card">
+    <h3>空气污染物<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <table>
+      <tr><th>污染物</th><th>主要来源</th><th>危害</th></tr>
+      <tr><td>Carbon monoxide 一氧化碳</td><td>燃料<b>不完全燃烧</b>（见C11）</td><td>与血红蛋白结合能力比氧气强，降低血液携氧能力，严重时致命</td></tr>
+      <tr><td>Sulfur dioxide 二氧化硫</td><td>燃烧含硫杂质的化石燃料（尤其煤）</td><td>溶于雨水形成<b>酸雨</b>，腐蚀建筑、损害水生生态</td></tr>
+      <tr><td>Nitrogen oxides 氮氧化物</td><td>高温下汽车引擎内 N₂ 和 O₂ 反应生成</td><td>同样导致酸雨、引发呼吸道疾病</td></tr>
+      <tr><td>Particulates 颗粒物（烟尘）</td><td>不完全燃烧产生的碳颗粒</td><td>造成雾霾、损害呼吸系统</td></tr>
+    </table>
+  </div>
+
+  <div class="card green">
+    <h3>饮用水处理<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <div class="flow" style="flex-wrap:wrap;">
+      <span class="step">Sedimentation 沉淀</span><span class="arrow">→</span>
+      <span class="step">Filtration 过滤</span><span class="arrow">→</span>
+      <span class="step">Chlorination 氯消毒</span>
+    </div>
+    <p style="margin-top:0.6rem;font-size:0.9rem;color:var(--ink-soft);">Sedimentation（沉淀）让较大悬浮颗粒沉降；Filtration（过滤，通常用沙层）去除剩余的细小颗粒；Chlorination（加氯消毒）杀死水中的微生物/病原体，使水安全可饮用。</p>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: Explain how burning fossil fuels containing sulfur can lead to damage of buildings and lakes far away.<br>A: Burning fuel containing sulfur produces <b>sulfur dioxide</b> gas. This gas dissolves in water droplets in clouds, forming <b>acid rain</b>. Wind can carry these clouds long distances before the acid rain falls, damaging buildings (by reacting with carbonate rock) and lowering the pH of lakes, harming aquatic life far from the original source.</p>
+  </div>
+
+  </div>
+</details>
+
+<details class="topic" id="c11" open>
+  <summary>
+    <span class="sec-num">C11</span>
+    <h2>有机化学<span class="en">Organic Chemistry</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="c11-jump" class="jump-anchor" aria-hidden="true"></span>
+
+  <div class="card">
+    <h3>化石燃料 Fossil Fuels<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">Coal（煤）、natural gas（天然气）、petroleum/crude oil（石油）都是化石燃料，由数百万年前的动植物遗体在地下经过高温高压逐渐形成——属于<b>不可再生资源（non-renewable）</b>，一旦用完不能在人类时间尺度内重新生成。</p>
+  </div>
+
+  <div class="card">
+    <h3>烃与烷烃 Hydrocarbons &amp; Alkanes<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <dl>
+      <div><dt>Hydrocarbon<span class="zh">烃</span></dt><dd>只由<b>碳（C）和氢（H）</b>两种元素组成的化合物。</dd></div>
+      <div><dt>Alkane<span class="zh">烷烃</span></dt><dd>饱和烃（saturated hydrocarbon），分子中碳原子之间<b>只有单键</b>，通式为 <b>CₙH₂ₙ₊₂</b>。</dd></div>
+    </dl>
+    <table>
+      <tr><th>名称</th><th>分子式</th><th>碳原子数</th></tr>
+      <tr><td>Methane 甲烷</td><td>CH₄</td><td>1</td></tr>
+      <tr><td>Ethane 乙烷</td><td>C₂H₆</td><td>2</td></tr>
+      <tr><td>Propane 丙烷</td><td>C₃H₈</td><td>3</td></tr>
+      <tr><td>Butane 丁烷</td><td>C₄H₁₀</td><td>4</td></tr>
+    </table>
+  </div>
+
+  <div class="card red">
+    <h3>完全燃烧 vs 不完全燃烧<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <table>
+      <tr><th></th><th>Complete combustion <span style="font-weight:400;">完全燃烧</span></th><th>Incomplete combustion <span style="font-weight:400;">不完全燃烧</span></th></tr>
+      <tr><td>氧气是否充足</td><td class="yn-cell"><span class="yn yes">✓</span></td><td class="yn-cell"><span class="yn no">✗</span><br><span class="zh" style="font-size:0.78rem;">氧气不足</span></td></tr>
+      <tr><td>生成物</td><td>Carbon dioxide + water（CO₂ + H₂O）</td><td>Carbon monoxide（CO）和/或碳颗粒（soot），还有水</td></tr>
+    </table>
+    <div class="note red"><b>危险性：</b>不完全燃烧产生的<b>一氧化碳（CO）</b>无色无味，极难被察觉，但会与血红蛋白结合、阻止其运输氧气，是家用燃气器具通风不良时的致命隐患——这也是C10污染物里CO那一行的来源解释。</div>
+  </div>
+
+  <div class="card green">
+    <h3>裂化 Cracking<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">石油炼制得到的长链烷烃用途有限，需求量不如短链烃大。Cracking（裂化）：把长链烷烃分子在<b>高温 + 催化剂</b>条件下断裂，生成更短链、更有用的烷烃和<b>烯烃（alkene）</b>。</p>
+    <div class="note green">Alkene（烯烃）：不饱和烃（unsaturated hydrocarbon），分子中含有至少一个 <b>C=C 双键</b>，通式为 CₙH₂ₙ。烯烃是重要的化工原料（用于制造塑料等聚合物）。</div>
+  </div>
+
+  <div class="card">
+    <h3>检验不饱和烃——溴水实验<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">把待测烃加入<b>溴水（bromine water，橙色）</b>中：如果是<b>烯烃</b>（含C=C双键），溴水会<b>迅速褪色</b>（变无色）；如果是<b>烷烃</b>（只有单键），溴水<b>不褪色</b>，保持橙色。这是判断一种烃是饱和还是不饱和最常用的实验方法。</p>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: Describe a chemical test to distinguish between an alkane and an alkene.<br>A: Add each hydrocarbon to <b>bromine water</b>. The <b>alkene</b> will <b>decolourise</b> the bromine water (orange to colourless), because it reacts with the C=C double bond. The <b>alkane</b> will <b>not decolourise</b> the bromine water, as it has no double bond to react.</p>
+  </div>
+
+  </div>
+</details>
+
+<details class="topic" id="c12" open>
+  <summary>
+    <span class="sec-num">C12</span>
+    <h2>实验技巧与化学分析<span class="en">Experimental Techniques and Chemical Analysis</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="c12-jump" class="jump-anchor" aria-hidden="true"></span>
+
+  <div class="card">
+    <h3>分离技术总览（必背用途）<span class="tag core">Core</span><span class="tag y8">Stage 8/9</span></h3>
+    <table>
+      <tr><th>技术</th><th>适用场景</th><th>原理</th></tr>
+      <tr><td>Filtration 过滤</td><td>分离<b>不溶性固体</b>和液体</td><td>固体颗粒无法通过滤纸孔隙</td></tr>
+      <tr><td>Crystallisation 结晶</td><td>从溶液中获得<b>可溶性固体</b></td><td>蒸发浓缩溶液，冷却使溶质析出结晶</td></tr>
+      <tr><td>Simple distillation 简单蒸馏</td><td>从溶液中获得<b>溶剂本身</b>（如从盐水中获得纯水）</td><td>加热使溶剂汽化，再冷凝收集</td></tr>
+      <tr><td>Fractional distillation 分馏</td><td>分离<b>沸点相近的多种液体混合物</b>（如石油分馏）</td><td>利用不同组分沸点差异，在分馏柱中分段冷凝收集</td></tr>
+      <tr><td>Paper chromatography 纸层析</td><td>分离和鉴定<b>混合物中的不同溶质</b>（如色素）</td><td>不同物质随溶剂（mobile phase）在滤纸（stationary phase）上移动的速度不同</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>色谱法 Chromatography<span class="tag ext">Extended</span><span class="tag y8">Stage 8</span></h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">用 <b>Rf 值（retardation factor）</b>定量描述某物质在色谱纸上移动的相对距离：<b>Rf = 该物质移动的距离 ÷ 溶剂（溶剂前沿）移动的距离</b>。同一种物质在相同条件下Rf值固定，可用来对比、鉴定未知样品中含有哪些已知物质。</p>
+  </div>
+
+  <div class="card red">
+    <h3>纯度检验——熔点/沸点<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0;font-size:0.92rem;">纯物质（pure substance）有<b>固定、尖锐</b>的熔点/沸点；混有杂质的物质，熔点会<b>降低</b>且熔化过程会发生在<b>一个温度范围内</b>（而不是一个精确点），沸点则通常会<b>升高</b>。这是判断一份样品纯不纯最直接的实验方法——测出来的熔点范围越窄、越接近文献值，说明样品越纯。</p>
+  </div>
+
+  <div class="card green">
+    <h3>常见气体检验方法总结<span class="tag bg">背景</span><span class="tag y8">Stage 7</span></h3>
+    <table>
+      <tr><th>气体</th><th>检验方法</th><th>阳性现象</th></tr>
+      <tr><td>Hydrogen 氢气</td><td>用点燃的木条靠近</td><td>发出"噗"的爆鸣声（squeaky pop）</td></tr>
+      <tr><td>Oxygen 氧气</td><td>用带火星的木条靠近</td><td>木条<b>复燃</b>（relights the glowing splint）</td></tr>
+      <tr><td>Carbon dioxide 二氧化碳</td><td>通入澄清石灰水（limewater）</td><td>石灰水变<b>浑浊</b></td></tr>
+      <tr><td>Ammonia 氨气 <span class="tag igcse">IGCSE专属</span></td><td>用湿润的红色石蕊试纸靠近</td><td>试纸变<b>蓝色</b>，有刺激性气味</td></tr>
+    </table>
+    <div class="note green">这四个是全书最常考的气体检验，之前在B4/C7/C9等章节里分散出现过——放在这里集中整理，方便考前速查。</div>
+  </div>
+
+  <div class="card">
+    <h3>金属离子焰色反应<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <table>
+      <tr><th>金属离子</th><th>焰色</th></tr>
+      <tr><td>Lithium 锂 (Li⁺)</td><td>红色</td></tr>
+      <tr><td>Sodium 钠 (Na⁺)</td><td>黄色/橙色</td></tr>
+      <tr><td>Potassium 钾 (K⁺)</td><td>紫色（lilac）</td></tr>
+      <tr><td>Calcium 钙 (Ca²⁺)</td><td>砖红色</td></tr>
+      <tr><td>Copper 铜 (Cu²⁺)</td><td>蓝绿色</td></tr>
+    </table>
+    <div class="note">操作方法：用干净的铂丝（platinum wire）蘸取样品，放入无色火焰中灼烧，观察火焰颜色——这是鉴定溶液中含有哪种金属阳离子最快速的方法。</div>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: A student measures the melting point of a solid sample and finds it melts gradually over a range of 5°C, well below the known melting point of the pure substance. Explain what this suggests about the sample.<br>A: This suggests the sample is <b>impure</b>. The presence of an impurity <b>lowers the melting point</b> and causes it to melt over a <b>range of temperatures</b> rather than sharply at one exact point, unlike a pure substance.</p>
+  </div>
+
+  </div>
+</details>
+
+<details class="topic" id="p1" open>
+  <summary>
+    <span class="sec-num">P1</span>
+    <h2>运动、力与能量<span class="en">Motion, Forces and Energy</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="p1-jump" class="jump-anchor" aria-hidden="true"></span>
+
+  <div class="note" style="margin-top:0;"><span class="tag bg">范围说明</span> 本章已覆盖 0653 syllabus P1 的全部子主题：运动学（速度/加速度/图像）、质量与重量、密度、力、动量、能量、压强。</div>
+
+  <div class="card">
+    <h3>速度与距离-时间图像<span class="tag core">Core</span><span class="tag y8">Stage 8</span></h3>
+    <dl>
+      <div><dt>Speed<span class="zh">速率</span></dt><dd>Speed = distance ÷ time（速率 = 距离 ÷ 时间），单位 m/s。是标量（scalar），只有大小没有方向。</dd></div>
+      <div><dt>Velocity<span class="zh">速度</span></dt><dd>带方向的速率，是矢量（vector）——同样大小但方向不同的velocity是不同的。</dd></div>
+    </dl>
+    <div class="note"><b>距离-时间图像（distance-time graph）读图要点：</b>图线的<b>斜率（gradient）</b>代表速率——斜率越陡，速率越快；水平线（斜率为0）表示物体静止；斜率为负基本不会出现在distance-time图中（距离不会减少，除非是displacement-time图）。</div>
+  </div>
+
+  <div class="card">
+    <h3>加速度与速度-时间图像<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">Acceleration（加速度）= (末速度 − 初速度) ÷ 所用时间 = Δv ÷ t，单位 m/s²。</p>
+    <div class="note"><b>速度-时间图像（velocity-time graph）读图要点：</b>图线的<b>斜率</b>代表加速度；<b>斜率为正</b>=加速，<b>斜率为负</b>=减速（deceleration），<b>水平线</b>=匀速运动（加速度为0）。图线下方与横轴围成的<b>面积</b>代表这段时间内移动的<b>距离</b>——这是Extended常考的图像分析题。</div>
+  </div>
+
+  <div class="card">
+    <h3>质量 vs 重量（易混淆区分）<span class="tag core">Core</span><span class="tag y8">Stage 7</span></h3>
+    <table>
+      <tr><th></th><th>Mass 质量</th><th>Weight 重量</th></tr>
+      <tr><td>本质</td><td>物体所含物质的多少</td><td>重力场作用在物体质量上产生的<b>力</b></td></tr>
+      <tr><td>单位</td><td>千克 kg</td><td>牛顿 N（force的单位）</td></tr>
+      <tr><td>是否随位置变化</td><td class="yn-cell"><span class="yn no">✗</span><br><span class="zh" style="font-size:0.78rem;">到哪里都一样</span></td><td class="yn-cell"><span class="yn yes">✓</span><br><span class="zh" style="font-size:0.78rem;">重力场强度变了，重量就变</span></td></tr>
+      <tr><td>测量工具</td><td>天平 beam balance</td><td>弹簧秤 spring balance / newtonmeter</td></tr>
+    </table>
+    <div class="note"><b>公式：</b>Weight = mass × gravitational field strength（重量 = 质量 × 重力场强度，W = mg）。地球上 g ≈ 10 N/kg（或更精确 9.8 N/kg）；月球重力场强度只有地球的约1/6，所以同一个人在月球上<b>质量不变，但重量变轻</b>——这是这组概念最经典的考题场景。</div>
+  </div>
+
+  <div class="card">
+    <h3>密度 Density<span class="tag core">Core</span><span class="tag y8">Stage 9</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">Density（密度）= mass ÷ volume（质量 ÷ 体积），单位 kg/m³ 或 g/cm³。密度是物质本身的一种性质，同种物质不管切多大一块，密度都一样。</p>
+    <div class="note"><b>判断物体在液体中浮沉：</b>物体密度 <b>小于</b> 液体密度 → 漂浮（float）；物体密度 <b>大于</b> 液体密度 → 下沉（sink）——这也是为什么冰会浮在水面上（冰的密度比液态水小）、木头能浮在水上但铁块会沉。</div>
+    <div class="model-answer">
+      <span class="ma-label">答题模板 Model Answer — 计算题</span>
+      <p>Q: 一块金属块质量为 158g，体积为 20cm³，求它的密度，并判断能否浮在水面上（水的密度为1g/cm³）。<br>A: Density = mass ÷ volume = 158 ÷ 20 = <b>7.9 g/cm³</b>。因为这个密度<b>大于</b>水的密度（1 g/cm³），所以这块金属<b>会下沉</b>，不会浮在水面上。</p>
+    </div>
+  </div>
+
+  <div class="card red">
+    <h3>力 Forces<span class="tag core">Core</span><span class="tag y8">Stage 8</span></h3>
+    <ul class="compact">
+      <li><b>Weight 重力</b> — 由重力场（gravitational field）作用在物体质量上产生的力，weight = mass × gravitational field strength</li>
+      <li><b>Friction 摩擦力</b> — 阻碍两个接触面相对运动的力，方向与运动方向<b>相反</b></li>
+      <li><b>Normal contact force 支持力</b> — 表面对物体施加的、垂直于表面的力</li>
+      <li><b>Resultant force 合力</b> — 作用在物体上所有力的<b>矢量和</b>（同方向相加，反方向相减）</li>
+    </ul>
+    <div class="note red"><b>牛顿第一定律（简化版）：</b>合力为0（forces balanced，物体处于平衡状态）时，静止的物体保持静止，运动的物体保持匀速直线运动。<b>合力不为0（unbalanced force）</b>时，物体会加速、减速或改变运动方向——这是解释"为什么物体会加速"的核心逻辑。</div>
+  </div>
+
+  <div class="card">
+    <h3>力矩 Moments<span class="tag core">Core</span><span class="tag y8">Stage 8</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">Moment（力矩）：力使物体绕某一点转动的效果，公式为 <b>moment = force × distance</b>（力矩 = 力 × 力臂，力臂是力的作用线到转动点的垂直距离），单位牛·米（N·m）。</p>
+    <ul class="compact">
+      <li>力臂越长，同样大小的力产生的力矩越大——这就是为什么<b>扳手要做得长</b>、<b>门把手要装在离铰链最远的一边</b>（更省力）</li>
+      <li>如果一个物体（比如跷跷板、杠杆）处于转动平衡，两边的力矩大小相等、方向相反</li>
+    </ul>
+    <div class="model-answer">
+      <span class="ma-label">答题模板 Model Answer — 计算题</span>
+      <p>Q: 用扳手拧螺母，在距离转动点0.2m处施加30N的力，求这个力产生的力矩。<br>A: Moment = force × distance = 30 × 0.2 = <b>6 N·m</b>。</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>压强 Pressure<span class="tag core">Core</span><span class="tag y8">Stage 8</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">Pressure（压强）= force ÷ area（force perpendicular to the area，垂直作用在面上的力 ÷ 受力面积），单位帕斯卡（Pa），1 Pa = 1 N/m²。</p>
+    <ul class="compact">
+      <li><b>同样的力，受力面积越小，压强越大</b> — 这就是为什么刀刃磨得越薄越锋利（力集中在极小面积上）、图钉一头做得很尖</li>
+      <li><b>同样的力，受力面积越大，压强越小</b> — 这就是为什么雪地靴、滑雪板做得又宽又大（分散压强，防止陷进雪里）、履带比轮胎更不容易陷进泥地</li>
+    </ul>
+    <div class="note"><span class="tag ext">Extended</span> <b>液体中的压强</b>：液体内部压强随深度增加而增大（pressure increases with depth），公式 pressure = height × density × gravitational field strength（p = hρg）。这解释了为什么水坝底部要修得比顶部厚——越深的地方水压越大。</div>
+    <div class="model-answer">
+      <span class="ma-label">答题模板 Model Answer</span>
+      <p>Q: A drawing pin (thumbtack) has a large flat head and a sharp point. Explain why it is easy to push the sharp point into a wall.<br>A: The force applied by your thumb is the same at both ends of the pin. At the sharp point, this force acts over a <b>very small area</b>. Since pressure = force ÷ area, a small area with the same force produces a <b>very large pressure</b>, which is enough to push the point into the wall.</p>
+    </div>
+  </div>
+
+  <div class="card green">
+    <h3>动量 Momentum<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">Momentum（动量）= mass × velocity（质量 × 速度，p = mv），单位 kg·m/s。动量是矢量，方向和velocity方向一致。</p>
+    <div class="note green"><b>动量守恒定律（Conservation of Momentum）：</b>在没有外力作用的<b>封闭系统</b>（如碰撞）中，碰撞前的总动量 = 碰撞后的总动量。这是分析碰撞类题目（比如两辆小车相撞后粘在一起、以多快速度共同运动）的核心工具——先分别算出碰撞前每个物体的动量，加总，再除以碰撞后的总质量，就能求出碰撞后的共同速度。</div>
+    <div class="model-answer">
+      <span class="ma-label">答题模板 Model Answer — 计算题</span>
+      <p>Q: A trolley of mass 2kg moving at 3m/s collides with a stationary trolley of mass 1kg, and they stick together. Calculate their combined velocity after the collision.<br>A: Momentum before collision = (2kg × 3m/s) + (1kg × 0m/s) = <b>6 kg·m/s</b>. By conservation of momentum, momentum after collision is also 6 kg·m/s. Combined mass = 2kg + 1kg = 3kg. Velocity after collision = momentum ÷ mass = 6 ÷ 3 = <b>2 m/s</b>.</p>
+    </div>
+  </div>
+
+  <div class="card green">
+    <h3>能量 Energy<span class="tag core">Core</span><span class="tag y8">Stage 7/9</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">能量守恒定律（Conservation of Energy）：能量既不会凭空产生，也不会凭空消失，只会从一种形式<b>转化（transferred）</b>为另一种形式，或从一个物体转移到另一个物体，总量保持不变。</p>
+    <ul class="compact">
+      <li><b>Kinetic energy store 动能</b> — 运动的物体具有的能量</li>
+      <li><b>Gravitational potential energy store 重力势能</b> — 物体因所处高度而具有的能量</li>
+      <li><b>Chemical energy store 化学能</b> — 储存在化学物质中的能量（如食物、燃料）</li>
+      <li><b>Thermal energy store 热能</b> — 物体因温度而具有的能量</li>
+    </ul>
+    <div class="note green">Work done（做功）= Force × distance moved in the direction of the force（力 × 沿力方向移动的距离），单位焦耳（J）——做功就是能量转移的一种方式。Power（功率）= work done ÷ time（做功 ÷ 时间），单位瓦特（W），表示能量转移的<b>速率</b>。</div>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: A ball is thrown upwards. Describe the energy transfers that take place as it rises and then falls back down.<br>A: As the ball rises, it slows down: energy is transferred from the <b>kinetic energy store</b> to the <b>gravitational potential energy store</b>. At the highest point, the ball is momentarily at rest (kinetic energy store is at a minimum). As the ball falls, energy is transferred back from the <b>gravitational potential energy store</b> to the <b>kinetic energy store</b>, so the ball speeds up.</p>
+  </div>
+
+  </div>
+</details>
+
+<details class="topic" id="p2" open>
+  <summary>
+    <span class="sec-num">P2</span>
+    <h2>热学<span class="en">Thermal Physics</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="p2-jump" class="jump-anchor" aria-hidden="true"></span>
+
+  <div class="card">
+    <h3>粒子动理论回顾<span class="tag bg">背景</span><span class="tag y8">Stage 7</span></h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">本章大量用到 C1（状态与粒子模型）里的语言：固态粒子只能原地振动，液态粒子可以滑动，气态粒子自由快速运动。加热的本质，就是给粒子<b>增加动能</b>，让它们振动/运动得更快。</p>
+  </div>
+
+  <div class="card">
+    <h3>热膨胀 Thermal Expansion<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">物质受热时，粒子获得更多动能，振动/运动幅度增大，粒子之间的<b>平均距离增大</b>，导致整体体积膨胀（expansion）；冷却则相反，体积收缩（contraction）。</p>
+    <div class="note"><b>三态膨胀程度：气体 &gt; 液体 &gt; 固体</b>——气体粒子间本来作用力就极弱，受热后能自由散得更开；固体粒子被强作用力束缚在固定位置附近，只能小幅度振动，膨胀程度最小。生活应用：双金属片（bimetallic strip，两种不同金属膨胀率不同，受热会弯曲，用于温控开关）、铁轨之间预留缝隙防止夏天热胀顶弯轨道。</div>
+  </div>
+
+  <div class="card red">
+    <h3>热传递的三种方式（必背区分）<span class="tag core">Core</span><span class="tag y8">Stage 9</span></h3>
+    <table>
+      <tr><th></th><th>Conduction 传导</th><th>Convection 对流</th><th>Radiation 辐射</th></tr>
+      <tr><td>发生介质</td><td>固体（尤其金属）</td><td>液体或气体（流体）</td><td class="yn-cell"><span class="yn no">✗</span><br><span class="zh" style="font-size:0.78rem;">不需要介质，可在真空中传播</span></td></tr>
+      <tr><td>传递机制</td><td>粒子振动/自由电子把能量<b>逐个传递</b>给相邻粒子</td><td>受热流体<b>密度变小、上升</b>，冷流体下降补充，形成对流循环</td><td>以<b>电磁波（红外线）</b>形式直接传递能量</td></tr>
+      <tr><td>生活例子</td><td>金属勺子插入热汤，手柄变热</td><td>暖气片让整个房间变暖、烧开水时水的整体循环</td><td>太阳的热传到地球、篝火让人感到热</td></tr>
+    </table>
+    <div class="note red"><b>金属导热快的原因（Extended角度）：</b>金属中有大量自由移动的电子（free electrons），这些电子能快速携带能量在金属中传递，所以金属传导热量（和电）都特别快，这也是为什么烹饪锅具用金属做、手柄却常用塑料或木头（不良导体，隔热）。</div>
+  </div>
+
+  <div class="card">
+    <h3>比热容 Specific Heat Capacity<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">Specific heat capacity（比热容，符号 c）：使 1kg 某物质温度升高 1°C（或1K）所需要吸收的能量，单位 J/(kg·°C)。比热容越大，物质"越难被加热/冷却"（升降温所需能量越多）。</p>
+    <p style="margin:0;font-size:0.92rem;">公式：<b>Energy = mass × specific heat capacity × change in temperature</b>（E = mcΔT）</p>
+    <div class="model-answer">
+      <span class="ma-label">答题模板 Model Answer — 计算题</span>
+      <p>Q: 2kg的水，比热容为4200 J/(kg·°C)，从20°C加热到80°C，求需要吸收多少能量。<br>A: ΔT = 80 − 20 = 60°C。Energy = mcΔT = 2 × 4200 × 60 = <b>504,000 J</b>（即504 kJ）。</p>
+    </div>
+  </div>
+
+  <div class="card green">
+    <h3>蒸发 Evaporation<span class="tag core">Core</span><span class="tag y8">Stage 9</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">Evaporation（蒸发）：液体表面的粒子中，动能<b>特别高</b>的那一部分粒子挣脱其他粒子的吸引力、逃逸变成气体——这个过程可以在<b>任何温度下</b>发生（不需要达到沸点），只发生在液体<b>表面</b>。</p>
+    <ul class="compact">
+      <li><b>温度升高</b> → 更多粒子获得足够动能逃逸 → 蒸发加快</li>
+      <li><b>表面积增大</b> → 更多粒子暴露在表面 → 蒸发加快</li>
+      <li><b>空气流动加快</b> → 及时带走液面上方已蒸发的粒子，避免其重新凝结回液体 → 蒸发加快</li>
+      <li><b>湿度降低</b> → 液面上方空气中的水蒸气浓度低，蒸发更容易 → 蒸发加快</li>
+    </ul>
+    <div class="note green"><b>蒸发的降温效应（evaporative cooling）：</b>因为逃逸的都是动能<b>最高</b>的粒子，留下来的液体粒子<b>平均动能降低</b>，也就是液体<b>温度下降</b>。这解释了为什么出汗能帮助人体降温（汗液蒸发带走热量）、酒精擦在皮肤上会感觉凉。<span class="tag bg">背景</span> 这条原理和B12讲的"出汗散热"是同一个物理机制。</div>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: Explain, in terms of particles, why sweating cools the body down.<br>A: Sweat is a liquid on the surface of the skin. The particles with the <b>most kinetic energy</b> evaporate first, escaping as water vapour. This leaves behind particles with <b>lower average kinetic energy</b>, so the <b>average temperature of the remaining sweat decreases</b>. As this cooler liquid is in contact with the skin, heat is transferred from the skin to the sweat, cooling the body.</p>
+  </div>
+
+  </div>
+</details>
+
+<details class="topic" id="p3" open>
+  <summary>
+    <span class="sec-num">P3</span>
+    <h2>波<span class="en">Waves</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="p3-jump" class="jump-anchor" aria-hidden="true"></span>
+
+  <div class="card">
+    <h3>横波与纵波（必背区分）<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <table>
+      <tr><th></th><th>Transverse wave <span style="font-weight:400;">横波</span></th><th>Longitudinal wave <span style="font-weight:400;">纵波</span></th></tr>
+      <tr><td>振动方向 vs 传播方向</td><td><b>垂直</b>于传播方向</td><td>与传播方向<b>平行（一致）</b></td></tr>
+      <tr><td>例子</td><td>光波（light）、水波、所有电磁波</td><td>声波（sound）</td></tr>
+      <tr><td>是否需要介质</td><td class="yn-cell"><span class="yn no">✗</span><br><span class="zh" style="font-size:0.78rem;">光可在真空传播</span></td><td class="yn-cell"><span class="yn yes">✓</span><br><span class="zh" style="font-size:0.78rem;">声音不能在真空传播</span></td></tr>
+    </table>
+    <div class="note">纵波的传播靠介质粒子的<b>压缩（compression）</b>和<b>稀疏（rarefaction）</b>交替传递——想象弹簧一端被推一下，压缩的部分沿弹簧向前传递，这就是纵波的传播方式。</div>
+  </div>
+
+  <div class="card">
+    <h3>波的基本性质（必背公式）<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <dl>
+      <div><dt>Amplitude<span class="zh">振幅</span></dt><dd>波峰（或波谷）到平衡位置的最大位移，代表波携带能量的大小。</dd></div>
+      <div><dt>Wavelength (λ)<span class="zh">波长</span></dt><dd>两个相邻、相位相同的点之间的距离（例：相邻两个波峰之间的距离），单位米（m）。</dd></div>
+      <div><dt>Frequency (f)<span class="zh">频率</span></dt><dd>每秒振动的次数，单位赫兹（Hz）。</dd></div>
+      <div><dt>Period (T)<span class="zh">周期</span></dt><dd>完成一次完整振动所需的时间，T = 1 ÷ f。</dd></div>
+    </dl>
+    <div class="note"><b>波速公式（必背）：wave speed = frequency × wavelength（v = fλ）</b>——这是这一整章最常考的计算公式，务必记熟三者关系。</div>
+  </div>
+
+  <div class="card red">
+    <h3>电磁波谱 The Electromagnetic Spectrum<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">按波长从长到短（频率从低到高、能量从低到高）排列：</p>
+    <div class="flow" style="flex-wrap:wrap;">
+      <span class="step">Radio waves 无线电波</span><span class="arrow">→</span>
+      <span class="step">Microwaves 微波</span><span class="arrow">→</span>
+      <span class="step">Infrared 红外线</span><span class="arrow">→</span>
+      <span class="step">Visible light 可见光</span><span class="arrow">→</span>
+      <span class="step">Ultraviolet 紫外线</span><span class="arrow">→</span>
+      <span class="step">X-rays X射线</span><span class="arrow">→</span>
+      <span class="step">Gamma rays 伽马射线</span>
+    </div>
+    <div class="note red"><b>波长越短、频率越高、携带的能量越大</b>——这也是为什么伽马射线、X射线（波长最短）对人体有害（能量足以破坏细胞/DNA），而无线电波（波长最长）相对无害。常见用途：微波用于通讯和微波炉加热；红外线用于遥控器、热成像；紫外线用于杀菌、但过量会伤害皮肤；X射线用于医学成像（能穿透软组织但被骨骼吸收）。</div>
+  </div>
+
+  <div class="card">
+    <h3>声波 Sound<span class="tag core">Core</span><span class="tag y8">Stage 7/9</span></h3>
+    <ul class="compact">
+      <li>声波是<b>纵波</b>，必须依靠介质（固体、液体、气体）传播，<b>不能在真空中传播</b>（这是和光波最大的区别）</li>
+      <li>声速在<b>固体中最快，液体次之，气体中最慢</b>——因为固体粒子排列最紧密，振动能更快地从一个粒子传递给相邻粒子</li>
+      <li>人耳能听到的频率范围约为 <b>20 Hz – 20,000 Hz（20 kHz）</b>，超出这个范围分别叫次声波（infrasound）和超声波（ultrasound）</li>
+    </ul>
+  </div>
+
+  <div class="card green">
+    <h3>光的反射与折射<span class="tag core">Core</span><span class="tag y8">Stage 8</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;"><b>反射定律（law of reflection）：</b>入射角（angle of incidence）= 反射角（angle of reflection），两者都从法线（normal，垂直于反射面的虚线）量起。</p>
+    <p style="margin:0;font-size:0.92rem;"><b>折射（refraction）：</b>光从一种介质进入另一种介质时，因为传播速度改变而发生弯折。光从<b>光疏介质进入光密介质</b>（如从空气进入玻璃/水），速度变慢，光线向<b>法线偏折</b>；反过来则远离法线偏折。</p>
+    <div class="note green"><span class="tag ext">Extended</span> <b>全反射（total internal reflection）：</b>当光从光密介质射向光疏介质（如从玻璃射向空气）、且入射角<b>大于临界角（critical angle）</b>时，光不再折射出去，而是<b>完全反射</b>回原介质。这是光纤（optical fibre）传输信号的原理——光在光纤内壁不断发生全反射，几乎无损耗地沿光纤传播。</div>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: A sound wave has a frequency of 500 Hz and a wavelength of 0.68m. Calculate the speed of the sound wave.<br>A: wave speed = frequency × wavelength = 500 × 0.68 = <b>340 m/s</b>.</p>
+  </div>
+
+  </div>
+</details>
+
+<details class="topic" id="p4" open>
+  <summary>
+    <span class="sec-num">P4</span>
+    <h2>电学<span class="en">Electricity</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="p4-jump" class="jump-anchor" aria-hidden="true"></span>
+
+  <div class="card">
+    <h3>基本电学量（必背）<span class="tag core">Core</span><span class="tag y8">Stage 7</span></h3>
+    <dl>
+      <div><dt>Current (I)<span class="zh">电流</span></dt><dd>单位时间内通过某点的电荷量，current = charge ÷ time（I = Q ÷ t），单位安培（A）。</dd></div>
+      <div><dt>Charge (Q)<span class="zh">电荷量</span></dt><dd>单位库仑（C），Q = I × t。</dd></div>
+      <div><dt>Potential difference / Voltage (V)<span class="zh">电位差/电压</span></dt><dd>驱动电流流动的"推力"，衡量单位电荷经过某元件时转移的能量，单位伏特（V）。</dd></div>
+    </dl>
+  </div>
+
+  <div class="card red">
+    <h3>常见电路符号<span class="tag core">Core</span><span class="tag y8">Stage 7/9</span></h3>
+    <table>
+      <tr><th>元件</th><th>符号说明</th></tr>
+      <tr><td>Cell 电池</td><td>一长一短两条平行线，长线为正极</td></tr>
+      <tr><td>Battery 电池组</td><td>多个cell符号相连</td></tr>
+      <tr><td>Switch 开关</td><td>一段可断开/闭合的线</td></tr>
+      <tr><td>Resistor 电阻</td><td>矩形方框</td></tr>
+      <tr><td>Variable resistor 变阻器</td><td>矩形方框加一条斜箭头</td></tr>
+      <tr><td>Ammeter 电流表</td><td>圆圈内标 A，<b>串联</b>接入电路</td></tr>
+      <tr><td>Voltmeter 电压表</td><td>圆圈内标 V，<b>并联</b>接在待测元件两端</td></tr>
+      <tr><td>Lamp/Bulb 灯泡</td><td>圆圈内一个叉</td></tr>
+    </table>
+    <div class="note red"><b>易考陷阱：</b>电流表（ammeter）一定要<b>串联</b>接入电路（电流表本身电阻极小，串联不影响电路整体电流大小）；电压表（voltmeter）一定要<b>并联</b>接在要测量的元件两端（电压表本身电阻极大，并联不会分流太多电流）——接反是最常见的电路图错误。</div>
+  </div>
+
+  <div class="card">
+    <h3>串联 vs 并联电路（必背区分）<span class="tag core">Core</span><span class="tag y8">Stage 9</span></h3>
+    <table>
+      <tr><th></th><th>Series circuit <span style="font-weight:400;">串联</span></th><th>Parallel circuit <span style="font-weight:400;">并联</span></th></tr>
+      <tr><td>电流</td><td>各处电流<b>相同</b></td><td>各支路电流<b>可以不同</b>，总电流 = 各支路电流之和</td></tr>
+      <tr><td>电压</td><td>电源电压 = 各元件电压<b>之和</b></td><td>各支路电压<b>都等于</b>电源电压</td></tr>
+      <tr><td>某支路断路的影响</td><td class="yn-cell"><span class="yn yes">✓</span><br><span class="zh" style="font-size:0.78rem;">整个电路都断路</span></td><td class="yn-cell"><span class="yn no">✗</span><br><span class="zh" style="font-size:0.78rem;">其他支路不受影响</span></td></tr>
+    </table>
+    <div class="note">这也是为什么家庭电路都用<b>并联</b>——这样一个电器坏了/关掉不会影响其他电器正常工作，而圣诞彩灯串老式设计用串联，所以一个灯泡坏了整串都不亮。</div>
+  </div>
+
+  <div class="card green">
+    <h3>电阻与欧姆定律<span class="tag core">Core</span><span class="tag y8">Stage 9</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">Resistance（电阻，符号R）：衡量元件阻碍电流流动程度的量，单位欧姆（Ω）。<b>欧姆定律（Ohm's Law）：V = I × R</b>（电压 = 电流 × 电阻）。</p>
+    <ul class="compact">
+      <li>导线越<b>长</b>，电阻越大；导线越<b>粗（横截面积越大）</b>，电阻越小</li>
+      <li>温度升高，大多数导体（尤其金属）电阻会<b>增大</b>（粒子振动加剧，更容易阻碍电子流动）</li>
+    </ul>
+    <div class="model-answer">
+      <span class="ma-label">答题模板 Model Answer — 计算题</span>
+      <p>Q: 一个电阻两端电压为12V，通过的电流为3A，求该电阻的阻值。<br>A: R = V ÷ I = 12 ÷ 3 = <b>4 Ω</b>。</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>电功率 Electrical Power<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">Power（电功率）= voltage × current（P = VI），单位瓦特（W）——表示单位时间内电能转化的速率。结合欧姆定律还可以推导出另外两个常用形式：<b>P = I²R</b> 和 <b>P = V²/R</b>。</p>
+    <div class="note"><b>能量与功率的关系：</b>Energy transferred = power × time（能量 = 功率 × 时间），单位焦耳（J）——这也是电费account里"度"（kWh，千瓦时）的计算基础：用电器功率(kW) × 使用时间(h) = 耗电量(kWh)。</div>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: A lamp is rated at 6V, 2A. Calculate the power of the lamp, and the energy transferred if it is switched on for 10 minutes.<br>A: Power = V × I = 6 × 2 = <b>12 W</b>. Time = 10 minutes = 600 seconds. Energy = power × time = 12 × 600 = <b>7200 J</b>.</p>
+  </div>
+
+  </div>
+</details>
+
+<details class="topic" id="p5" open>
+  <summary>
+    <span class="sec-num">P5</span>
+    <h2>宇宙物理<span class="en">Space Physics</span></h2>
+    <span class="chev">︾</span>
+  </summary>
+  <div class="topic-body">
+<span id="p5-jump" class="jump-anchor" aria-hidden="true"></span>
+
+  <div class="card">
+    <h3>太阳系 The Solar System<span class="tag core">Core</span><span class="tag y8">Stage 7</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">太阳系（Solar System）以<b>太阳（the Sun，一颗恒星 star）</b>为中心，包括八大行星（planets）按距太阳由近到远排列：Mercury 水星、Venus 金星、Earth 地球、Mars 火星、Jupiter 木星、Saturn 土星、Uranus 天王星、Neptune 海王星。行星靠<b>引力（gravitational force）</b>被太阳吸引，沿轨道（orbit）绕太阳运行。</p>
+    <div class="note">Moon（卫星，如月球）绕行星运行，同样靠引力维持轨道。Asteroid belt（小行星带）位于火星和木星轨道之间，是大量小型岩石天体聚集的区域。</div>
+  </div>
+
+  <div class="card">
+    <h3>光年 Light Year<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">Light year（光年）：光在<b>一年</b>内传播的<b>距离</b>——注意它是<b>距离单位</b>，不是时间单位（虽然名字里有"年"）。因为宇宙尺度极其巨大，用米（m）或千米（km）表示星际/星系间距离数字会大到不实用，所以天文学上改用光年作为距离单位。</p>
+  </div>
+
+  <div class="card red">
+    <h3>宇宙的尺度 The Universe<span class="tag core">Core</span><span class="tag y8">Stage 8</span></h3>
+    <div class="flow" style="flex-wrap:wrap;">
+      <span class="step">Planet 行星</span><span class="arrow">→</span>
+      <span class="step">Solar System 太阳系</span><span class="arrow">→</span>
+      <span class="step">Galaxy 星系</span><span class="arrow">→</span>
+      <span class="step">Universe 宇宙</span>
+    </div>
+    <p style="margin-top:0.7rem;font-size:0.92rem;">太阳只是<b>银河系（the Milky Way）</b>中数千亿颗恒星（star）中的一颗，而银河系本身也只是宇宙中数千亿个星系（galaxy）之一——宇宙的尺度远超日常经验能直观想象的范围。</p>
+  </div>
+
+  <div class="card green">
+    <h3>恒星的生命周期<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">恒星的最终命运取决于它的<b>质量</b>：</p>
+    <div class="flow" style="flex-wrap:wrap;">
+      <span class="step">Main sequence star 主序星</span>
+    </div>
+    <p style="margin:0.6rem 0 0.3rem 0;font-size:0.9rem;color:var(--ink-soft);"><b>质量较小/中等的恒星（如太阳）：</b></p>
+    <div class="flow" style="flex-wrap:wrap;">
+      <span class="step">Red giant 红巨星</span><span class="arrow">→</span>
+      <span class="step">White dwarf 白矮星</span>
+    </div>
+    <p style="margin:0.6rem 0 0.3rem 0;font-size:0.9rem;color:var(--ink-soft);"><b>质量很大的恒星：</b></p>
+    <div class="flow" style="flex-wrap:wrap;">
+      <span class="step">Red supergiant 红超巨星</span><span class="arrow">→</span>
+      <span class="step">Supernova 超新星爆发</span><span class="arrow">→</span>
+      <span class="step">Neutron star 中子星 / Black hole 黑洞</span>
+    </div>
+    <div class="note green">质量越大的恒星，最终留下的天体密度也越大——中子星和黑洞都是大质量恒星"塌缩到极致"后的产物，黑洞的引力强到连光都无法逃脱。</div>
+  </div>
+
+  <div class="card">
+    <h3>红移与宇宙膨胀<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">Redshift（红移）：观测远处星系发出的光时，发现它们的光谱线相对于静止参照系整体向<b>红光（长波长）方向</b>偏移。这个现象说明这些星系正在<b>远离</b>我们（类似声音的多普勒效应——远离的声源音调变低）。<b>越远的星系，红移量越大</b>，说明它们远离的速度越快——这是支持<b>宇宙正在膨胀（the universe is expanding）</b>、并进一步支持<b>大爆炸理论（Big Bang theory）</b>的关键观测证据。</p>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: Explain how the redshift of light from distant galaxies provides evidence that the universe is expanding.<br>A: Light from distant galaxies is observed to be <b>shifted towards the red end</b> of the spectrum compared to light from a stationary source. This redshift shows that the galaxies are <b>moving away from us</b>. The fact that more distant galaxies show a <b>greater redshift</b> shows they are moving away faster, which suggests that <b>space itself is expanding</b> in all directions.</p>
+  </div>
+
+  </div>
+</details>
+
+  </main>
+</div>
+
+<footer>
+
+  内容依据 Cambridge IGCSE Combined Science (0653) syllabus 编写，供教学备课与学生自学参考。Biology B1–B16、Chemistry C1–C12、Physics P1–P5 已全部完成。
+</footer>
+
+<script>
+  // Everything now starts fully expanded — this script only does two
+  // small, non-essential things if JS happens to run: (1) highlight the
+  // currently-visible section's sidebar link, (2) nudge that section into
+  // view when a link is clicked. Neither is required for the page to work:
+  // scrolling and manually collapsing/expanding sections both work with
+  // zero JS, which is the point of the "everything open" default.
+  const details = document.querySelectorAll('details.topic');
+  const links = document.querySelectorAll('.side-link');
+
+  function setActive(id){
+    links.forEach(l => l.classList.toggle('active', l.dataset.target === id));
+  }
+
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      setActive(link.dataset.target);
+      // No forced open/close of other sections anymore — everything stays
+      // open, this just scrolls smoothly if the browser supports it.
+    });
+  });
+
+  // Scroll-spy: as the user scrolls, highlight whichever chapter is
+  // currently near the top of the viewport. Uses a thin detection band
+  // (rootMargin) near the top of the screen rather than requiring the
+  // whole section to be visible — necessary because some chapters (e.g.
+  // B9) are much taller than the viewport. This runs alongside the click
+  // handler above rather than replacing it; clicking sets the highlight
+  // immediately, and the observer keeps it in sync as scrolling continues.
+  if('IntersectionObserver' in window && details.length){
+    const scrollSpy = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          setActive(entry.target.id);
+        }
+      });
+    }, {
+      root: null,
+      rootMargin: '-10% 0px -80% 0px',
+      threshold: 0
+    });
+    details.forEach(section => scrollSpy.observe(section));
+  }
+
+  function activateFromHash(){
+    const raw = location.hash.replace('#','');
+    const id = raw.replace(/-jump$/,'');
+    if(id) setActive(id);
+  }
+  window.addEventListener('hashchange', activateFromHash);
+  if(location.hash) activateFromHash();
+
+  // ---------- Content filter: All / 0893 Lower Secondary / IGCSE-only ----------
+  // Filters at the .card level based on the tag(s) inside each card's <h3>
+  // (tag y8 = matches current Cambridge Lower Secondary 0893 objectives,
+  // tag igcse = only in 0653 IGCSE, not needed yet). Standalone
+  // .model-answer / .exam-q blocks that sit outside a .card (a few chapters
+  // have these as chapter-level synthesis questions) are NOT individually
+  // tagged and stay visible regardless of filter — precise per-card tagging
+  // covers the bulk of the content, and hiding those would require guessing
+  // which card they belong to.
+  (function(){
+    const filterBar = document.querySelector('.filter-bar');
+    if(!filterBar) return;
+    const buttons = filterBar.querySelectorAll('.filter-btn');
+    const countEl = document.getElementById('filter-count');
+    const cards = Array.from(document.querySelectorAll('.topic-body .card'));
+    const totalCards = cards.length;
+
+    // Ensure every chapter has an empty-state note for when a filter leaves
+    // it with nothing to show.
+    document.querySelectorAll('details.topic').forEach(section => {
+      const body = section.querySelector('.topic-body');
+      if(body && !body.querySelector('.chapter-hidden-note')){
+        const note = document.createElement('p');
+        note.className = 'chapter-hidden-note';
+        note.textContent = '此章节在当前筛选下暂无匹配内容。';
+        body.appendChild(note);
+      }
+    });
+
+    function applyFilter(mode){
+      let visibleCount = 0;
+      cards.forEach(card => {
+        const hasY8 = !!card.querySelector('h3 .tag.y8');
+        const hasIgcse = !!card.querySelector('h3 .tag.igcse');
+        let show = true;
+        if(mode === 'y8') show = hasY8;
+        else if(mode === 'igcse') show = hasIgcse;
+        card.classList.toggle('filtered-out', !show);
+        if(show) visibleCount++;
+      });
+
+      document.querySelectorAll('details.topic').forEach(section => {
+        const body = section.querySelector('.topic-body');
+        if(!body) return;
+        const visibleCards = Array.from(body.querySelectorAll('.card')).filter(c => !c.classList.contains('filtered-out'));
+        const note = body.querySelector('.chapter-hidden-note');
+        if(note) note.classList.toggle('shown', mode !== 'all' && visibleCards.length === 0);
+      });
+
+      buttons.forEach(b => b.classList.toggle('active', b.dataset.filter === mode));
+      if(countEl){
+        countEl.textContent = mode === 'all' ? '' : `显示 ${visibleCount} / ${totalCards} 张卡片`;
+      }
+      try{ localStorage.setItem('content_filter', mode); }catch(e){}
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
+    });
+
+    let savedMode = 'all';
+    try{ savedMode = localStorage.getItem('content_filter') || 'all'; }catch(e){}
+    applyFilter(savedMode);
+  })();
+
+</script>
+
+</body>
+</html>
