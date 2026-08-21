@@ -190,7 +190,9 @@
   }
   .filter-btn:hover{background:var(--accent-soft);}
   .filter-btn.active{background:var(--deoxy-blue);border-color:var(--deoxy-blue);color:#fff;}
-  .filter-btn[data-filter="y8"].active{background:#1d5a8c;border-color:#1d5a8c;}
+  .filter-btn[data-filter="stage7"].active,
+  .filter-btn[data-filter="stage8"].active,
+  .filter-btn[data-filter="stage9"].active{background:#1d5a8c;border-color:#1d5a8c;}
   .filter-btn[data-filter="igcse"].active{background:#7a4a9e;border-color:#7a4a9e;}
   .filter-count{font-size:0.76rem;color:var(--ink-soft);opacity:0.75;margin-left:0.2rem;}
   .card.filtered-out{display:none !important;}
@@ -293,7 +295,9 @@
   <div class="filter-bar">
     <span class="filter-label">筛选 Filter：</span>
     <button class="filter-btn active" type="button" data-filter="all">显示全部</button>
-    <button class="filter-btn" type="button" data-filter="y8">只看现在可教（0893）</button>
+    <button class="filter-btn" type="button" data-filter="stage7">Stage 7</button>
+    <button class="filter-btn" type="button" data-filter="stage8">Stage 8</button>
+    <button class="filter-btn" type="button" data-filter="stage9">Stage 9</button>
     <button class="filter-btn" type="button" data-filter="igcse">只看 IGCSE 专属</button>
     <span class="filter-count" id="filter-count"></span>
   </div>
@@ -2552,7 +2556,7 @@
   window.addEventListener('hashchange', activateFromHash);
   if(location.hash) activateFromHash();
 
-  // ---------- Content filter: All / 0893 Lower Secondary / IGCSE-only ----------
+  // ---------- Content filter: All / individual Lower Secondary stages / IGCSE-only ----------
   // Filters at the .card level based on the tag(s) inside each card's <h3>
   // (tag y8 = matches current Cambridge Lower Secondary 0893 objectives,
   // tag igcse = only in 0653 IGCSE, not needed yet). Standalone
@@ -2584,10 +2588,13 @@
     function applyFilter(mode){
       let visibleCount = 0;
       cards.forEach(card => {
-        const hasY8 = !!card.querySelector('h3 .tag.y8');
+        const stageTag = card.querySelector('h3 .tag.y8');
+        const stageText = stageTag ? stageTag.textContent : '';
         const hasIgcse = !!card.querySelector('h3 .tag.igcse');
         let show = true;
-        if(mode === 'y8') show = hasY8;
+        if(mode === 'stage7') show = /Stage\s*7\b/.test(stageText);
+        else if(mode === 'stage8') show = /(?:Stage\s*)?8\b/.test(stageText);
+        else if(mode === 'stage9') show = /(?:Stage\s*)?9\b/.test(stageText);
         else if(mode === 'igcse') show = hasIgcse;
         card.classList.toggle('filtered-out', !show);
         if(show) visibleCount++;
@@ -2614,6 +2621,7 @@
 
     let savedMode = 'all';
     try{ savedMode = localStorage.getItem('content_filter') || 'all'; }catch(e){}
+    if(!['all', 'stage7', 'stage8', 'stage9', 'igcse'].includes(savedMode)) savedMode = 'all';
     applyFilter(savedMode);
   })();
 
