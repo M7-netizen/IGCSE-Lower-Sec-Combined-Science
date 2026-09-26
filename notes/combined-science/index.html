@@ -221,6 +221,24 @@
   td.yn-cell{text-align:center;}
   th.yn-head{text-align:center;}
 
+  /* ---------- Periodic table diagram (C8) ---------- */
+  .pt-wrap{overflow-x:auto;margin-top:1rem;padding-bottom:0.5rem;}
+  .pt-grid{display:grid;grid-template-columns:repeat(18,minmax(40px,1fr));gap:3px;min-width:820px;}
+  .pt-cell{border:1px solid var(--line);border-radius:6px;background:var(--panel);text-align:center;padding:0.3rem 0.1rem;}
+  .pt-num{display:block;font-size:0.55rem;color:var(--ink-soft);line-height:1;}
+  .pt-sym{display:block;font-size:1rem;font-weight:700;line-height:1.15;color:var(--ink);}
+  .pt-name{display:block;font-size:0.55rem;color:var(--ink-soft);line-height:1.1;}
+  .pt-metal{background:var(--accent-soft);}
+  .pt-transition{background:#e4d2ae;border-color:#c9a86a;}
+  .pt-metalloid{background:#e9e4da;}
+  .pt-nonmetal{background:#eef3f5;}
+  .pt-cell.pt-gI{border:2px solid var(--oxy-red);}
+  .pt-cell.pt-gVII{border:2px solid var(--leaf);}
+  .pt-cell.pt-g0{border:2px solid var(--deoxy-blue);}
+  .pt-legend{font-size:0.78rem;color:var(--ink-soft);display:flex;flex-wrap:wrap;gap:0.4rem 1rem;margin-top:0.7rem;}
+  .pt-swatch{display:inline-block;width:12px;height:12px;border-radius:3px;border:1px solid;margin-right:0.3rem;vertical-align:-1px;}
+  .pt-ring{display:inline-block;width:12px;height:12px;border-radius:3px;border:2px solid;margin-right:0.3rem;vertical-align:-2px;background:transparent;}
+
   footer{max-width:1160px;margin:0 auto;padding:1rem 1.5rem 3rem 1.5rem;font-size:0.8rem;color:var(--ink-soft);}
 
   /* ---------- Phone / iPad-portrait only: sidebar becomes horizontal bar ----------
@@ -1803,6 +1821,66 @@
 <span id="c8-jump" class="jump-anchor" aria-hidden="true"></span>
 
   <div class="card">
+    <h3>元素周期表全览（Period 1–4）<span class="tag core">Core</span><span class="tag y8">Stage 7/9</span></h3>
+    <p style="margin:0 0 0.4rem 0;font-size:0.88rem;color:var(--ink-soft);">下图按 0653 考纲实际会考到的范围画出——只画到 Period 4（对应原子序数 1–20 的电子排布要求，外加一整排过渡元素方便对照 C8.4）。方框颜色代表金属/类金属/非金属，彩色描边代表 Group I、Group VII、Group 0 这三个重点族。</p>
+    <div class="pt-wrap">
+      <div class="pt-grid">
+        <div class="pt-cell pt-nonmetal pt-gI" style="grid-column:1;grid-row:1;"><span class="pt-num">1</span><span class="pt-sym">H</span><span class="pt-name">氢</span></div>
+        <div class="pt-cell pt-nonmetal pt-g0" style="grid-column:18;grid-row:1;"><span class="pt-num">2</span><span class="pt-sym">He</span><span class="pt-name">氦</span></div>
+
+        <div class="pt-cell pt-metal pt-gI" style="grid-column:1;grid-row:2;"><span class="pt-num">3</span><span class="pt-sym">Li</span><span class="pt-name">锂</span></div>
+        <div class="pt-cell pt-metal" style="grid-column:2;grid-row:2;"><span class="pt-num">4</span><span class="pt-sym">Be</span><span class="pt-name">铍</span></div>
+        <div class="pt-cell pt-metalloid" style="grid-column:13;grid-row:2;"><span class="pt-num">5</span><span class="pt-sym">B</span><span class="pt-name">硼</span></div>
+        <div class="pt-cell pt-nonmetal" style="grid-column:14;grid-row:2;"><span class="pt-num">6</span><span class="pt-sym">C</span><span class="pt-name">碳</span></div>
+        <div class="pt-cell pt-nonmetal" style="grid-column:15;grid-row:2;"><span class="pt-num">7</span><span class="pt-sym">N</span><span class="pt-name">氮</span></div>
+        <div class="pt-cell pt-nonmetal" style="grid-column:16;grid-row:2;"><span class="pt-num">8</span><span class="pt-sym">O</span><span class="pt-name">氧</span></div>
+        <div class="pt-cell pt-nonmetal pt-gVII" style="grid-column:17;grid-row:2;"><span class="pt-num">9</span><span class="pt-sym">F</span><span class="pt-name">氟</span></div>
+        <div class="pt-cell pt-nonmetal pt-g0" style="grid-column:18;grid-row:2;"><span class="pt-num">10</span><span class="pt-sym">Ne</span><span class="pt-name">氖</span></div>
+
+        <div class="pt-cell pt-metal pt-gI" style="grid-column:1;grid-row:3;"><span class="pt-num">11</span><span class="pt-sym">Na</span><span class="pt-name">钠</span></div>
+        <div class="pt-cell pt-metal" style="grid-column:2;grid-row:3;"><span class="pt-num">12</span><span class="pt-sym">Mg</span><span class="pt-name">镁</span></div>
+        <div class="pt-cell pt-metal" style="grid-column:13;grid-row:3;"><span class="pt-num">13</span><span class="pt-sym">Al</span><span class="pt-name">铝</span></div>
+        <div class="pt-cell pt-metalloid" style="grid-column:14;grid-row:3;"><span class="pt-num">14</span><span class="pt-sym">Si</span><span class="pt-name">硅</span></div>
+        <div class="pt-cell pt-nonmetal" style="grid-column:15;grid-row:3;"><span class="pt-num">15</span><span class="pt-sym">P</span><span class="pt-name">磷</span></div>
+        <div class="pt-cell pt-nonmetal" style="grid-column:16;grid-row:3;"><span class="pt-num">16</span><span class="pt-sym">S</span><span class="pt-name">硫</span></div>
+        <div class="pt-cell pt-nonmetal pt-gVII" style="grid-column:17;grid-row:3;"><span class="pt-num">17</span><span class="pt-sym">Cl</span><span class="pt-name">氯</span></div>
+        <div class="pt-cell pt-nonmetal pt-g0" style="grid-column:18;grid-row:3;"><span class="pt-num">18</span><span class="pt-sym">Ar</span><span class="pt-name">氩</span></div>
+
+        <div class="pt-cell pt-metal pt-gI" style="grid-column:1;grid-row:4;"><span class="pt-num">19</span><span class="pt-sym">K</span><span class="pt-name">钾</span></div>
+        <div class="pt-cell pt-metal" style="grid-column:2;grid-row:4;"><span class="pt-num">20</span><span class="pt-sym">Ca</span><span class="pt-name">钙</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:3;grid-row:4;"><span class="pt-num">21</span><span class="pt-sym">Sc</span><span class="pt-name">钪</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:4;grid-row:4;"><span class="pt-num">22</span><span class="pt-sym">Ti</span><span class="pt-name">钛</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:5;grid-row:4;"><span class="pt-num">23</span><span class="pt-sym">V</span><span class="pt-name">钒</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:6;grid-row:4;"><span class="pt-num">24</span><span class="pt-sym">Cr</span><span class="pt-name">铬</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:7;grid-row:4;"><span class="pt-num">25</span><span class="pt-sym">Mn</span><span class="pt-name">锰</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:8;grid-row:4;"><span class="pt-num">26</span><span class="pt-sym">Fe</span><span class="pt-name">铁</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:9;grid-row:4;"><span class="pt-num">27</span><span class="pt-sym">Co</span><span class="pt-name">钴</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:10;grid-row:4;"><span class="pt-num">28</span><span class="pt-sym">Ni</span><span class="pt-name">镍</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:11;grid-row:4;"><span class="pt-num">29</span><span class="pt-sym">Cu</span><span class="pt-name">铜</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:12;grid-row:4;"><span class="pt-num">30</span><span class="pt-sym">Zn</span><span class="pt-name">锌</span></div>
+        <div class="pt-cell pt-metal" style="grid-column:13;grid-row:4;"><span class="pt-num">31</span><span class="pt-sym">Ga</span><span class="pt-name">镓</span></div>
+        <div class="pt-cell pt-metalloid" style="grid-column:14;grid-row:4;"><span class="pt-num">32</span><span class="pt-sym">Ge</span><span class="pt-name">锗</span></div>
+        <div class="pt-cell pt-metalloid" style="grid-column:15;grid-row:4;"><span class="pt-num">33</span><span class="pt-sym">As</span><span class="pt-name">砷</span></div>
+        <div class="pt-cell pt-nonmetal" style="grid-column:16;grid-row:4;"><span class="pt-num">34</span><span class="pt-sym">Se</span><span class="pt-name">硒</span></div>
+        <div class="pt-cell pt-nonmetal pt-gVII" style="grid-column:17;grid-row:4;"><span class="pt-num">35</span><span class="pt-sym">Br</span><span class="pt-name">溴</span></div>
+        <div class="pt-cell pt-nonmetal pt-g0" style="grid-column:18;grid-row:4;"><span class="pt-num">36</span><span class="pt-sym">Kr</span><span class="pt-name">氪</span></div>
+      </div>
+    </div>
+    <div class="pt-legend">
+      <span><i class="pt-swatch" style="background:var(--accent-soft);border-color:#c9b896;"></i>主族金属 Metal</span>
+      <span><i class="pt-swatch" style="background:#e4d2ae;border-color:#c9a86a;"></i>过渡元素 Transition metal</span>
+      <span><i class="pt-swatch" style="background:#e9e4da;border-color:#bfae90;"></i>类金属 Metalloid（不考）</span>
+      <span><i class="pt-swatch" style="background:#eef3f5;border-color:#b8c9cf;"></i>非金属 Non-metal</span>
+    </div>
+    <div class="pt-legend">
+      <span><i class="pt-ring" style="border-color:var(--oxy-red);"></i>Group I 碱金属</span>
+      <span><i class="pt-ring" style="border-color:var(--leaf);"></i>Group VII 卤素</span>
+      <span><i class="pt-ring" style="border-color:var(--deoxy-blue);"></i>Group 0 惰性气体</span>
+    </div>
+    <p style="margin:0.6rem 0 0 0;font-size:0.8rem;color:var(--ink-soft);">氢（H）虽然画在 Group I 的位置上，但它的化学性质其实更接近非金属，<b>不算真正的碱金属</b>——这是一个常见的"易错点"。</p>
+  </div>
+
+  <div class="card">
     <h3>周期表结构（必背）<span class="tag core">Core</span><span class="tag y8">Stage 7</span></h3>
     <dl>
       <div><dt>Group<span class="zh">族（纵列）</span></dt><dd>周期表中的<b>竖列</b>。同一族的元素<b>最外层电子数相同</b>，所以化学性质相似——族数（如Group I、Group VII）通常就等于最外层电子数。</dd></div>
@@ -1813,7 +1891,7 @@
 
   <div class="card red">
     <h3>金属 vs 非金属（位置与性质对比）<span class="tag core">Core</span><span class="tag y8">Stage 7</span></h3>
-    <p style="margin:0 0 0.6rem 0;font-size:0.9rem;color:var(--ink-soft);">周期表左下方大部分区域是金属（metals），右上方是非金属（non-metals），中间用一条阶梯状分界线大致分开。</p>
+    <p style="margin:0 0 0.6rem 0;font-size:0.9rem;color:var(--ink-soft);">周期表左下方大部分区域是金属（metals），右上方是非金属（non-metals），中间用一条阶梯状分界线大致分开。<b>同一周期内从左到右，元素性质从金属性逐渐过渡为非金属性</b>（change from metallic to non-metallic character across a period）——这是一条渐变趋势，不是绝对分界。</p>
     <table>
       <tr><th>性质 Property</th><th class="yn-head">金属 Metals</th><th class="yn-head">非金属 Non-metals</th></tr>
       <tr><td>导电性 Conducts electricity</td><td class="yn-cell"><span class="yn yes">✓</span></td><td class="yn-cell"><span class="yn no">✗</span><br><span class="zh" style="font-size:0.78rem;">石墨例外</span></td></tr>
@@ -1829,9 +1907,11 @@
     <h3>Group I 碱金属 Alkali Metals<span class="tag core">Core</span><span class="tag y8">Stage 9</span></h3>
     <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">锂（Li）、钠（Na）、钾（K）等，最外层只有<b>1个电子</b>，非常容易失去这个电子形成+1价离子，所以反应活性很强。</p>
     <ul class="compact">
-      <li>物理性质：质地软（可以用小刀切开）、密度低（钠、锂能浮在水面上）、熔点低</li>
+      <li>物理性质：质地软（可以用小刀切开）、常温下都是固体</li>
+      <li><b>族内向下（Li→Na→K）：熔点降低</b>（decreasing melting point down the group）——钾的熔点比钠低，钠比锂低</li>
+      <li><b>族内向下：密度增大</b>（increasing density down the group）——钠、锂密度小于水，能浮在水面上</li>
       <li>与水反应剧烈：碱金属 + 水 → 氢氧化物（碱性溶液）+ 氢气，常伴随浮动、嘶嘶声甚至燃烧</li>
-      <li><b>反应活性随族内向下（原子序数增大）而增强</b>（reactivity increases down the group）——越往下，最外层电子离核越远，越容易被"甩掉"</li>
+      <li><b>反应活性随族内向下（原子序数增大）而增强</b>（increasing reactivity with water down the group）——越往下，最外层电子离核越远，越容易被"甩掉"</li>
     </ul>
   </div>
 
@@ -1844,12 +1924,26 @@
       <tr><td>Bromine 溴</td><td>液态</td><td>红棕色</td></tr>
       <tr><td>Iodine 碘</td><td>固态</td><td>深灰/紫黑色（升华时呈紫色蒸气）</td></tr>
     </table>
-    <div class="note green"><b>易考陷阱——趋势方向和Group I正好相反：</b>卤素的<b>反应活性随族内向下而减弱</b>（reactivity <b>decreases</b> down the group）——越往下，最外层离核越远，越难"抢到"额外的1个电子。<b>置换反应（displacement reaction）</b>是这个趋势的常考验证方法：活性更强的卤素能把活性较弱的卤素从其化合物中置换出来，例如氯气能把溴从溴化钠溶液中置换出来（Cl₂ + 2NaBr → 2NaCl + Br₂），溶液颜色会从无色变成红棕色。</div>
+    <ul class="compact" style="margin-top:0.7rem;">
+      <li><b>族内向下（Cl→Br→I）：密度增大</b>（increasing density down the group）——从气态到液态再到固态，正好对应上面表格里状态的变化</li>
+      <li><b>族内向下：反应活性减弱</b>（decreasing reactivity down the group）</li>
+    </ul>
+    <div class="note green"><b>易考陷阱——趋势方向和Group I正好相反：</b>卤素得电子的能力随族内向下而减弱——越往下，最外层离核越远，越难"抢到"额外的1个电子。<b>置换反应（displacement reaction）</b>是这个趋势的常考验证方法：活性更强的卤素能把活性较弱的卤素从其化合物中置换出来，例如氯气能把溴从溴化钠溶液中置换出来（Cl₂ + 2NaBr → 2NaCl + Br₂），溶液颜色会从无色变成红棕色。</div>
   </div>
 
   <div class="card">
     <h3>Group 0（VIII）惰性气体 Noble Gases<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
     <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">氦（He）、氖（Ne）、氩（Ar）等，最外层电子已经<b>排满（full outer shell）</b>，结构非常稳定，因此<b>几乎不参与化学反应（unreactive/inert）</b>。常温下都是单原子气体。用途：氦气用于填充气球和飞艇（密度小、不易燃）；氩气用于灯泡填充气体（防止灯丝被氧化）。</p>
+  </div>
+
+  <div class="card">
+    <h3>过渡元素 Transition Elements<span class="tag core">Core</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">位于 Group II 和 Group III 之间的一整块元素（上面周期表图里棕色的那一排：Sc 到 Zn），包括学生已经很熟悉的<b>铁 Fe、铜 Cu、锌 Zn</b>。它们都是金属，但和 Group I 的碱金属性质很不一样。</p>
+    <ul class="compact">
+      <li>密度较高（high densities）、熔点较高（high melting points）——和"又软又轻"的碱金属正好相反</li>
+      <li><b>能形成有颜色的化合物</b>（form coloured compounds），例如硫酸铜溶液是蓝色的、铁的化合物常是绿色/棕红色</li>
+      <li><b>常作催化剂</b>（often act as catalysts），既可以是单质也可以是化合物形式，例如铁在哈伯法制氨中作催化剂</li>
+    </ul>
   </div>
 
   <div class="model-answer">
