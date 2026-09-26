@@ -28,7 +28,7 @@
 
   /* ---------- Header ---------- */
   header{
-    max-width:1160px;margin:0 auto;padding:2.6rem 1.5rem 1.6rem 1.5rem;
+    max-width:1360px;margin:0 auto;padding:2.6rem 1.5rem 1.6rem 1.5rem;
     border-bottom:1px solid var(--line);
   }
   .eyebrow{font-size:0.76rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--deoxy-blue);font-weight:600;margin-bottom:0.7rem;}
@@ -40,10 +40,10 @@
 
   /* ---------- Layout: sidebar + content ---------- */
   .layout{
-    max-width:1160px;margin:0 auto;padding:0 1.5rem;
+    max-width:1360px;margin:0 auto;padding:0 1.5rem;
     display:grid;
-    grid-template-columns:220px 1fr;
-    gap:2.2rem;
+    grid-template-columns:190px 1fr;
+    gap:1.8rem;
     align-items:start;
   }
 
@@ -223,13 +223,13 @@
 
   /* ---------- Periodic table diagram (C8) ---------- */
   .pt-wrap{overflow-x:auto;margin-top:1rem;padding-bottom:0.5rem;}
-  .pt-grid{display:grid;grid-template-columns:56px repeat(18,minmax(42px,1fr));gap:3px;min-width:960px;}
-  .pt-fblock{display:grid;grid-template-columns:56px repeat(15,minmax(42px,1fr));gap:3px;min-width:820px;margin-top:0.4rem;}
-  .pt-cell{border:1px solid var(--line);border-radius:6px;background:var(--panel);text-align:center;padding:0.25rem 0.1rem;}
-  .pt-num{display:block;font-size:0.52rem;color:var(--ink-soft);line-height:1;}
-  .pt-sym{display:block;font-size:0.92rem;font-weight:700;line-height:1.15;color:var(--ink);}
-  .pt-mass{display:block;font-size:0.5rem;color:var(--ink-soft);line-height:1;}
-  .pt-name{display:block;font-size:0.5rem;color:var(--ink-soft);line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .pt-grid{display:grid;grid-template-columns:38px repeat(18,minmax(33px,1fr));gap:2px;min-width:0;}
+  .pt-fblock{display:grid;grid-template-columns:38px repeat(15,minmax(33px,1fr));gap:2px;min-width:0;margin-top:0.4rem;}
+  .pt-cell{border:1px solid var(--line);border-radius:5px;background:var(--panel);text-align:center;padding:0.18rem 0.05rem;}
+  .pt-num{display:block;font-size:0.46rem;color:var(--ink-soft);line-height:1;}
+  .pt-sym{display:block;font-size:0.78rem;font-weight:700;line-height:1.1;color:var(--ink);}
+  .pt-mass{display:block;font-size:0.44rem;color:var(--ink-soft);line-height:1;}
+  .pt-name{display:block;font-size:0.44rem;color:var(--ink-soft);line-height:1.05;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .pt-metal{background:var(--accent-soft);}
   .pt-transition{background:#e4d2ae;border-color:#c9a86a;}
   .pt-metalloid{background:#e9e4da;}
@@ -245,7 +245,7 @@
   .pt-swatch{display:inline-block;width:12px;height:12px;border-radius:3px;border:1px solid;margin-right:0.3rem;vertical-align:-1px;}
   .pt-ring{display:inline-block;width:12px;height:12px;border-radius:3px;border:2px solid;margin-right:0.3rem;vertical-align:-2px;background:transparent;}
 
-  footer{max-width:1160px;margin:0 auto;padding:1rem 1.5rem 3rem 1.5rem;font-size:0.8rem;color:var(--ink-soft);}
+  footer{max-width:1360px;margin:0 auto;padding:1rem 1.5rem 3rem 1.5rem;font-size:0.8rem;color:var(--ink-soft);}
 
   /* ---------- Phone / iPad-portrait only: sidebar becomes horizontal bar ----------
      Kept to a plain width breakpoint (not a touch/pointer check) so iPad in
