@@ -28,7 +28,7 @@
 
   /* ---------- Header ---------- */
   header{
-    max-width:1440px;margin:0 auto;padding:2.6rem 1rem 1.6rem 1rem;
+    max-width:none;margin:0;padding:2.6rem 1rem 1.6rem 1rem;
     border-bottom:1px solid var(--line);
   }
   .eyebrow{font-size:0.76rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--deoxy-blue);font-weight:600;margin-bottom:0.7rem;}
@@ -40,7 +40,7 @@
 
   /* ---------- Layout: sidebar + content ---------- */
   .layout{
-    max-width:1440px;margin:0 auto;padding:0 1rem;
+    max-width:none;margin:0;padding:0 1rem;
     display:grid;
     grid-template-columns:190px 1fr;
     gap:1.8rem;
@@ -245,7 +245,7 @@
   .pt-swatch{display:inline-block;width:12px;height:12px;border-radius:3px;border:1px solid;margin-right:0.3rem;vertical-align:-1px;}
   .pt-ring{display:inline-block;width:12px;height:12px;border-radius:3px;border:2px solid;margin-right:0.3rem;vertical-align:-2px;background:transparent;}
 
-  footer{max-width:1440px;margin:0 auto;padding:1rem 1rem 3rem 1rem;font-size:0.8rem;color:var(--ink-soft);}
+  footer{max-width:none;margin:0;padding:1rem 1rem 3rem 1rem;font-size:0.8rem;color:var(--ink-soft);}
 
   /* ---------- Phone / iPad-portrait only: sidebar becomes horizontal bar ----------
      Kept to a plain width breakpoint (not a touch/pointer check) so iPad in
@@ -1429,6 +1429,7 @@
 
   <div class="card">
     <h3>三态的粒子模型（必背）<span class="tag core">Core</span><span class="tag y8">Stage 7</span></h3>
+    <img src="../../shared/images/chemistry/states-of-matter.jpg" alt="物质三态与状态变化、粒子排列示意图 States of matter and particle arrangement" style="width:100%;max-width:640px;height:auto;border-radius:8px;border:1px solid var(--line);display:block;margin:0 auto 0.9rem auto;">
     <table>
       <tr><th></th><th>Solid 固态</th><th>Liquid 液态</th><th>Gas 气态</th></tr>
       <tr><td>粒子排列</td><td>紧密、规则排列</td><td>紧密、无规则排列</td><td>间距大、无规则排列</td></tr>
@@ -1507,6 +1508,7 @@
 
   <div class="card">
     <h3>原子的基本结构（必背）<span class="tag core">Core</span><span class="tag y8">Stage 8</span></h3>
+    <img src="../../shared/images/chemistry/atomic-structure-carbon.jpg" alt="碳原子结构示意图 Atomic structure of a carbon atom" style="width:100%;max-width:760px;height:auto;border-radius:8px;border:1px solid var(--line);display:block;margin:0 auto 0.9rem auto;">
     <table>
       <tr><th>粒子 Particle</th><th>相对电荷 Relative charge</th><th>相对质量 Relative mass</th><th>位置 Location</th></tr>
       <tr><td><b>Proton</b> 质子</td><td>+1</td><td>1</td><td>原子核 nucleus</td></tr>
@@ -1538,6 +1540,30 @@
       <div><dt>Mixture<span class="zh">混合物</span></dt><dd>两种或以上物质<b>没有经过化学反应</b>、只是物理混合在一起，各组分保留各自原来的性质，比例不固定，可以用物理方法（如过滤、蒸馏）分离（例：盐水、空气）。</dd></div>
     </dl>
     <div class="note green"><b>易考陷阱：</b>判断"是化合物还是混合物"，关键看有没有发生<b>化学反应</b>、组分比例是否<b>固定</b>——铁和硫粉末混在一起是混合物（比例任意、用磁铁能分离），但加热后生成硫化亚铁（iron sulfide）就是化合物了（比例固定、不能再用磁铁分离，因为铁已经不再是磁性单质铁）。</div>
+  </div>
+
+  <div class="card">
+    <h3>实验：铁 + 硫（混合物 vs 化合物）<span class="tag core">Core</span><span class="tag y8">Stage 7</span></h3>
+    <img src="../../shared/images/chemistry/iron-sulfur-experiment.jpg" alt="铁和硫混合物加热实验示意图 Iron and sulfur experiment" style="width:100%;max-width:760px;height:auto;border-radius:8px;border:1px solid var(--line);display:block;margin:0 auto 0.9rem auto;">
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">学校常做的经典实验。<b>黄色粉末是硫 Sulfur（S）</b>，黑色粉末是<b>铁粉 Iron（Fe）</b>——用磁铁能吸出来的就是铁。</p>
+    <table>
+      <thead><tr><th>阶段 Stage</th><th>现象 Observation</th><th>磁铁能分离吗？</th><th>结论 Conclusion</th></tr></thead>
+      <tbody>
+        <tr><td>① 铁粉 + 硫粉只是混合<br><span style="color:var(--ink-soft)">Iron + sulfur mixed</span></td><td>能看到黑色铁粉和黄色硫粉，各自颜色不变</td><td class="yn-cell"><span class="yn yes">✓</span></td><td><b>混合物 Mixture</b>：只是物理混合，各自保留原有性质，比例任意</td></tr>
+        <tr><td>② 加热混合物<br><span style="color:var(--ink-soft)">Heated strongly</span></td><td>发出红热的光（放热反应），生成<b>深灰/黑色固体</b></td><td class="yn-cell"><span class="yn no">✗</span></td><td><b>化合物 Compound</b>：发生了化学反应，生成硫化亚铁 iron sulfide，性质与铁、硫都不同</td></tr>
+      </tbody>
+    </table>
+    <div style="margin:0.9rem 0;padding:1rem 0.8rem;text-align:center;background:#fff;border:2px solid var(--line);border-radius:10px;font-family:Georgia,'Times New Roman',serif;font-size:2.2rem;font-weight:700;letter-spacing:0.03em;color:var(--ink);line-height:1.2;">
+      Fe + S <span style="display:inline-block;margin:0 0.3rem;">&rarr;</span> FeS
+      <div style="font-size:0.9rem;font-weight:400;font-family:inherit;font-style:italic;color:var(--ink-soft);letter-spacing:0;margin-top:0.2rem;">heat</div>
+    </div>
+    <div class="note"><b>另一个常见实验——燃烧硫：</b>硫粉在空气中燃烧发出<b>淡蓝色火焰</b>，生成有刺激性气味的气体<b>二氧化硫 SO₂</b>（S + O₂ → SO₂）。SO₂ 是酸雨的成因之一（见 C10）。注意：蓝色火焰 + 黄色粉末是<b>硫</b>，不是磷（磷燃烧是白色浓烟，且通常不会当作课堂粉末实验）。</div>
+    <div class="note green"><b>为什么黑色粉末用磁铁"洗"得出来？</b>因为铁是磁性金属，硫不是。能用磁铁分离，说明二者没有发生化学反应——这是判断<b>混合物</b>的关键证据。</div>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: A mixture of iron powder and sulfur powder is heated. Describe how you could show that the product is a compound and not a mixture.<br>A: Before heating, a <b>magnet</b> can pull the iron out of the mixture, because the iron and sulfur are only physically mixed and keep their own properties. After heating, the substance glows, then forms a dark grey solid, <b>iron sulfide</b>, which is <b>not attracted</b> by the magnet. This shows that a <b>chemical reaction</b> has happened: the iron and sulfur have combined in a fixed ratio to make a new substance (a compound) with different properties. Fe + S → FeS.</p>
   </div>
 
   <div class="model-answer">
