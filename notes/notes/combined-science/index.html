@@ -17,7 +17,7 @@
     --accent-soft:#f1e3d3;
   }
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth;font-size:17.5px;}
   html,body{margin:0;padding:0;}
   body{
     background:var(--paper);
@@ -28,7 +28,7 @@
 
   /* ---------- Header ---------- */
   header{
-    max-width:1160px;margin:0 auto;padding:2.6rem 1.5rem 1.6rem 1.5rem;
+    max-width:none;margin:0;padding:2.6rem 1rem 1.6rem 1rem;
     border-bottom:1px solid var(--line);
   }
   .eyebrow{font-size:0.76rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--deoxy-blue);font-weight:600;margin-bottom:0.7rem;}
@@ -40,10 +40,10 @@
 
   /* ---------- Layout: sidebar + content ---------- */
   .layout{
-    max-width:1160px;margin:0 auto;padding:0 1.5rem;
+    max-width:none;margin:0;padding:0 1rem;
     display:grid;
-    grid-template-columns:220px 1fr;
-    gap:2.2rem;
+    grid-template-columns:190px 1fr;
+    gap:1.8rem;
     align-items:start;
   }
 
@@ -223,13 +223,13 @@
 
   /* ---------- Periodic table diagram (C8) ---------- */
   .pt-wrap{overflow-x:auto;margin-top:1rem;padding-bottom:0.5rem;}
-  .pt-grid{display:grid;grid-template-columns:repeat(18,minmax(42px,1fr));gap:3px;min-width:900px;}
-  .pt-fblock{display:grid;grid-template-columns:repeat(15,minmax(42px,1fr));gap:3px;min-width:760px;margin-top:0.4rem;}
-  .pt-cell{border:1px solid var(--line);border-radius:6px;background:var(--panel);text-align:center;padding:0.25rem 0.1rem;}
-  .pt-num{display:block;font-size:0.52rem;color:var(--ink-soft);line-height:1;}
-  .pt-sym{display:block;font-size:0.92rem;font-weight:700;line-height:1.15;color:var(--ink);}
-  .pt-mass{display:block;font-size:0.5rem;color:var(--ink-soft);line-height:1;}
-  .pt-name{display:block;font-size:0.5rem;color:var(--ink-soft);line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .pt-grid{display:grid;grid-template-columns:38px repeat(18,minmax(33px,1fr));gap:2px;min-width:0;}
+  .pt-fblock{display:grid;grid-template-columns:38px repeat(15,minmax(33px,1fr));gap:2px;min-width:0;margin-top:0.4rem;}
+  .pt-cell{border:1px solid var(--line);border-radius:5px;background:var(--panel);text-align:center;padding:0.18rem 0.05rem;}
+  .pt-num{display:block;font-size:0.46rem;color:var(--ink-soft);line-height:1;}
+  .pt-sym{display:block;font-size:0.78rem;font-weight:700;line-height:1.1;color:var(--ink);}
+  .pt-mass{display:block;font-size:0.44rem;color:var(--ink-soft);line-height:1;}
+  .pt-name{display:block;font-size:0.44rem;color:var(--ink-soft);line-height:1.05;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .pt-metal{background:var(--accent-soft);}
   .pt-transition{background:#e4d2ae;border-color:#c9a86a;}
   .pt-metalloid{background:#e9e4da;}
@@ -239,11 +239,13 @@
   .pt-cell.pt-gI{border:2px solid var(--oxy-red);}
   .pt-cell.pt-gVII{border:2px solid var(--leaf);}
   .pt-cell.pt-g0{border:2px solid var(--deoxy-blue);}
+  .pt-cell.pt-axis{background:transparent;border:none;display:flex;align-items:center;justify-content:center;padding:0.15rem;}
+  .pt-axis-label{font-size:0.62rem;font-weight:700;color:var(--deoxy-blue);line-height:1.2;}
   .pt-legend{font-size:0.78rem;color:var(--ink-soft);display:flex;flex-wrap:wrap;gap:0.4rem 1rem;margin-top:0.7rem;}
   .pt-swatch{display:inline-block;width:12px;height:12px;border-radius:3px;border:1px solid;margin-right:0.3rem;vertical-align:-1px;}
   .pt-ring{display:inline-block;width:12px;height:12px;border-radius:3px;border:2px solid;margin-right:0.3rem;vertical-align:-2px;background:transparent;}
 
-  footer{max-width:1160px;margin:0 auto;padding:1rem 1.5rem 3rem 1.5rem;font-size:0.8rem;color:var(--ink-soft);}
+  footer{max-width:none;margin:0;padding:1rem 1rem 3rem 1rem;font-size:0.8rem;color:var(--ink-soft);}
 
   /* ---------- Phone / iPad-portrait only: sidebar becomes horizontal bar ----------
      Kept to a plain width breakpoint (not a touch/pointer check) so iPad in
@@ -264,11 +266,11 @@
       flex-direction:row;
       overflow-x:auto;overflow-y:hidden;
       -webkit-overflow-scrolling:touch;
-      padding:0.7rem 1.5rem;
+      padding:0.7rem 1rem;
       background:var(--paper);
       border-bottom:1px solid var(--line);
       gap:0.4rem;
-      margin:0 -1.5rem;
+      margin:0 -1rem;
     }
     .side-link{
       white-space:nowrap;
@@ -305,6 +307,7 @@
   <div class="eyebrow">IGCSE Combined Science 0653 · Biology + Chemistry + Physics</div>
   <h1>理科学习大纲<span class="en">Combined Science — Full Topic Outline</span></h1>
   <p class="subtitle">中英双语，供自学与备课参考。英文术语为考试要求原词，务必记住拼写；中文用于理解概念，不是考试用语。点击左侧（手机版：上方）章节名可直接跳转，其余章节会自动收起。生物、化学、物理三科已全部完成。</p>
+  <p class="subtitle" style="margin-top:.5rem;"><a href="vocab-c2-c8.html" style="color:var(--deoxy-blue);font-weight:700;">📖 C2 / C8 词汇表与小测（图文标注 + 元素名称）→</a></p>
   <div class="tier-legend">
     <span><span class="tag core">Core</span> = 所有学生都要学，考 Paper 1/3，上限 C 级</span>
     <span><span class="tag ext">Extended</span> = 只有报考 Extended 的学生需要学（Paper 2/4），可拿 A*</span>
@@ -1427,6 +1430,7 @@
 
   <div class="card">
     <h3>三态的粒子模型（必背）<span class="tag core">Core</span><span class="tag y8">Stage 7</span></h3>
+    <img src="../../shared/images/chemistry/states-of-matter.jpg" alt="物质三态与状态变化、粒子排列示意图 States of matter and particle arrangement" style="width:100%;max-width:640px;height:auto;border-radius:8px;border:1px solid var(--line);display:block;margin:0 auto 0.9rem auto;">
     <table>
       <tr><th></th><th>Solid 固态</th><th>Liquid 液态</th><th>Gas 气态</th></tr>
       <tr><td>粒子排列</td><td>紧密、规则排列</td><td>紧密、无规则排列</td><td>间距大、无规则排列</td></tr>
@@ -1505,6 +1509,7 @@
 
   <div class="card">
     <h3>原子的基本结构（必背）<span class="tag core">Core</span><span class="tag y8">Stage 8</span></h3>
+    <img src="../../shared/images/chemistry/atomic-structure-carbon.jpg" alt="碳原子结构示意图 Atomic structure of a carbon atom" style="width:100%;max-width:760px;height:auto;border-radius:8px;border:1px solid var(--line);display:block;margin:0 auto 0.9rem auto;">
     <table>
       <tr><th>粒子 Particle</th><th>相对电荷 Relative charge</th><th>相对质量 Relative mass</th><th>位置 Location</th></tr>
       <tr><td><b>Proton</b> 质子</td><td>+1</td><td>1</td><td>原子核 nucleus</td></tr>
@@ -1536,6 +1541,30 @@
       <div><dt>Mixture<span class="zh">混合物</span></dt><dd>两种或以上物质<b>没有经过化学反应</b>、只是物理混合在一起，各组分保留各自原来的性质，比例不固定，可以用物理方法（如过滤、蒸馏）分离（例：盐水、空气）。</dd></div>
     </dl>
     <div class="note green"><b>易考陷阱：</b>判断"是化合物还是混合物"，关键看有没有发生<b>化学反应</b>、组分比例是否<b>固定</b>——铁和硫粉末混在一起是混合物（比例任意、用磁铁能分离），但加热后生成硫化亚铁（iron sulfide）就是化合物了（比例固定、不能再用磁铁分离，因为铁已经不再是磁性单质铁）。</div>
+  </div>
+
+  <div class="card">
+    <h3>实验：铁 + 硫（混合物 vs 化合物）<span class="tag core">Core</span><span class="tag y8">Stage 7</span></h3>
+    <img src="../../shared/images/chemistry/iron-sulfur-experiment.jpg" alt="铁和硫混合物加热实验示意图 Iron and sulfur experiment" style="width:100%;max-width:760px;height:auto;border-radius:8px;border:1px solid var(--line);display:block;margin:0 auto 0.9rem auto;">
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">学校常做的经典实验。<b>黄色粉末是硫 Sulfur（S）</b>，黑色粉末是<b>铁粉 Iron（Fe）</b>——用磁铁能吸出来的就是铁。</p>
+    <table>
+      <thead><tr><th>阶段 Stage</th><th>现象 Observation</th><th>磁铁能分离吗？</th><th>结论 Conclusion</th></tr></thead>
+      <tbody>
+        <tr><td>① 铁粉 + 硫粉只是混合<br><span style="color:var(--ink-soft)">Iron + sulfur mixed</span></td><td>能看到黑色铁粉和黄色硫粉，各自颜色不变</td><td class="yn-cell"><span class="yn yes">✓</span></td><td><b>混合物 Mixture</b>：只是物理混合，各自保留原有性质，比例任意</td></tr>
+        <tr><td>② 加热混合物<br><span style="color:var(--ink-soft)">Heated strongly</span></td><td>发出红热的光（放热反应），生成<b>深灰/黑色固体</b></td><td class="yn-cell"><span class="yn no">✗</span></td><td><b>化合物 Compound</b>：发生了化学反应，生成硫化亚铁 iron sulfide，性质与铁、硫都不同</td></tr>
+      </tbody>
+    </table>
+    <div style="margin:0.9rem 0;padding:1rem 0.8rem;text-align:center;background:#fff;border:2px solid var(--line);border-radius:10px;font-family:Georgia,'Times New Roman',serif;font-size:2.2rem;font-weight:700;letter-spacing:0.03em;color:var(--ink);line-height:1.2;">
+      Fe + S <span style="display:inline-block;margin:0 0.3rem;">&rarr;</span> FeS
+      <div style="font-size:0.9rem;font-weight:400;font-family:inherit;font-style:italic;color:var(--ink-soft);letter-spacing:0;margin-top:0.2rem;">heat</div>
+    </div>
+    <div class="note"><b>另一个常见实验——燃烧硫：</b>硫粉在空气中燃烧发出<b>淡蓝色火焰</b>，生成有刺激性气味的气体<b>二氧化硫 SO₂</b>（S + O₂ → SO₂）。SO₂ 是酸雨的成因之一（见 C10）。注意：蓝色火焰 + 黄色粉末是<b>硫</b>，不是磷（磷燃烧是白色浓烟，且通常不会当作课堂粉末实验）。</div>
+    <div class="note green"><b>为什么黑色粉末用磁铁"洗"得出来？</b>因为铁是磁性金属，硫不是。能用磁铁分离，说明二者没有发生化学反应——这是判断<b>混合物</b>的关键证据。</div>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: A mixture of iron powder and sulfur powder is heated. Describe how you could show that the product is a compound and not a mixture.<br>A: Before heating, a <b>magnet</b> can pull the iron out of the mixture, because the iron and sulfur are only physically mixed and keep their own properties. After heating, the substance glows, then forms a dark grey solid, <b>iron sulfide</b>, which is <b>not attracted</b> by the magnet. This shows that a <b>chemical reaction</b> has happened: the iron and sulfur have combined in a fixed ratio to make a new substance (a compound) with different properties. Fe + S → FeS.</p>
   </div>
 
   <div class="model-answer">
@@ -1738,6 +1767,72 @@
   </div>
 
   <div class="card">
+    <h3>实验：碘钟反应 Iodine Clock（化学"秒表"）<span class="tag core">Core</span><span class="tag y8">Stage 9</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">把两瓶<b>无色透明</b>的溶液倒在一起：<b>先什么都没发生，过几秒到几十秒后，突然变成深蓝（蓝黑）色</b>。这是讲<b>反应速率</b>最经典的演示之一，因为它让"反应有多快"变成了可以<b>用秒表计时</b>的东西。</p>
+    <table>
+      <thead><tr><th>阶段</th><th>你看到的</th><th>其实发生了什么（简单版）</th></tr></thead>
+      <tbody>
+        <tr><td>① 混合 A + B</td><td>两瓶无色液体混合，仍然是<b>无色</b></td><td>反应已经开始了，只是看不出来</td></tr>
+        <tr><td>② 等待</td><td>无色，几秒～几十秒</td><td>反应不断生成<b>碘</b>，但碘马上被溶液里的另一种物质"吃掉"，所以没有颜色</td></tr>
+        <tr><td>③ 突然变色</td><td><b>瞬间变深蓝/蓝黑</b></td><td>"吃碘"的物质用完了，碘开始积累，遇到<b>淀粉</b>就变蓝黑（和 B4 检验淀粉的碘液实验是同一个反应）</td></tr>
+        <tr><td>④ 颜色变深</td><td>越来越深，可能偏<b>深绿/墨绿</b></td><td>碘越来越多：蓝黑色的淀粉-碘复合物，加上黄褐色的碘溶液，叠在一起看起来可能偏绿</td></tr>
+        <tr><td>⑤ 再加一种透明液体</td><td>变回<b>无色</b></td><td>加入的是<b>还原剂</b>（常见的是硫代硫酸钠溶液或维生素 C 溶液），把碘变回无色的碘离子；没有碘，淀粉就不显蓝</td></tr>
+      </tbody>
+    </table>
+    <div class="note"><b>这个实验是想讲什么？</b>
+      <ul class="compact">
+        <li><b>反应速率可以测量：</b>"变色前的时间"越短 = 反应越快。</li>
+        <li><b>影响因素：</b>溶液<b>更浓</b>或<b>更热</b>，变蓝的时间会<b>缩短</b>（对应上一张卡片的浓度、温度）。</li>
+        <li><b>颜色变化是化学反应的证据</b>（C6 第一张卡片）；而且颜色是"突然"出现的，说明反应一直在悄悄进行。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="model-answer">
+    <span class="ma-label">答题模板 Model Answer</span>
+    <p>Q: In the iodine clock reaction, two colourless solutions are mixed. After a short time the mixture suddenly turns dark blue. Explain why, and suggest how to make the colour appear sooner.<br>A: The reaction makes <b>iodine</b> from the start. At first the iodine is used up straight away by another substance in the mixture, so the solution stays <b>colourless</b>. When that substance has been used up, iodine builds up and reacts with <b>starch</b> to give a <b>dark blue</b> colour. To make the colour appear sooner, use <b>more concentrated</b> solutions or <b>warm</b> the solutions, because the particles collide <b>more often</b> and with <b>more energy</b>, so the reaction is faster.</p>
+  </div>
+
+  <div class="card green">
+    <h3>碘钟反应的化学原理 The chemistry of the clock<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
+    <p style="margin:0 0 0.6rem 0;font-size:0.92rem;">这一张是超前内容，Y8 现在可以跳过。常见配方里，两瓶无色溶液分别是：</p>
+    <table>
+      <thead><tr><th>溶液 Solution</th><th>成分 Substance</th><th>化学式 Formula</th><th>作用 Role</th></tr></thead>
+      <tbody>
+        <tr><td rowspan="4"><b>A</b></td><td>淀粉 starch</td><td>(C₆H₁₀O₅)ₙ</td><td>指示剂：遇碘变蓝黑 indicator (blue-black with iodine)</td></tr>
+        <tr><td>碘化钾 potassium iodide</td><td>KI</td><td>提供碘离子 I⁻ source of iodide ions</td></tr>
+        <tr><td>硫代硫酸钠 sodium thiosulfate</td><td>Na₂S₂O₃</td><td>"吃掉"碘、决定等待时间 uses up I₂ and sets the delay</td></tr>
+        <tr><td>乙酸钠 sodium ethanoate<br><span style="color:var(--ink-soft);font-size:0.8rem;">（有的配方才有 in some recipes）</span></td><td>CH₃COONa</td><td>缓冲，让 pH 稳定 buffer</td></tr>
+        <tr><td rowspan="2"><b>B</b></td><td>过氧化氢 hydrogen peroxide</td><td>H₂O₂</td><td>氧化剂：把 I⁻ 氧化成 I₂ oxidising agent</td></tr>
+        <tr><td>乙酸 ethanoic acid</td><td>CH₃COOH</td><td>提供氢离子 H⁺ source of H⁺ ions</td></tr>
+      </tbody>
+    </table>
+    <p style="margin:0.8rem 0 0.3rem 0;font-size:0.88rem;color:var(--ink-soft);"><b>离子方程式 Ionic equations</b></p>
+    <div style="margin:0.3rem 0;padding:0.7rem 0.8rem;background:#fff;border:1.5px solid var(--line);border-radius:8px;font-family:Georgia,'Times New Roman',serif;font-size:1.05rem;line-height:1.9;">
+      <b>slow（慢，决定速率）:</b> H₂O₂ + 2I⁻ + 2H⁺ → I₂ + 2H₂O<br>
+      <b>fast（快）:</b> I₂ + 2S₂O₃²⁻ → 2I⁻ + S₄O₆²⁻
+    </div>
+    <p style="margin:0.8rem 0 0.3rem 0;font-size:0.88rem;color:var(--ink-soft);"><b>完整化学方程式 Full equations</b></p>
+    <div style="margin:0.3rem 0;padding:0.7rem 0.8rem;background:#fff;border:1.5px solid var(--line);border-radius:8px;font-family:Georgia,'Times New Roman',serif;font-size:1.05rem;line-height:1.9;">
+      <b>slow（慢）:</b> H₂O₂ + 2KI + 2CH₃COOH → I₂ + 2CH₃COOK + 2H₂O<br>
+      <b>fast（快）:</b> I₂ + 2Na₂S₂O₃ → 2NaI + Na₂S₄O₆<br>
+      <span style="font-size:0.85rem;color:var(--ink-soft);font-family:-apple-system,'Segoe UI','PingFang SC',sans-serif;">Na₂S₄O₆ = 连四硫酸钠 sodium tetrathionate；CH₃COOK = 乙酸钾 potassium ethanoate</span>
+    </div>
+    <p style="margin:0.6rem 0 0.2rem 0;font-size:0.88rem;color:var(--ink-soft);"><b>最后一步：加还原剂褪色 Decolourising</b></p>
+    <div style="margin:0.3rem 0 0.6rem 0;padding:0.7rem 0.8rem;background:#fff;border:1.5px solid var(--line);border-radius:8px;font-family:Georgia,'Times New Roman',serif;font-size:1.05rem;line-height:1.9;">
+      <b>加硫代硫酸钠 add sodium thiosulfate:</b> I₂ + 2S₂O₃²⁻ → 2I⁻ + S₄O₆²⁻<br>
+      <b>或加维生素 C or add vitamin C:</b> C₆H₈O₆ + I₂ → C₆H₆O₆ + 2HI
+    </div>
+    <ul class="compact">
+      <li>慢反应不断生成 I₂，但快反应立刻把 I₂ 变回无色的 I⁻，所以<b>硫代硫酸钠没用完之前不会变色</b>。</li>
+      <li>硫代硫酸钠用完后，I₂ 积累，与淀粉形成<b>蓝黑色复合物</b>。</li>
+      <li>最后再加硫代硫酸钠（或维生素 C），I₂ 又被还原成 I⁻，蓝色消失。</li>
+      <li>这是<b>氧化还原反应</b>：I⁻ 被氧化成 I₂，I₂ 又被还原回 I⁻。</li>
+    </ul>
+    <div class="note">硫代硫酸钠和酸不能提前混在同一瓶里（会放出有毒的 SO₂、析出硫），所以配方里把它们分在 A、B 两瓶。</div>
+  </div>
+
+  <div class="card">
     <h3>催化剂 Catalysts<span class="tag ext">Extended</span><span class="tag igcse">IGCSE专属</span></h3>
     <p style="margin:0;font-size:0.92rem;color:var(--ink-soft);">Catalyst（催化剂）：能加快化学反应速率、但<b>反应前后本身质量和化学性质不变</b>（不被消耗）的物质。它的作用机制是<b>降低反应所需的活化能</b>，让更多碰撞能达到"有效碰撞"的门槛，而不是给粒子额外增加动能。<span class="tag bg">背景</span> 这个概念和B5讲的"酶"本质上是同一回事——酶就是一种生物催化剂，作用原理相通。</p>
   </div>
@@ -1829,135 +1924,154 @@
     <p style="margin:0 0 0.4rem 0;font-size:0.88rem;color:var(--ink-soft);">这是完整的 118 号元素周期表，和 0653 正式考试时发给学生的那张附表内容一致——每格从上到下是：<b>原子序数、元素符号、相对原子质量（relative atomic mass）、名称</b>。方框颜色代表金属/类金属/非金属/镧系/锕系，彩色描边代表 Group I、Group VII、Group 0 这三个重点族。Period 5–7 里绝大部分元素（尤其 104 号之后的人工合成元素）只是为了图完整，<b>不需要背，只有 Group I/VII/0 和过渡元素这几块是 C8 真正会考的内容</b>。</p>
     <div class="pt-wrap">
       <div class="pt-grid">
-        <div class="pt-cell pt-nonmetal pt-gI" style="grid-column:1;grid-row:1;"><span class="pt-num">1</span><span class="pt-sym">H</span><span class="pt-mass">1</span><span class="pt-name">氢</span></div>
-        <div class="pt-cell pt-nonmetal pt-g0" style="grid-column:18;grid-row:1;"><span class="pt-num">2</span><span class="pt-sym">He</span><span class="pt-mass">4</span><span class="pt-name">氦</span></div>
-        <div class="pt-cell pt-metal pt-gI" style="grid-column:1;grid-row:2;"><span class="pt-num">3</span><span class="pt-sym">Li</span><span class="pt-mass">7</span><span class="pt-name">锂</span></div>
-        <div class="pt-cell pt-metal" style="grid-column:2;grid-row:2;"><span class="pt-num">4</span><span class="pt-sym">Be</span><span class="pt-mass">9</span><span class="pt-name">铍</span></div>
-        <div class="pt-cell pt-metalloid" style="grid-column:13;grid-row:2;"><span class="pt-num">5</span><span class="pt-sym">B</span><span class="pt-mass">11</span><span class="pt-name">硼</span></div>
-        <div class="pt-cell pt-nonmetal" style="grid-column:14;grid-row:2;"><span class="pt-num">6</span><span class="pt-sym">C</span><span class="pt-mass">12</span><span class="pt-name">碳</span></div>
-        <div class="pt-cell pt-nonmetal" style="grid-column:15;grid-row:2;"><span class="pt-num">7</span><span class="pt-sym">N</span><span class="pt-mass">14</span><span class="pt-name">氮</span></div>
-        <div class="pt-cell pt-nonmetal" style="grid-column:16;grid-row:2;"><span class="pt-num">8</span><span class="pt-sym">O</span><span class="pt-mass">16</span><span class="pt-name">氧</span></div>
-        <div class="pt-cell pt-nonmetal pt-gVII" style="grid-column:17;grid-row:2;"><span class="pt-num">9</span><span class="pt-sym">F</span><span class="pt-mass">19</span><span class="pt-name">氟</span></div>
-        <div class="pt-cell pt-nonmetal pt-g0" style="grid-column:18;grid-row:2;"><span class="pt-num">10</span><span class="pt-sym">Ne</span><span class="pt-mass">20</span><span class="pt-name">氖</span></div>
-        <div class="pt-cell pt-metal pt-gI" style="grid-column:1;grid-row:3;"><span class="pt-num">11</span><span class="pt-sym">Na</span><span class="pt-mass">23</span><span class="pt-name">钠</span></div>
-        <div class="pt-cell pt-metal" style="grid-column:2;grid-row:3;"><span class="pt-num">12</span><span class="pt-sym">Mg</span><span class="pt-mass">24</span><span class="pt-name">镁</span></div>
-        <div class="pt-cell pt-metal" style="grid-column:13;grid-row:3;"><span class="pt-num">13</span><span class="pt-sym">Al</span><span class="pt-mass">27</span><span class="pt-name">铝</span></div>
-        <div class="pt-cell pt-metalloid" style="grid-column:14;grid-row:3;"><span class="pt-num">14</span><span class="pt-sym">Si</span><span class="pt-mass">28</span><span class="pt-name">硅</span></div>
-        <div class="pt-cell pt-nonmetal" style="grid-column:15;grid-row:3;"><span class="pt-num">15</span><span class="pt-sym">P</span><span class="pt-mass">31</span><span class="pt-name">磷</span></div>
-        <div class="pt-cell pt-nonmetal" style="grid-column:16;grid-row:3;"><span class="pt-num">16</span><span class="pt-sym">S</span><span class="pt-mass">32</span><span class="pt-name">硫</span></div>
-        <div class="pt-cell pt-nonmetal pt-gVII" style="grid-column:17;grid-row:3;"><span class="pt-num">17</span><span class="pt-sym">Cl</span><span class="pt-mass">35.5</span><span class="pt-name">氯</span></div>
-        <div class="pt-cell pt-nonmetal pt-g0" style="grid-column:18;grid-row:3;"><span class="pt-num">18</span><span class="pt-sym">Ar</span><span class="pt-mass">40</span><span class="pt-name">氩</span></div>
-        <div class="pt-cell pt-metal pt-gI" style="grid-column:1;grid-row:4;"><span class="pt-num">19</span><span class="pt-sym">K</span><span class="pt-mass">39</span><span class="pt-name">钾</span></div>
-        <div class="pt-cell pt-metal" style="grid-column:2;grid-row:4;"><span class="pt-num">20</span><span class="pt-sym">Ca</span><span class="pt-mass">40</span><span class="pt-name">钙</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:3;grid-row:4;"><span class="pt-num">21</span><span class="pt-sym">Sc</span><span class="pt-mass">45</span><span class="pt-name">钪</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:4;grid-row:4;"><span class="pt-num">22</span><span class="pt-sym">Ti</span><span class="pt-mass">48</span><span class="pt-name">钛</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:5;grid-row:4;"><span class="pt-num">23</span><span class="pt-sym">V</span><span class="pt-mass">51</span><span class="pt-name">钒</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:6;grid-row:4;"><span class="pt-num">24</span><span class="pt-sym">Cr</span><span class="pt-mass">52</span><span class="pt-name">铬</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:7;grid-row:4;"><span class="pt-num">25</span><span class="pt-sym">Mn</span><span class="pt-mass">55</span><span class="pt-name">锰</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:8;grid-row:4;"><span class="pt-num">26</span><span class="pt-sym">Fe</span><span class="pt-mass">56</span><span class="pt-name">铁</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:9;grid-row:4;"><span class="pt-num">27</span><span class="pt-sym">Co</span><span class="pt-mass">59</span><span class="pt-name">钴</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:10;grid-row:4;"><span class="pt-num">28</span><span class="pt-sym">Ni</span><span class="pt-mass">59</span><span class="pt-name">镍</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:11;grid-row:4;"><span class="pt-num">29</span><span class="pt-sym">Cu</span><span class="pt-mass">64</span><span class="pt-name">铜</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:12;grid-row:4;"><span class="pt-num">30</span><span class="pt-sym">Zn</span><span class="pt-mass">65</span><span class="pt-name">锌</span></div>
-        <div class="pt-cell pt-metal" style="grid-column:13;grid-row:4;"><span class="pt-num">31</span><span class="pt-sym">Ga</span><span class="pt-mass">70</span><span class="pt-name">镓</span></div>
-        <div class="pt-cell pt-metalloid" style="grid-column:14;grid-row:4;"><span class="pt-num">32</span><span class="pt-sym">Ge</span><span class="pt-mass">73</span><span class="pt-name">锗</span></div>
-        <div class="pt-cell pt-metalloid" style="grid-column:15;grid-row:4;"><span class="pt-num">33</span><span class="pt-sym">As</span><span class="pt-mass">75</span><span class="pt-name">砷</span></div>
-        <div class="pt-cell pt-nonmetal" style="grid-column:16;grid-row:4;"><span class="pt-num">34</span><span class="pt-sym">Se</span><span class="pt-mass">79</span><span class="pt-name">硒</span></div>
-        <div class="pt-cell pt-nonmetal pt-gVII" style="grid-column:17;grid-row:4;"><span class="pt-num">35</span><span class="pt-sym">Br</span><span class="pt-mass">80</span><span class="pt-name">溴</span></div>
-        <div class="pt-cell pt-nonmetal pt-g0" style="grid-column:18;grid-row:4;"><span class="pt-num">36</span><span class="pt-sym">Kr</span><span class="pt-mass">84</span><span class="pt-name">氪</span></div>
-        <div class="pt-cell pt-metal pt-gI" style="grid-column:1;grid-row:5;"><span class="pt-num">37</span><span class="pt-sym">Rb</span><span class="pt-mass">85</span><span class="pt-name">铷</span></div>
-        <div class="pt-cell pt-metal" style="grid-column:2;grid-row:5;"><span class="pt-num">38</span><span class="pt-sym">Sr</span><span class="pt-mass">88</span><span class="pt-name">锶</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:3;grid-row:5;"><span class="pt-num">39</span><span class="pt-sym">Y</span><span class="pt-mass">89</span><span class="pt-name">钇</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:4;grid-row:5;"><span class="pt-num">40</span><span class="pt-sym">Zr</span><span class="pt-mass">91</span><span class="pt-name">锆</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:5;grid-row:5;"><span class="pt-num">41</span><span class="pt-sym">Nb</span><span class="pt-mass">93</span><span class="pt-name">铌</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:6;grid-row:5;"><span class="pt-num">42</span><span class="pt-sym">Mo</span><span class="pt-mass">96</span><span class="pt-name">钼</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:7;grid-row:5;"><span class="pt-num">43</span><span class="pt-sym">Tc</span><span class="pt-mass">–</span><span class="pt-name">锝</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:8;grid-row:5;"><span class="pt-num">44</span><span class="pt-sym">Ru</span><span class="pt-mass">101</span><span class="pt-name">钌</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:9;grid-row:5;"><span class="pt-num">45</span><span class="pt-sym">Rh</span><span class="pt-mass">103</span><span class="pt-name">铑</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:10;grid-row:5;"><span class="pt-num">46</span><span class="pt-sym">Pd</span><span class="pt-mass">106</span><span class="pt-name">钯</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:11;grid-row:5;"><span class="pt-num">47</span><span class="pt-sym">Ag</span><span class="pt-mass">108</span><span class="pt-name">银</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:12;grid-row:5;"><span class="pt-num">48</span><span class="pt-sym">Cd</span><span class="pt-mass">112</span><span class="pt-name">镉</span></div>
-        <div class="pt-cell pt-metal" style="grid-column:13;grid-row:5;"><span class="pt-num">49</span><span class="pt-sym">In</span><span class="pt-mass">115</span><span class="pt-name">铟</span></div>
-        <div class="pt-cell pt-metal" style="grid-column:14;grid-row:5;"><span class="pt-num">50</span><span class="pt-sym">Sn</span><span class="pt-mass">119</span><span class="pt-name">锡</span></div>
-        <div class="pt-cell pt-metalloid" style="grid-column:15;grid-row:5;"><span class="pt-num">51</span><span class="pt-sym">Sb</span><span class="pt-mass">122</span><span class="pt-name">锑</span></div>
-        <div class="pt-cell pt-metalloid" style="grid-column:16;grid-row:5;"><span class="pt-num">52</span><span class="pt-sym">Te</span><span class="pt-mass">128</span><span class="pt-name">碲</span></div>
-        <div class="pt-cell pt-nonmetal pt-gVII" style="grid-column:17;grid-row:5;"><span class="pt-num">53</span><span class="pt-sym">I</span><span class="pt-mass">127</span><span class="pt-name">碘</span></div>
-        <div class="pt-cell pt-nonmetal pt-g0" style="grid-column:18;grid-row:5;"><span class="pt-num">54</span><span class="pt-sym">Xe</span><span class="pt-mass">131</span><span class="pt-name">氙</span></div>
-        <div class="pt-cell pt-metal pt-gI" style="grid-column:1;grid-row:6;"><span class="pt-num">55</span><span class="pt-sym">Cs</span><span class="pt-mass">133</span><span class="pt-name">铯</span></div>
-        <div class="pt-cell pt-metal" style="grid-column:2;grid-row:6;"><span class="pt-num">56</span><span class="pt-sym">Ba</span><span class="pt-mass">137</span><span class="pt-name">钡</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:4;grid-row:6;"><span class="pt-num">72</span><span class="pt-sym">Hf</span><span class="pt-mass">178</span><span class="pt-name">铪</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:5;grid-row:6;"><span class="pt-num">73</span><span class="pt-sym">Ta</span><span class="pt-mass">181</span><span class="pt-name">钽</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:6;grid-row:6;"><span class="pt-num">74</span><span class="pt-sym">W</span><span class="pt-mass">184</span><span class="pt-name">钨</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:7;grid-row:6;"><span class="pt-num">75</span><span class="pt-sym">Re</span><span class="pt-mass">186</span><span class="pt-name">铼</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:8;grid-row:6;"><span class="pt-num">76</span><span class="pt-sym">Os</span><span class="pt-mass">190</span><span class="pt-name">锇</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:9;grid-row:6;"><span class="pt-num">77</span><span class="pt-sym">Ir</span><span class="pt-mass">192</span><span class="pt-name">铱</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:10;grid-row:6;"><span class="pt-num">78</span><span class="pt-sym">Pt</span><span class="pt-mass">195</span><span class="pt-name">铂</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:11;grid-row:6;"><span class="pt-num">79</span><span class="pt-sym">Au</span><span class="pt-mass">197</span><span class="pt-name">金</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:12;grid-row:6;"><span class="pt-num">80</span><span class="pt-sym">Hg</span><span class="pt-mass">201</span><span class="pt-name">汞</span></div>
-        <div class="pt-cell pt-metal" style="grid-column:13;grid-row:6;"><span class="pt-num">81</span><span class="pt-sym">Tl</span><span class="pt-mass">204</span><span class="pt-name">铊</span></div>
-        <div class="pt-cell pt-metal" style="grid-column:14;grid-row:6;"><span class="pt-num">82</span><span class="pt-sym">Pb</span><span class="pt-mass">207</span><span class="pt-name">铅</span></div>
-        <div class="pt-cell pt-metal" style="grid-column:15;grid-row:6;"><span class="pt-num">83</span><span class="pt-sym">Bi</span><span class="pt-mass">209</span><span class="pt-name">铋</span></div>
-        <div class="pt-cell pt-metalloid" style="grid-column:16;grid-row:6;"><span class="pt-num">84</span><span class="pt-sym">Po</span><span class="pt-mass">–</span><span class="pt-name">钋</span></div>
-        <div class="pt-cell pt-metalloid pt-gVII" style="grid-column:17;grid-row:6;"><span class="pt-num">85</span><span class="pt-sym">At</span><span class="pt-mass">–</span><span class="pt-name">砹</span></div>
-        <div class="pt-cell pt-nonmetal pt-g0" style="grid-column:18;grid-row:6;"><span class="pt-num">86</span><span class="pt-sym">Rn</span><span class="pt-mass">–</span><span class="pt-name">氡</span></div>
-        <div class="pt-cell pt-metal pt-gI" style="grid-column:1;grid-row:7;"><span class="pt-num">87</span><span class="pt-sym">Fr</span><span class="pt-mass">–</span><span class="pt-name">钫</span></div>
-        <div class="pt-cell pt-metal" style="grid-column:2;grid-row:7;"><span class="pt-num">88</span><span class="pt-sym">Ra</span><span class="pt-mass">–</span><span class="pt-name">镭</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:4;grid-row:7;"><span class="pt-num">104</span><span class="pt-sym">Rf</span><span class="pt-mass">–</span><span class="pt-name">rutherfordium</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:5;grid-row:7;"><span class="pt-num">105</span><span class="pt-sym">Db</span><span class="pt-mass">–</span><span class="pt-name">dubnium</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:6;grid-row:7;"><span class="pt-num">106</span><span class="pt-sym">Sg</span><span class="pt-mass">–</span><span class="pt-name">seaborgium</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:7;grid-row:7;"><span class="pt-num">107</span><span class="pt-sym">Bh</span><span class="pt-mass">–</span><span class="pt-name">bohrium</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:8;grid-row:7;"><span class="pt-num">108</span><span class="pt-sym">Hs</span><span class="pt-mass">–</span><span class="pt-name">hassium</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:9;grid-row:7;"><span class="pt-num">109</span><span class="pt-sym">Mt</span><span class="pt-mass">–</span><span class="pt-name">meitnerium</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:10;grid-row:7;"><span class="pt-num">110</span><span class="pt-sym">Ds</span><span class="pt-mass">–</span><span class="pt-name">darmstadtium</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:11;grid-row:7;"><span class="pt-num">111</span><span class="pt-sym">Rg</span><span class="pt-mass">–</span><span class="pt-name">roentgenium</span></div>
-        <div class="pt-cell pt-transition" style="grid-column:12;grid-row:7;"><span class="pt-num">112</span><span class="pt-sym">Cn</span><span class="pt-mass">–</span><span class="pt-name">copernicium</span></div>
-        <div class="pt-cell pt-metal" style="grid-column:13;grid-row:7;"><span class="pt-num">113</span><span class="pt-sym">Nh</span><span class="pt-mass">–</span><span class="pt-name">nihonium</span></div>
-        <div class="pt-cell pt-metal" style="grid-column:14;grid-row:7;"><span class="pt-num">114</span><span class="pt-sym">Fl</span><span class="pt-mass">–</span><span class="pt-name">flerovium</span></div>
-        <div class="pt-cell pt-metal" style="grid-column:15;grid-row:7;"><span class="pt-num">115</span><span class="pt-sym">Mc</span><span class="pt-mass">–</span><span class="pt-name">moscovium</span></div>
-        <div class="pt-cell pt-metal" style="grid-column:16;grid-row:7;"><span class="pt-num">116</span><span class="pt-sym">Lv</span><span class="pt-mass">–</span><span class="pt-name">livermorium</span></div>
-        <div class="pt-cell pt-nonmetal pt-gVII" style="grid-column:17;grid-row:7;"><span class="pt-num">117</span><span class="pt-sym">Ts</span><span class="pt-mass">–</span><span class="pt-name">tennessine</span></div>
-        <div class="pt-cell pt-nonmetal pt-g0" style="grid-column:18;grid-row:7;"><span class="pt-num">118</span><span class="pt-sym">Og</span><span class="pt-mass">–</span><span class="pt-name">oganesson</span></div>
-        <div class="pt-cell pt-lanthanide" style="grid-column:3;grid-row:6;"><span class="pt-num">57–71</span><span class="pt-sym" style="font-size:0.62rem;">镧系</span><span class="pt-name">Lanthanoids</span></div>
-        <div class="pt-cell pt-actinide" style="grid-column:3;grid-row:7;"><span class="pt-num">89–103</span><span class="pt-sym" style="font-size:0.62rem;">锕系</span><span class="pt-name">Actinoids</span></div>
+        <div class="pt-cell pt-axis" style="grid-column:1;grid-row:1;"><span class="pt-axis-label">Period ↓<br>Group →</span></div>
+        <div class="pt-cell pt-axis" style="grid-column:2;grid-row:1;"><span class="pt-axis-label">Group I</span></div>
+        <div class="pt-cell pt-axis" style="grid-column:3;grid-row:1;"><span class="pt-axis-label">Group II</span></div>
+        <div class="pt-cell pt-axis" style="grid-column:14;grid-row:1;"><span class="pt-axis-label">Group III</span></div>
+        <div class="pt-cell pt-axis" style="grid-column:15;grid-row:1;"><span class="pt-axis-label">Group IV</span></div>
+        <div class="pt-cell pt-axis" style="grid-column:16;grid-row:1;"><span class="pt-axis-label">Group V</span></div>
+        <div class="pt-cell pt-axis" style="grid-column:17;grid-row:1;"><span class="pt-axis-label">Group VI</span></div>
+        <div class="pt-cell pt-axis" style="grid-column:18;grid-row:1;"><span class="pt-axis-label">Group VII</span></div>
+        <div class="pt-cell pt-axis" style="grid-column:19;grid-row:1;"><span class="pt-axis-label">Group 0</span></div>
+        <div class="pt-cell pt-axis" style="grid-column:4 / 14;grid-row:1;"><span class="pt-axis-label">过渡元素 Transition Elements</span></div>
+        <div class="pt-cell pt-axis" style="grid-column:1;grid-row:2;"><span class="pt-axis-label">Period 1</span></div>
+        <div class="pt-cell pt-axis" style="grid-column:1;grid-row:3;"><span class="pt-axis-label">Period 2</span></div>
+        <div class="pt-cell pt-axis" style="grid-column:1;grid-row:4;"><span class="pt-axis-label">Period 3</span></div>
+        <div class="pt-cell pt-axis" style="grid-column:1;grid-row:5;"><span class="pt-axis-label">Period 4</span></div>
+        <div class="pt-cell pt-axis" style="grid-column:1;grid-row:6;"><span class="pt-axis-label">Period 5</span></div>
+        <div class="pt-cell pt-axis" style="grid-column:1;grid-row:7;"><span class="pt-axis-label">Period 6</span></div>
+        <div class="pt-cell pt-axis" style="grid-column:1;grid-row:8;"><span class="pt-axis-label">Period 7</span></div>
+        <div class="pt-cell pt-nonmetal pt-gI" style="grid-column:2;grid-row:2;"><span class="pt-num">1</span><span class="pt-sym">H</span><span class="pt-mass">1</span><span class="pt-name">氢</span></div>
+        <div class="pt-cell pt-nonmetal pt-g0" style="grid-column:19;grid-row:2;"><span class="pt-num">2</span><span class="pt-sym">He</span><span class="pt-mass">4</span><span class="pt-name">氦</span></div>
+        <div class="pt-cell pt-metal pt-gI" style="grid-column:2;grid-row:3;"><span class="pt-num">3</span><span class="pt-sym">Li</span><span class="pt-mass">7</span><span class="pt-name">锂</span></div>
+        <div class="pt-cell pt-metal" style="grid-column:3;grid-row:3;"><span class="pt-num">4</span><span class="pt-sym">Be</span><span class="pt-mass">9</span><span class="pt-name">铍</span></div>
+        <div class="pt-cell pt-metalloid" style="grid-column:14;grid-row:3;"><span class="pt-num">5</span><span class="pt-sym">B</span><span class="pt-mass">11</span><span class="pt-name">硼</span></div>
+        <div class="pt-cell pt-nonmetal" style="grid-column:15;grid-row:3;"><span class="pt-num">6</span><span class="pt-sym">C</span><span class="pt-mass">12</span><span class="pt-name">碳</span></div>
+        <div class="pt-cell pt-nonmetal" style="grid-column:16;grid-row:3;"><span class="pt-num">7</span><span class="pt-sym">N</span><span class="pt-mass">14</span><span class="pt-name">氮</span></div>
+        <div class="pt-cell pt-nonmetal" style="grid-column:17;grid-row:3;"><span class="pt-num">8</span><span class="pt-sym">O</span><span class="pt-mass">16</span><span class="pt-name">氧</span></div>
+        <div class="pt-cell pt-nonmetal pt-gVII" style="grid-column:18;grid-row:3;"><span class="pt-num">9</span><span class="pt-sym">F</span><span class="pt-mass">19</span><span class="pt-name">氟</span></div>
+        <div class="pt-cell pt-nonmetal pt-g0" style="grid-column:19;grid-row:3;"><span class="pt-num">10</span><span class="pt-sym">Ne</span><span class="pt-mass">20</span><span class="pt-name">氖</span></div>
+        <div class="pt-cell pt-metal pt-gI" style="grid-column:2;grid-row:4;"><span class="pt-num">11</span><span class="pt-sym">Na</span><span class="pt-mass">23</span><span class="pt-name">钠</span></div>
+        <div class="pt-cell pt-metal" style="grid-column:3;grid-row:4;"><span class="pt-num">12</span><span class="pt-sym">Mg</span><span class="pt-mass">24</span><span class="pt-name">镁</span></div>
+        <div class="pt-cell pt-metal" style="grid-column:14;grid-row:4;"><span class="pt-num">13</span><span class="pt-sym">Al</span><span class="pt-mass">27</span><span class="pt-name">铝</span></div>
+        <div class="pt-cell pt-metalloid" style="grid-column:15;grid-row:4;"><span class="pt-num">14</span><span class="pt-sym">Si</span><span class="pt-mass">28</span><span class="pt-name">硅</span></div>
+        <div class="pt-cell pt-nonmetal" style="grid-column:16;grid-row:4;"><span class="pt-num">15</span><span class="pt-sym">P</span><span class="pt-mass">31</span><span class="pt-name">磷</span></div>
+        <div class="pt-cell pt-nonmetal" style="grid-column:17;grid-row:4;"><span class="pt-num">16</span><span class="pt-sym">S</span><span class="pt-mass">32</span><span class="pt-name">硫</span></div>
+        <div class="pt-cell pt-nonmetal pt-gVII" style="grid-column:18;grid-row:4;"><span class="pt-num">17</span><span class="pt-sym">Cl</span><span class="pt-mass">35.5</span><span class="pt-name">氯</span></div>
+        <div class="pt-cell pt-nonmetal pt-g0" style="grid-column:19;grid-row:4;"><span class="pt-num">18</span><span class="pt-sym">Ar</span><span class="pt-mass">40</span><span class="pt-name">氩</span></div>
+        <div class="pt-cell pt-metal pt-gI" style="grid-column:2;grid-row:5;"><span class="pt-num">19</span><span class="pt-sym">K</span><span class="pt-mass">39</span><span class="pt-name">钾</span></div>
+        <div class="pt-cell pt-metal" style="grid-column:3;grid-row:5;"><span class="pt-num">20</span><span class="pt-sym">Ca</span><span class="pt-mass">40</span><span class="pt-name">钙</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:4;grid-row:5;"><span class="pt-num">21</span><span class="pt-sym">Sc</span><span class="pt-mass">45</span><span class="pt-name">钪</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:5;grid-row:5;"><span class="pt-num">22</span><span class="pt-sym">Ti</span><span class="pt-mass">48</span><span class="pt-name">钛</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:6;grid-row:5;"><span class="pt-num">23</span><span class="pt-sym">V</span><span class="pt-mass">51</span><span class="pt-name">钒</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:7;grid-row:5;"><span class="pt-num">24</span><span class="pt-sym">Cr</span><span class="pt-mass">52</span><span class="pt-name">铬</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:8;grid-row:5;"><span class="pt-num">25</span><span class="pt-sym">Mn</span><span class="pt-mass">55</span><span class="pt-name">锰</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:9;grid-row:5;"><span class="pt-num">26</span><span class="pt-sym">Fe</span><span class="pt-mass">56</span><span class="pt-name">铁</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:10;grid-row:5;"><span class="pt-num">27</span><span class="pt-sym">Co</span><span class="pt-mass">59</span><span class="pt-name">钴</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:11;grid-row:5;"><span class="pt-num">28</span><span class="pt-sym">Ni</span><span class="pt-mass">59</span><span class="pt-name">镍</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:12;grid-row:5;"><span class="pt-num">29</span><span class="pt-sym">Cu</span><span class="pt-mass">64</span><span class="pt-name">铜</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:13;grid-row:5;"><span class="pt-num">30</span><span class="pt-sym">Zn</span><span class="pt-mass">65</span><span class="pt-name">锌</span></div>
+        <div class="pt-cell pt-metal" style="grid-column:14;grid-row:5;"><span class="pt-num">31</span><span class="pt-sym">Ga</span><span class="pt-mass">70</span><span class="pt-name">镓</span></div>
+        <div class="pt-cell pt-metalloid" style="grid-column:15;grid-row:5;"><span class="pt-num">32</span><span class="pt-sym">Ge</span><span class="pt-mass">73</span><span class="pt-name">锗</span></div>
+        <div class="pt-cell pt-metalloid" style="grid-column:16;grid-row:5;"><span class="pt-num">33</span><span class="pt-sym">As</span><span class="pt-mass">75</span><span class="pt-name">砷</span></div>
+        <div class="pt-cell pt-nonmetal" style="grid-column:17;grid-row:5;"><span class="pt-num">34</span><span class="pt-sym">Se</span><span class="pt-mass">79</span><span class="pt-name">硒</span></div>
+        <div class="pt-cell pt-nonmetal pt-gVII" style="grid-column:18;grid-row:5;"><span class="pt-num">35</span><span class="pt-sym">Br</span><span class="pt-mass">80</span><span class="pt-name">溴</span></div>
+        <div class="pt-cell pt-nonmetal pt-g0" style="grid-column:19;grid-row:5;"><span class="pt-num">36</span><span class="pt-sym">Kr</span><span class="pt-mass">84</span><span class="pt-name">氪</span></div>
+        <div class="pt-cell pt-metal pt-gI" style="grid-column:2;grid-row:6;"><span class="pt-num">37</span><span class="pt-sym">Rb</span><span class="pt-mass">85</span><span class="pt-name">铷</span></div>
+        <div class="pt-cell pt-metal" style="grid-column:3;grid-row:6;"><span class="pt-num">38</span><span class="pt-sym">Sr</span><span class="pt-mass">88</span><span class="pt-name">锶</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:4;grid-row:6;"><span class="pt-num">39</span><span class="pt-sym">Y</span><span class="pt-mass">89</span><span class="pt-name">钇</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:5;grid-row:6;"><span class="pt-num">40</span><span class="pt-sym">Zr</span><span class="pt-mass">91</span><span class="pt-name">锆</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:6;grid-row:6;"><span class="pt-num">41</span><span class="pt-sym">Nb</span><span class="pt-mass">93</span><span class="pt-name">铌</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:7;grid-row:6;"><span class="pt-num">42</span><span class="pt-sym">Mo</span><span class="pt-mass">96</span><span class="pt-name">钼</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:8;grid-row:6;"><span class="pt-num">43</span><span class="pt-sym">Tc</span><span class="pt-mass">–</span><span class="pt-name">锝</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:9;grid-row:6;"><span class="pt-num">44</span><span class="pt-sym">Ru</span><span class="pt-mass">101</span><span class="pt-name">钌</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:10;grid-row:6;"><span class="pt-num">45</span><span class="pt-sym">Rh</span><span class="pt-mass">103</span><span class="pt-name">铑</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:11;grid-row:6;"><span class="pt-num">46</span><span class="pt-sym">Pd</span><span class="pt-mass">106</span><span class="pt-name">钯</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:12;grid-row:6;"><span class="pt-num">47</span><span class="pt-sym">Ag</span><span class="pt-mass">108</span><span class="pt-name">银</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:13;grid-row:6;"><span class="pt-num">48</span><span class="pt-sym">Cd</span><span class="pt-mass">112</span><span class="pt-name">镉</span></div>
+        <div class="pt-cell pt-metal" style="grid-column:14;grid-row:6;"><span class="pt-num">49</span><span class="pt-sym">In</span><span class="pt-mass">115</span><span class="pt-name">铟</span></div>
+        <div class="pt-cell pt-metal" style="grid-column:15;grid-row:6;"><span class="pt-num">50</span><span class="pt-sym">Sn</span><span class="pt-mass">119</span><span class="pt-name">锡</span></div>
+        <div class="pt-cell pt-metalloid" style="grid-column:16;grid-row:6;"><span class="pt-num">51</span><span class="pt-sym">Sb</span><span class="pt-mass">122</span><span class="pt-name">锑</span></div>
+        <div class="pt-cell pt-metalloid" style="grid-column:17;grid-row:6;"><span class="pt-num">52</span><span class="pt-sym">Te</span><span class="pt-mass">128</span><span class="pt-name">碲</span></div>
+        <div class="pt-cell pt-nonmetal pt-gVII" style="grid-column:18;grid-row:6;"><span class="pt-num">53</span><span class="pt-sym">I</span><span class="pt-mass">127</span><span class="pt-name">碘</span></div>
+        <div class="pt-cell pt-nonmetal pt-g0" style="grid-column:19;grid-row:6;"><span class="pt-num">54</span><span class="pt-sym">Xe</span><span class="pt-mass">131</span><span class="pt-name">氙</span></div>
+        <div class="pt-cell pt-metal pt-gI" style="grid-column:2;grid-row:7;"><span class="pt-num">55</span><span class="pt-sym">Cs</span><span class="pt-mass">133</span><span class="pt-name">铯</span></div>
+        <div class="pt-cell pt-metal" style="grid-column:3;grid-row:7;"><span class="pt-num">56</span><span class="pt-sym">Ba</span><span class="pt-mass">137</span><span class="pt-name">钡</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:5;grid-row:7;"><span class="pt-num">72</span><span class="pt-sym">Hf</span><span class="pt-mass">178</span><span class="pt-name">铪</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:6;grid-row:7;"><span class="pt-num">73</span><span class="pt-sym">Ta</span><span class="pt-mass">181</span><span class="pt-name">钽</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:7;grid-row:7;"><span class="pt-num">74</span><span class="pt-sym">W</span><span class="pt-mass">184</span><span class="pt-name">钨</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:8;grid-row:7;"><span class="pt-num">75</span><span class="pt-sym">Re</span><span class="pt-mass">186</span><span class="pt-name">铼</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:9;grid-row:7;"><span class="pt-num">76</span><span class="pt-sym">Os</span><span class="pt-mass">190</span><span class="pt-name">锇</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:10;grid-row:7;"><span class="pt-num">77</span><span class="pt-sym">Ir</span><span class="pt-mass">192</span><span class="pt-name">铱</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:11;grid-row:7;"><span class="pt-num">78</span><span class="pt-sym">Pt</span><span class="pt-mass">195</span><span class="pt-name">铂</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:12;grid-row:7;"><span class="pt-num">79</span><span class="pt-sym">Au</span><span class="pt-mass">197</span><span class="pt-name">金</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:13;grid-row:7;"><span class="pt-num">80</span><span class="pt-sym">Hg</span><span class="pt-mass">201</span><span class="pt-name">汞</span></div>
+        <div class="pt-cell pt-metal" style="grid-column:14;grid-row:7;"><span class="pt-num">81</span><span class="pt-sym">Tl</span><span class="pt-mass">204</span><span class="pt-name">铊</span></div>
+        <div class="pt-cell pt-metal" style="grid-column:15;grid-row:7;"><span class="pt-num">82</span><span class="pt-sym">Pb</span><span class="pt-mass">207</span><span class="pt-name">铅</span></div>
+        <div class="pt-cell pt-metal" style="grid-column:16;grid-row:7;"><span class="pt-num">83</span><span class="pt-sym">Bi</span><span class="pt-mass">209</span><span class="pt-name">铋</span></div>
+        <div class="pt-cell pt-metalloid" style="grid-column:17;grid-row:7;"><span class="pt-num">84</span><span class="pt-sym">Po</span><span class="pt-mass">–</span><span class="pt-name">钋</span></div>
+        <div class="pt-cell pt-metalloid pt-gVII" style="grid-column:18;grid-row:7;"><span class="pt-num">85</span><span class="pt-sym">At</span><span class="pt-mass">–</span><span class="pt-name">砹</span></div>
+        <div class="pt-cell pt-nonmetal pt-g0" style="grid-column:19;grid-row:7;"><span class="pt-num">86</span><span class="pt-sym">Rn</span><span class="pt-mass">–</span><span class="pt-name">氡</span></div>
+        <div class="pt-cell pt-metal pt-gI" style="grid-column:2;grid-row:8;"><span class="pt-num">87</span><span class="pt-sym">Fr</span><span class="pt-mass">–</span><span class="pt-name">钫</span></div>
+        <div class="pt-cell pt-metal" style="grid-column:3;grid-row:8;"><span class="pt-num">88</span><span class="pt-sym">Ra</span><span class="pt-mass">–</span><span class="pt-name">镭</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:5;grid-row:8;"><span class="pt-num">104</span><span class="pt-sym">Rf</span><span class="pt-mass">–</span><span class="pt-name">rutherfordium</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:6;grid-row:8;"><span class="pt-num">105</span><span class="pt-sym">Db</span><span class="pt-mass">–</span><span class="pt-name">dubnium</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:7;grid-row:8;"><span class="pt-num">106</span><span class="pt-sym">Sg</span><span class="pt-mass">–</span><span class="pt-name">seaborgium</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:8;grid-row:8;"><span class="pt-num">107</span><span class="pt-sym">Bh</span><span class="pt-mass">–</span><span class="pt-name">bohrium</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:9;grid-row:8;"><span class="pt-num">108</span><span class="pt-sym">Hs</span><span class="pt-mass">–</span><span class="pt-name">hassium</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:10;grid-row:8;"><span class="pt-num">109</span><span class="pt-sym">Mt</span><span class="pt-mass">–</span><span class="pt-name">meitnerium</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:11;grid-row:8;"><span class="pt-num">110</span><span class="pt-sym">Ds</span><span class="pt-mass">–</span><span class="pt-name">darmstadtium</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:12;grid-row:8;"><span class="pt-num">111</span><span class="pt-sym">Rg</span><span class="pt-mass">–</span><span class="pt-name">roentgenium</span></div>
+        <div class="pt-cell pt-transition" style="grid-column:13;grid-row:8;"><span class="pt-num">112</span><span class="pt-sym">Cn</span><span class="pt-mass">–</span><span class="pt-name">copernicium</span></div>
+        <div class="pt-cell pt-metal" style="grid-column:14;grid-row:8;"><span class="pt-num">113</span><span class="pt-sym">Nh</span><span class="pt-mass">–</span><span class="pt-name">nihonium</span></div>
+        <div class="pt-cell pt-metal" style="grid-column:15;grid-row:8;"><span class="pt-num">114</span><span class="pt-sym">Fl</span><span class="pt-mass">–</span><span class="pt-name">flerovium</span></div>
+        <div class="pt-cell pt-metal" style="grid-column:16;grid-row:8;"><span class="pt-num">115</span><span class="pt-sym">Mc</span><span class="pt-mass">–</span><span class="pt-name">moscovium</span></div>
+        <div class="pt-cell pt-metal" style="grid-column:17;grid-row:8;"><span class="pt-num">116</span><span class="pt-sym">Lv</span><span class="pt-mass">–</span><span class="pt-name">livermorium</span></div>
+        <div class="pt-cell pt-nonmetal pt-gVII" style="grid-column:18;grid-row:8;"><span class="pt-num">117</span><span class="pt-sym">Ts</span><span class="pt-mass">–</span><span class="pt-name">tennessine</span></div>
+        <div class="pt-cell pt-nonmetal pt-g0" style="grid-column:19;grid-row:8;"><span class="pt-num">118</span><span class="pt-sym">Og</span><span class="pt-mass">–</span><span class="pt-name">oganesson</span></div>
+        <div class="pt-cell pt-lanthanide" style="grid-column:4;grid-row:7;"><span class="pt-num">57–71</span><span class="pt-sym" style="font-size:0.62rem;">镧系</span><span class="pt-name">Lanthanoids</span></div>
+        <div class="pt-cell pt-actinide" style="grid-column:4;grid-row:8;"><span class="pt-num">89–103</span><span class="pt-sym" style="font-size:0.62rem;">锕系</span><span class="pt-name">Actinoids</span></div>
       </div>
     </div>
     <p style="margin:0.7rem 0 0.3rem 0;font-size:0.78rem;color:var(--ink-soft);">57–71 号镧系元素（lanthanoids）和 89–103 号锕系元素（actinoids）单独列在下面，不占主表宽度（和官方附表的画法一样）：</p>
     <div class="pt-wrap">
       <div class="pt-fblock">
-        <div class="pt-cell pt-lanthanide" style="grid-column:1;grid-row:1;"><span class="pt-num">57</span><span class="pt-sym">La</span><span class="pt-mass">139</span><span class="pt-name">镧</span></div>
-        <div class="pt-cell pt-lanthanide" style="grid-column:2;grid-row:1;"><span class="pt-num">58</span><span class="pt-sym">Ce</span><span class="pt-mass">140</span><span class="pt-name">铈</span></div>
-        <div class="pt-cell pt-lanthanide" style="grid-column:3;grid-row:1;"><span class="pt-num">59</span><span class="pt-sym">Pr</span><span class="pt-mass">141</span><span class="pt-name">镨</span></div>
-        <div class="pt-cell pt-lanthanide" style="grid-column:4;grid-row:1;"><span class="pt-num">60</span><span class="pt-sym">Nd</span><span class="pt-mass">144</span><span class="pt-name">钕</span></div>
-        <div class="pt-cell pt-lanthanide" style="grid-column:5;grid-row:1;"><span class="pt-num">61</span><span class="pt-sym">Pm</span><span class="pt-mass">–</span><span class="pt-name">钷</span></div>
-        <div class="pt-cell pt-lanthanide" style="grid-column:6;grid-row:1;"><span class="pt-num">62</span><span class="pt-sym">Sm</span><span class="pt-mass">150</span><span class="pt-name">钐</span></div>
-        <div class="pt-cell pt-lanthanide" style="grid-column:7;grid-row:1;"><span class="pt-num">63</span><span class="pt-sym">Eu</span><span class="pt-mass">152</span><span class="pt-name">铕</span></div>
-        <div class="pt-cell pt-lanthanide" style="grid-column:8;grid-row:1;"><span class="pt-num">64</span><span class="pt-sym">Gd</span><span class="pt-mass">157</span><span class="pt-name">钆</span></div>
-        <div class="pt-cell pt-lanthanide" style="grid-column:9;grid-row:1;"><span class="pt-num">65</span><span class="pt-sym">Tb</span><span class="pt-mass">159</span><span class="pt-name">铽</span></div>
-        <div class="pt-cell pt-lanthanide" style="grid-column:10;grid-row:1;"><span class="pt-num">66</span><span class="pt-sym">Dy</span><span class="pt-mass">163</span><span class="pt-name">镝</span></div>
-        <div class="pt-cell pt-lanthanide" style="grid-column:11;grid-row:1;"><span class="pt-num">67</span><span class="pt-sym">Ho</span><span class="pt-mass">165</span><span class="pt-name">钬</span></div>
-        <div class="pt-cell pt-lanthanide" style="grid-column:12;grid-row:1;"><span class="pt-num">68</span><span class="pt-sym">Er</span><span class="pt-mass">167</span><span class="pt-name">铒</span></div>
-        <div class="pt-cell pt-lanthanide" style="grid-column:13;grid-row:1;"><span class="pt-num">69</span><span class="pt-sym">Tm</span><span class="pt-mass">169</span><span class="pt-name">铥</span></div>
-        <div class="pt-cell pt-lanthanide" style="grid-column:14;grid-row:1;"><span class="pt-num">70</span><span class="pt-sym">Yb</span><span class="pt-mass">173</span><span class="pt-name">镱</span></div>
-        <div class="pt-cell pt-lanthanide" style="grid-column:15;grid-row:1;"><span class="pt-num">71</span><span class="pt-sym">Lu</span><span class="pt-mass">175</span><span class="pt-name">镥</span></div>
+        <div class="pt-cell pt-axis" style="grid-column:1;grid-row:1;"><span class="pt-axis-label">镧系<br>La series</span></div>
+        <div class="pt-cell pt-lanthanide" style="grid-column:2;grid-row:1;"><span class="pt-num">57</span><span class="pt-sym">La</span><span class="pt-mass">139</span><span class="pt-name">镧</span></div>
+        <div class="pt-cell pt-lanthanide" style="grid-column:3;grid-row:1;"><span class="pt-num">58</span><span class="pt-sym">Ce</span><span class="pt-mass">140</span><span class="pt-name">铈</span></div>
+        <div class="pt-cell pt-lanthanide" style="grid-column:4;grid-row:1;"><span class="pt-num">59</span><span class="pt-sym">Pr</span><span class="pt-mass">141</span><span class="pt-name">镨</span></div>
+        <div class="pt-cell pt-lanthanide" style="grid-column:5;grid-row:1;"><span class="pt-num">60</span><span class="pt-sym">Nd</span><span class="pt-mass">144</span><span class="pt-name">钕</span></div>
+        <div class="pt-cell pt-lanthanide" style="grid-column:6;grid-row:1;"><span class="pt-num">61</span><span class="pt-sym">Pm</span><span class="pt-mass">–</span><span class="pt-name">钷</span></div>
+        <div class="pt-cell pt-lanthanide" style="grid-column:7;grid-row:1;"><span class="pt-num">62</span><span class="pt-sym">Sm</span><span class="pt-mass">150</span><span class="pt-name">钐</span></div>
+        <div class="pt-cell pt-lanthanide" style="grid-column:8;grid-row:1;"><span class="pt-num">63</span><span class="pt-sym">Eu</span><span class="pt-mass">152</span><span class="pt-name">铕</span></div>
+        <div class="pt-cell pt-lanthanide" style="grid-column:9;grid-row:1;"><span class="pt-num">64</span><span class="pt-sym">Gd</span><span class="pt-mass">157</span><span class="pt-name">钆</span></div>
+        <div class="pt-cell pt-lanthanide" style="grid-column:10;grid-row:1;"><span class="pt-num">65</span><span class="pt-sym">Tb</span><span class="pt-mass">159</span><span class="pt-name">铽</span></div>
+        <div class="pt-cell pt-lanthanide" style="grid-column:11;grid-row:1;"><span class="pt-num">66</span><span class="pt-sym">Dy</span><span class="pt-mass">163</span><span class="pt-name">镝</span></div>
+        <div class="pt-cell pt-lanthanide" style="grid-column:12;grid-row:1;"><span class="pt-num">67</span><span class="pt-sym">Ho</span><span class="pt-mass">165</span><span class="pt-name">钬</span></div>
+        <div class="pt-cell pt-lanthanide" style="grid-column:13;grid-row:1;"><span class="pt-num">68</span><span class="pt-sym">Er</span><span class="pt-mass">167</span><span class="pt-name">铒</span></div>
+        <div class="pt-cell pt-lanthanide" style="grid-column:14;grid-row:1;"><span class="pt-num">69</span><span class="pt-sym">Tm</span><span class="pt-mass">169</span><span class="pt-name">铥</span></div>
+        <div class="pt-cell pt-lanthanide" style="grid-column:15;grid-row:1;"><span class="pt-num">70</span><span class="pt-sym">Yb</span><span class="pt-mass">173</span><span class="pt-name">镱</span></div>
+        <div class="pt-cell pt-lanthanide" style="grid-column:16;grid-row:1;"><span class="pt-num">71</span><span class="pt-sym">Lu</span><span class="pt-mass">175</span><span class="pt-name">镥</span></div>
       </div>
     </div>
     <div class="pt-wrap">
       <div class="pt-fblock">
-        <div class="pt-cell pt-actinide" style="grid-column:1;grid-row:1;"><span class="pt-num">89</span><span class="pt-sym">Ac</span><span class="pt-mass">–</span><span class="pt-name">锕</span></div>
-        <div class="pt-cell pt-actinide" style="grid-column:2;grid-row:1;"><span class="pt-num">90</span><span class="pt-sym">Th</span><span class="pt-mass">232</span><span class="pt-name">钍</span></div>
-        <div class="pt-cell pt-actinide" style="grid-column:3;grid-row:1;"><span class="pt-num">91</span><span class="pt-sym">Pa</span><span class="pt-mass">231</span><span class="pt-name">镤</span></div>
-        <div class="pt-cell pt-actinide" style="grid-column:4;grid-row:1;"><span class="pt-num">92</span><span class="pt-sym">U</span><span class="pt-mass">238</span><span class="pt-name">铀</span></div>
-        <div class="pt-cell pt-actinide" style="grid-column:5;grid-row:1;"><span class="pt-num">93</span><span class="pt-sym">Np</span><span class="pt-mass">–</span><span class="pt-name">镎</span></div>
-        <div class="pt-cell pt-actinide" style="grid-column:6;grid-row:1;"><span class="pt-num">94</span><span class="pt-sym">Pu</span><span class="pt-mass">–</span><span class="pt-name">钚</span></div>
-        <div class="pt-cell pt-actinide" style="grid-column:7;grid-row:1;"><span class="pt-num">95</span><span class="pt-sym">Am</span><span class="pt-mass">–</span><span class="pt-name">镅</span></div>
-        <div class="pt-cell pt-actinide" style="grid-column:8;grid-row:1;"><span class="pt-num">96</span><span class="pt-sym">Cm</span><span class="pt-mass">–</span><span class="pt-name">锔</span></div>
-        <div class="pt-cell pt-actinide" style="grid-column:9;grid-row:1;"><span class="pt-num">97</span><span class="pt-sym">Bk</span><span class="pt-mass">–</span><span class="pt-name">锫</span></div>
-        <div class="pt-cell pt-actinide" style="grid-column:10;grid-row:1;"><span class="pt-num">98</span><span class="pt-sym">Cf</span><span class="pt-mass">–</span><span class="pt-name">锎</span></div>
-        <div class="pt-cell pt-actinide" style="grid-column:11;grid-row:1;"><span class="pt-num">99</span><span class="pt-sym">Es</span><span class="pt-mass">–</span><span class="pt-name">锿</span></div>
-        <div class="pt-cell pt-actinide" style="grid-column:12;grid-row:1;"><span class="pt-num">100</span><span class="pt-sym">Fm</span><span class="pt-mass">–</span><span class="pt-name">镄</span></div>
-        <div class="pt-cell pt-actinide" style="grid-column:13;grid-row:1;"><span class="pt-num">101</span><span class="pt-sym">Md</span><span class="pt-mass">–</span><span class="pt-name">钔</span></div>
-        <div class="pt-cell pt-actinide" style="grid-column:14;grid-row:1;"><span class="pt-num">102</span><span class="pt-sym">No</span><span class="pt-mass">–</span><span class="pt-name">锘</span></div>
-        <div class="pt-cell pt-actinide" style="grid-column:15;grid-row:1;"><span class="pt-num">103</span><span class="pt-sym">Lr</span><span class="pt-mass">–</span><span class="pt-name">铹</span></div>
+        <div class="pt-cell pt-axis" style="grid-column:1;grid-row:1;"><span class="pt-axis-label">锕系<br>Ac series</span></div>
+        <div class="pt-cell pt-actinide" style="grid-column:2;grid-row:1;"><span class="pt-num">89</span><span class="pt-sym">Ac</span><span class="pt-mass">–</span><span class="pt-name">锕</span></div>
+        <div class="pt-cell pt-actinide" style="grid-column:3;grid-row:1;"><span class="pt-num">90</span><span class="pt-sym">Th</span><span class="pt-mass">232</span><span class="pt-name">钍</span></div>
+        <div class="pt-cell pt-actinide" style="grid-column:4;grid-row:1;"><span class="pt-num">91</span><span class="pt-sym">Pa</span><span class="pt-mass">231</span><span class="pt-name">镤</span></div>
+        <div class="pt-cell pt-actinide" style="grid-column:5;grid-row:1;"><span class="pt-num">92</span><span class="pt-sym">U</span><span class="pt-mass">238</span><span class="pt-name">铀</span></div>
+        <div class="pt-cell pt-actinide" style="grid-column:6;grid-row:1;"><span class="pt-num">93</span><span class="pt-sym">Np</span><span class="pt-mass">–</span><span class="pt-name">镎</span></div>
+        <div class="pt-cell pt-actinide" style="grid-column:7;grid-row:1;"><span class="pt-num">94</span><span class="pt-sym">Pu</span><span class="pt-mass">–</span><span class="pt-name">钚</span></div>
+        <div class="pt-cell pt-actinide" style="grid-column:8;grid-row:1;"><span class="pt-num">95</span><span class="pt-sym">Am</span><span class="pt-mass">–</span><span class="pt-name">镅</span></div>
+        <div class="pt-cell pt-actinide" style="grid-column:9;grid-row:1;"><span class="pt-num">96</span><span class="pt-sym">Cm</span><span class="pt-mass">–</span><span class="pt-name">锔</span></div>
+        <div class="pt-cell pt-actinide" style="grid-column:10;grid-row:1;"><span class="pt-num">97</span><span class="pt-sym">Bk</span><span class="pt-mass">–</span><span class="pt-name">锫</span></div>
+        <div class="pt-cell pt-actinide" style="grid-column:11;grid-row:1;"><span class="pt-num">98</span><span class="pt-sym">Cf</span><span class="pt-mass">–</span><span class="pt-name">锎</span></div>
+        <div class="pt-cell pt-actinide" style="grid-column:12;grid-row:1;"><span class="pt-num">99</span><span class="pt-sym">Es</span><span class="pt-mass">–</span><span class="pt-name">锿</span></div>
+        <div class="pt-cell pt-actinide" style="grid-column:13;grid-row:1;"><span class="pt-num">100</span><span class="pt-sym">Fm</span><span class="pt-mass">–</span><span class="pt-name">镄</span></div>
+        <div class="pt-cell pt-actinide" style="grid-column:14;grid-row:1;"><span class="pt-num">101</span><span class="pt-sym">Md</span><span class="pt-mass">–</span><span class="pt-name">钔</span></div>
+        <div class="pt-cell pt-actinide" style="grid-column:15;grid-row:1;"><span class="pt-num">102</span><span class="pt-sym">No</span><span class="pt-mass">–</span><span class="pt-name">锘</span></div>
+        <div class="pt-cell pt-actinide" style="grid-column:16;grid-row:1;"><span class="pt-num">103</span><span class="pt-sym">Lr</span><span class="pt-mass">–</span><span class="pt-name">铹</span></div>
       </div>
     </div>
     <div class="pt-legend">

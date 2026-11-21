@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C2 & C8 词汇表与小测 Vocabulary & Quiz</title>
+<style>
+  :root{--paper:#faf6ee;--ink:#241c1a;--ink-soft:#5c534e;--oxy-red:#b3382c;--deoxy-blue:#2c5f7c;--leaf:#4a7a4e;--line:#e3d9c8;--panel:#fff;--accent-soft:#f1e3d3;}
+  *{box-sizing:border-box;}
+  html{font-size:17px;scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6;}
+  header{padding:1.8rem 1.2rem 1rem;border-bottom:1px solid var(--line);}
+  h1{font-family:Georgia,"Songti SC","STSong",serif;font-size:1.8rem;margin:0 0 .3rem;}
+  h1 .en{display:block;font-size:1rem;font-style:italic;font-weight:400;color:var(--ink-soft);}
+  .back{font-size:.85rem;display:inline-block;margin-bottom:.8rem;color:var(--deoxy-blue);text-decoration:none;}
+  .sub{font-size:.9rem;color:var(--ink-soft);margin:.3rem 0 0;max-width:760px;}
+  nav.toc{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--line);padding:.5rem 1.2rem;display:flex;gap:.4rem;flex-wrap:nowrap;overflow-x:auto;}
+  nav.toc a{white-space:nowrap;flex:none;}
+  nav.toc a{font-size:.78rem;padding:.25rem .7rem;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);text-decoration:none;}
+  nav.toc a:hover{background:var(--accent-soft);}
+  main{padding:0 1.2rem 4rem;max-width:1100px;margin:0 auto;}
+  section{margin-top:2rem;scroll-margin-top:3.2rem;}
+  h2{font-family:Georgia,"Songti SC",serif;font-size:1.3rem;margin:0 0 .2rem;color:var(--deoxy-blue);}
+  h2 .en{font-size:.85rem;font-style:italic;font-weight:400;color:var(--ink-soft);margin-left:.5rem;}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1rem 1.2rem;margin-top:.9rem;}
+  table{width:100%;border-collapse:collapse;font-size:.88rem;}
+  th{text-align:left;font-size:.75rem;color:var(--ink-soft);font-weight:600;padding:.35rem .5rem;border-bottom:2px solid var(--line);}
+  td{padding:.4rem .5rem;border-bottom:1px solid var(--line);vertical-align:top;}
+  td.en{font-weight:700;white-space:nowrap;}
+  td.sym{font-weight:800;font-family:Georgia,serif;font-size:1.05rem;}
+  .tag{display:inline-block;font-size:.66rem;font-weight:700;padding:.1rem .45rem;border-radius:999px;margin-left:.4rem;vertical-align:middle;white-space:nowrap;}
+  .tag.igcse{background:#f0e6f6;color:#7a4a9e;border:1px solid #d6bce8;}
+  .note{margin-top:.9rem;padding:.6rem .9rem;background:var(--accent-soft);border-left:3px solid var(--oxy-red);border-radius:0 6px 6px 0;font-size:.82rem;color:var(--ink-soft);}
+  .quiz-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:1.2rem;align-items:start;}
+  .figwrap{position:relative;}
+  .figwrap img{width:100%;height:auto;display:block;border-radius:8px;border:1px solid var(--line);}
+  .mk{position:absolute;transform:translate(-50%,-50%);width:1.7rem;height:1.7rem;border-radius:50%;background:#fff;border:2px solid var(--ink);font-weight:800;font-size:.9rem;display:flex;align-items:center;justify-content:center;}
+  .qrow{display:flex;align-items:center;gap:.5rem;margin:.35rem 0;font-size:.9rem;}
+  .qrow .n{flex:none;width:1.6rem;height:1.6rem;border-radius:50%;border:2px solid var(--ink);font-weight:800;font-size:.8rem;display:flex;align-items:center;justify-content:center;}
+  .zh{color:var(--ink-soft);font-size:.82rem;}
+  .qrow .q{flex:1 1 auto;min-width:6.5rem;}
+  input.ans{font:inherit;font-size:.9rem;padding:.3rem .5rem;border:1.5px solid #c9b896;border-radius:6px;background:#fffdf8;width:11rem;max-width:100%;}
+  input.ans.sm{width:4.6rem;text-align:center;}
+  input.ans:focus{outline:2px solid var(--deoxy-blue);outline-offset:1px;}
+  input.ans.ok{border-color:#1f9e4c;background:#e8f6ec;}
+  input.ans.bad{border-color:#e0362b;background:#fdecea;}
+  .fb{font-size:.78rem;min-width:4rem;}
+  .fb.ok{color:#1f9e4c;font-weight:700;} .fb.bad{color:#c0291f;}
+  .btns{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin-top:.8rem;}
+  button{font:inherit;font-size:.85rem;padding:.4rem .9rem;border-radius:7px;border:1px solid var(--deoxy-blue);background:var(--deoxy-blue);color:#fff;cursor:pointer;}
+  button.sec{background:#fff;color:var(--deoxy-blue);}
+  .score{font-weight:700;margin-left:.4rem;}
+  .cloze{margin:.6rem 0;font-size:.92rem;}
+  .cloze input.ans{width:8.5rem;margin:0 .2rem;}
+  .two{columns:2;column-gap:1.5rem;}
+  .two .qrow{break-inside:avoid;}
+  @media (max-width:760px){
+    .quiz-grid{grid-template-columns:1fr;} .two{columns:1;}
+    td.en{white-space:normal;} h1{font-size:1.45rem;} input.ans{width:8.5rem;}
+  }
+  @media print{nav.toc,.btns{display:none;} body{background:#fff;}}
+</style>
+</head>
+<body>
+<header>
+  <a class="back" href="index.html">← 返回讲义 Back to notes</a>
+  <h1>C2 &amp; C8 词汇表与小测<span class="en">Vocabulary and Quiz — Atoms, Elements, Compounds &amp; the Periodic Table</span></h1>
+  <p class="sub">先看词汇表，再做小测。小测要<b>手打英文</b>，拼写要对（大小写不用管，元素符号除外）。点 <b>Check 检查</b> 看对错，点 <b>Show answers 显示答案</b> 对答案。</p>
+  <p class="sub"><span class="tag igcse" style="margin-left:0">IGCSE</span> 标记的词是 0653 IGCSE 才要求的，现在可以先跳过。</p>
+</header>
+<nav class="toc">
+  <a href="#v-c2">词汇 C2</a><a href="#v-c8">词汇 C8</a><a href="#v-el">元素名称</a>
+  <a href="#q-atom">小测1 原子图</a><a href="#q-exp">小测2 实验图</a><a href="#q-zh">小测3 中译英</a><a href="#q-sym">小测4 元素名</a><a href="#q-name">小测5 元素符号</a><a href="#q-cloze">小测6 填空</a>
+</nav>
+<main>
+
+<section id="v-c2"><h2>C2 词汇表<span class="en">Atoms, Elements and Compounds</span></h2>
+  <div class="card"><div id="tbl-c2"></div></div></section>
+<section id="v-c8"><h2>C8 词汇表<span class="en">The Periodic Table</span></h2>
+  <div class="card"><div id="tbl-c8"></div></div></section>
+<section id="v-el"><h2>元素名称与符号<span class="en">Element names and symbols</span></h2>
+  <div class="card"><div id="tbl-el"></div>
+  <div class="note"><b>小技巧：</b>有些符号来自拉丁文名字，所以和英文名对不上：<b>Na</b>（natrium 钠）、<b>K</b>（kalium 钾）、<b>Fe</b>（ferrum 铁）、<b>Cu</b>（cuprum 铜）、<b>Ag</b>（argentum 银）、<b>Au</b>（aurum 金）、<b>Pb</b>（plumbum 铅）、<b>Hg</b>（hydrargyrum 汞）、<b>Sn</b>（stannum 锡）。<br>写符号规则：第一个字母<b>大写</b>，第二个字母<b>小写</b>（Cl 不是 CL，Co 不是 CO）。<br>拼写：英式拼写 <b>aluminium</b>、<b>sulfur</b>（Cambridge 用 sulfur，不用 sulphur）。</div></div></section>
+
+<section id="q-atom"><h2>小测 1：给原子图写英文<span class="en">Label the atom</span></h2>
+  <div class="card"><div class="quiz-grid">
+    <div><svg viewBox="0 0 640 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Carbon atom diagram with numbered pointers" style="width:100%;height:auto;display:block;font-family:-apple-system,'Segoe UI',sans-serif">
+<defs>
+<radialGradient id="gP" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#bfdcf5"/><stop offset="1" stop-color="#4f93cf"/></radialGradient>
+<radialGradient id="gN" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fbd2c8"/><stop offset="1" stop-color="#e0786a"/></radialGradient>
+<radialGradient id="gE" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#cfe9cf"/><stop offset="1" stop-color="#6fb273"/></radialGradient>
+</defs>
+<rect width="640" height="540" rx="12" fill="#fdfbf6"/>
+<circle cx="330" cy="270" r="190" fill="none" stroke="#6b7d6d" stroke-width="2.4"/>
+<circle cx="330" cy="270" r="100" fill="none" stroke="#6b7d6d" stroke-width="2.4"/>
+<circle cx="330" cy="270" r="62" fill="none" stroke="#f0a64a" stroke-width="1.8" stroke-dasharray="5 4"/>
+<circle cx="316.7" cy="241.5" r="16" fill="url(#gP)" stroke="#2c5f7c" stroke-width="1"/><path d="M309.7 241.5h14M316.7 234.5v14" stroke="#10304a" stroke-width="2.4" stroke-linecap="round"/><circle cx="345.2" cy="247.2" r="16" fill="url(#gN)" stroke="#b3382c" stroke-width="1"/><circle cx="297.7" cy="266.2" r="16" fill="url(#gN)" stroke="#b3382c" stroke-width="1"/><circle cx="331.9" cy="266.2" r="16" fill="url(#gP)" stroke="#2c5f7c" stroke-width="1"/><path d="M324.9 266.2h14M331.9 259.2v14" stroke="#10304a" stroke-width="2.4" stroke-linecap="round"/><circle cx="360.4" cy="268.1" r="16" fill="url(#gP)" stroke="#2c5f7c" stroke-width="1"/><path d="M353.4 268.1h14M360.4 261.1v14" stroke="#10304a" stroke-width="2.4" stroke-linecap="round"/><circle cx="316.7" cy="290.9" r="16" fill="url(#gN)" stroke="#b3382c" stroke-width="1"/><circle cx="347.1" cy="292.8" r="16" fill="url(#gN)" stroke="#b3382c" stroke-width="1"/><circle cx="293.9" cy="292.8" r="16" fill="url(#gP)" stroke="#2c5f7c" stroke-width="1"/><path d="M286.9 292.8h14M293.9 285.8v14" stroke="#10304a" stroke-width="2.4" stroke-linecap="round"/><circle cx="326.2" cy="308.0" r="16" fill="url(#gP)" stroke="#2c5f7c" stroke-width="1"/><path d="M319.2 308.0h14M326.2 301.0v14" stroke="#10304a" stroke-width="2.4" stroke-linecap="round"/><circle cx="368.0" cy="292.8" r="16" fill="url(#gN)" stroke="#b3382c" stroke-width="1"/><circle cx="309.1" cy="251.0" r="16" fill="url(#gN)" stroke="#b3382c" stroke-width="1"/><circle cx="339.5" cy="281.4" r="16" fill="url(#gP)" stroke="#2c5f7c" stroke-width="1"/><path d="M332.5 281.4h14M339.5 274.4v14" stroke="#10304a" stroke-width="2.4" stroke-linecap="round"/><circle cx="236.0" cy="304.2" r="13" fill="url(#gE)" stroke="#3d7a45" stroke-width="1"/><rect x="230.0" y="303.0" width="12" height="2.4" rx="1" fill="#1d3a22"/><circle cx="424.0" cy="235.8" r="13" fill="url(#gE)" stroke="#3d7a45" stroke-width="1"/><rect x="418.0" y="234.6" width="12" height="2.4" rx="1" fill="#1d3a22"/><circle cx="425.0" cy="105.5" r="13" fill="url(#gE)" stroke="#3d7a45" stroke-width="1"/><rect x="419.0" y="104.3" width="12" height="2.4" rx="1" fill="#1d3a22"/><circle cx="165.5" cy="175.0" r="13" fill="url(#gE)" stroke="#3d7a45" stroke-width="1"/><rect x="159.5" y="173.8" width="12" height="2.4" rx="1" fill="#1d3a22"/><circle cx="235.0" cy="434.5" r="13" fill="url(#gE)" stroke="#3d7a45" stroke-width="1"/><rect x="229.0" y="433.3" width="12" height="2.4" rx="1" fill="#1d3a22"/><circle cx="494.5" cy="365.0" r="13" fill="url(#gE)" stroke="#3d7a45" stroke-width="1"/><rect x="488.5" y="363.8" width="12" height="2.4" rx="1" fill="#1d3a22"/><line x1="590" y1="170" x2="322.7" y2="239.5" stroke="#241c1a" stroke-width="1.6"/><circle cx="322.7" cy="239.5" r="3.5" fill="#241c1a"/><circle cx="590" cy="170" r="14" fill="#fff" stroke="#241c1a" stroke-width="2"/><text x="590" y="175" text-anchor="middle" font-size="15" font-weight="700" fill="#241c1a">1</text><line x1="480" y1="470" x2="351.1" y2="298.8" stroke="#241c1a" stroke-width="1.6"/><circle cx="351.1" cy="298.8" r="3.5" fill="#241c1a"/><circle cx="480" cy="470" r="14" fill="#fff" stroke="#241c1a" stroke-width="2"/><text x="480" y="475" text-anchor="middle" font-size="15" font-weight="700" fill="#241c1a">2</text><line x1="60" y1="150" x2="159.45517328095664" y2="173.0" stroke="#241c1a" stroke-width="1.6"/><circle cx="159.45517328095664" cy="173.0" r="3.5" fill="#241c1a"/><circle cx="60" cy="150" r="14" fill="#fff" stroke="#241c1a" stroke-width="2"/><text x="60" y="155" text-anchor="middle" font-size="15" font-weight="700" fill="#241c1a">3</text><line x1="240" y1="32" x2="280.82438143052104" y2="86.47409300507701" stroke="#241c1a" stroke-width="1.6"/><circle cx="280.82438143052104" cy="86.47409300507701" r="3.5" fill="#241c1a"/><circle cx="240" cy="32" r="14" fill="#fff" stroke="#241c1a" stroke-width="2"/><text x="240" y="37" text-anchor="middle" font-size="15" font-weight="700" fill="#241c1a">4</text><line x1="110" y1="440" x2="271.7390575112737" y2="291.20524888619144" stroke="#241c1a" stroke-width="1.6"/><circle cx="271.7390575112737" cy="291.20524888619144" r="3.5" fill="#241c1a"/><circle cx="110" cy="440" r="14" fill="#fff" stroke="#241c1a" stroke-width="2"/><text x="110" y="445" text-anchor="middle" font-size="15" font-weight="700" fill="#241c1a">5</text>
+<text x="330" y="515" text-anchor="middle" font-size="20" font-weight="700" fill="#241c1a">Carbon atom (C)</text>
+</svg></div>
+    <div id="quiz-atom"></div>
+  </div></div></section>
+
+<section id="q-exp"><h2>小测 2：给实验图写英文<span class="en">Label the iron + sulfur experiment</span></h2>
+  <div class="card"><div class="quiz-grid">
+    <div class="figwrap"><img src="../../shared/images/chemistry/iron-sulfur-quiz.jpg" alt="Iron and sulfur experiment, labels hidden"><span class="mk" style="left:67.38%;top:6.84%">1</span><span class="mk" style="left:94.47%;top:27.54%">2</span><span class="mk" style="left:77.60%;top:35.16%">3</span><span class="mk" style="left:70.38%;top:55.86%">4</span><span class="mk" style="left:12.24%;top:25.68%">5</span><span class="mk" style="left:13.41%;top:41.80%">6</span><span class="mk" style="left:29.62%;top:67.38%">7</span><span class="mk" style="left:65.10%;top:21.00%">8</span></div>
+    <div id="quiz-exp"></div>
+  </div></div></section>
+
+<section id="q-zh"><h2>小测 3：中文写英文<span class="en">Translate into English</span></h2>
+  <div class="card"><div id="quiz-zh" class="two"></div></div></section>
+
+<section id="q-sym"><h2>小测 4：看符号，写元素英文名<span class="en">Symbol → name</span></h2>
+  <div class="card"><div id="quiz-sym" class="two"></div></div></section>
+
+<section id="q-name"><h2>小测 5：看英文名，写元素符号<span class="en">Name → symbol</span></h2>
+  <div class="card"><div id="quiz-name" class="two"></div>
+  <div class="note">符号要注意<b>大小写</b>：Na 对，NA 或 na 都算错。</div></div></section>
+
+<section id="q-cloze"><h2>小测 6：句子填空<span class="en">Fill in the gaps</span></h2>
+  <div class="card"><div id="quiz-cloze"></div></div></section>
+
+</main>
+<script>
+const I='igcse';
+const C2=[
+ ['atom','原子','the smallest particle of an element'],
+ ['proton','质子','a positive (+1) particle in the nucleus'],
+ ['neutron','中子','a particle with no charge in the nucleus'],
+ ['electron','电子','a negative (−1) particle that moves around the nucleus'],
+ ['nucleus','原子核','the centre of an atom; it has protons and neutrons'],
+ ['electron shell','电子层','a ring (energy level) where electrons move'],
+ ['charge','电荷','positive, negative or neutral'],
+ ['positive / negative','正的 / 负的',''],
+ ['neutral','中性的；不带电的','no charge'],
+ ['relative mass','相对质量','mass compared with a proton (proton = 1)'],
+ ['proton number','原子序数；质子数','number of protons in an atom (also: atomic number)'],
+ ['nucleon number','质量数','protons + neutrons (also: mass number)'],
+ ['isotope','同位素','atoms of the same element with different numbers of neutrons',I],
+ ['element','元素','a substance made of only one type of atom'],
+ ['compound','化合物','two or more elements chemically joined, in a fixed ratio'],
+ ['mixture','混合物','substances just mixed together, not chemically joined'],
+ ['chemical symbol','元素符号','one or two letters for an element, e.g. Fe'],
+ ['chemical reaction','化学反应','a change that makes a new substance'],
+ ['fixed ratio','固定比例','always the same amounts, e.g. H₂O is always 2 H : 1 O'],
+ ['properties','性质','what a substance is like (colour, magnetic, melting point…)'],
+ ['magnet / magnetic','磁铁 / 有磁性的','iron is magnetic; sulfur is not'],
+ ['separate','分离','to take apart (a mixture can be separated by a magnet)'],
+ ['iron sulfide','硫化亚铁','the compound made when iron and sulfur are heated (FeS)'],
+ ['powder','粉末','tiny pieces of a solid'],
+ ['Bunsen burner','本生灯','a gas burner for heating in the lab'],
+ ['test tube','试管','a small glass tube for experiments'],
+ ['mineral wool','矿物棉','soft heat-proof material in the mouth of a test tube'],
+ ['clamp','夹子','holds the test tube'],
+ ['flame','火焰','the burning gas'],
+ ['sulfur dioxide','二氧化硫','SO₂ — gas made when sulfur burns; causes acid rain'],
+];
+const C8=[
+ ['periodic table','元素周期表','all the elements arranged by proton number'],
+ ['group','族（纵列）','a vertical column; same number of outer electrons'],
+ ['period','周期（横行）','a horizontal row; same number of electron shells'],
+ ['outer shell','最外层电子层','the shell furthest from the nucleus'],
+ ['outer electron','最外层电子','an electron in the outer shell'],
+ ['full outer shell','满的最外层','a stable outer shell (e.g. 2 or 8 electrons)'],
+ ['relative atomic mass','相对原子质量','the average mass of an atom, compared with others'],
+ ['metal','金属','shiny, conducts electricity, malleable'],
+ ['non-metal','非金属','usually dull, brittle, does not conduct (except graphite)'],
+ ['metalloid','类金属','between metals and non-metals'],
+ ['conduct electricity','导电','let electricity pass through'],
+ ['malleable','可锻造的；可延展的','can be hammered into shape'],
+ ['ductile','可拉成丝的','can be pulled into wires'],
+ ['brittle','脆的','breaks easily when hit'],
+ ['shiny / lustrous','有光泽的','looks bright when polished'],
+ ['melting point','熔点','the temperature a solid melts'],
+ ['boiling point','沸点','the temperature a liquid boils'],
+ ['density','密度','how much mass in a given volume'],
+ ['graphite','石墨','a non-metal (carbon) that conducts electricity'],
+ ['alkali metal','碱金属','Group I metal, e.g. lithium, sodium, potassium'],
+ ['reactivity','反应活性','how easily a substance reacts'],
+ ['reactive / unreactive','活泼的 / 不活泼的',''],
+ ['soft','软的','can be cut with a knife (Group I metals)'],
+ ['hydroxide','氢氧化物','alkali made when a Group I metal reacts with water'],
+ ['hydrogen gas','氢气','the gas given off when alkali metals react with water'],
+ ['halogen','卤素','Group VII element, e.g. chlorine, bromine, iodine',I],
+ ['diatomic molecule','双原子分子','two atoms joined, e.g. Cl₂',I],
+ ['displacement reaction','置换反应','a more reactive halogen pushes out a less reactive one',I],
+ ['noble gas','惰性气体','Group 0 gas; very unreactive; full outer shell',I],
+ ['inert','惰性的；不起反应的','does not react',I],
+ ['transition element','过渡元素','metals between Group II and III, e.g. Fe, Cu, Zn',I],
+ ['catalyst','催化剂','speeds up a reaction and is not used up',I],
+ ['coloured compound','有颜色的化合物','e.g. copper sulfate solution is blue',I],
+ ['cation / anion','正离子 / 负离子','ion with + charge / ion with − charge',I],
+];
+const EL=[
+ ['H','氢','Hydrogen'],['He','氦','Helium'],['Li','锂','Lithium'],['Be','铍','Beryllium'],['B','硼','Boron'],
+ ['C','碳','Carbon'],['N','氮','Nitrogen'],['O','氧','Oxygen'],['F','氟','Fluorine'],['Ne','氖','Neon'],
+ ['Na','钠','Sodium'],['Mg','镁','Magnesium'],['Al','铝','Aluminium',['aluminum']],['Si','硅','Silicon'],['P','磷','Phosphorus'],
+ ['S','硫','Sulfur',['sulphur']],['Cl','氯','Chlorine'],['Ar','氩','Argon'],['K','钾','Potassium'],['Ca','钙','Calcium'],
+ ['Fe','铁','Iron'],['Cu','铜','Copper'],['Zn','锌','Zinc'],['Br','溴','Bromine'],['Ag','银','Silver'],
+ ['Sn','锡','Tin'],['I','碘','Iodine'],['Au','金','Gold'],['Hg','汞','Mercury'],['Pb','铅','Lead'],
+];
+const ZH=[
+ ['质子','proton'],['中子','neutron'],['电子','electron'],['原子核','nucleus'],['电子层','electron shell'],
+ ['原子','atom'],['元素','element'],['化合物','compound'],['混合物','mixture'],['化学反应','chemical reaction'],
+ ['磁铁','magnet'],['原子序数（质子数）','proton number',['atomic number']],['质量数','nucleon number',['mass number']],
+ ['元素周期表','periodic table'],['族（纵列）','group'],['周期（横行）','period'],
+ ['金属','metal'],['非金属','non-metal',['nonmetal']],['碱金属','alkali metal',['alkali metals']],['导电','conduct electricity',['conducts electricity']],
+ ['熔点','melting point'],['密度','density'],['反应活性','reactivity'],['最外层电子','outer electron'],['本生灯','Bunsen burner'],
+];
+const ATOM=[
+ [1,'proton','质子',[]],[2,'neutron','中子',[]],[3,'electron','电子',[]],[4,'electron shell','电子层',['shell']],[5,'nucleus','原子核',[]],
+];
+const EXP=[
+ [1,'mineral wool','矿物棉',['mineral wool plug']],[2,'clamp','夹子',[]],
+ [3,'iron and sulfur mixture','铁和硫的混合物',['mixture','mix','iron and sulfur mix','iron and sulphur mixture','iron and sulphur mix']],
+ [4,'Bunsen burner','本生灯',['bunsen']],[5,'sulfur powder','硫粉',['sulfur','sulphur','sulphur powder']],[6,'iron powder','铁粉',['iron']],
+ [7,'magnet','磁铁',[]],[8,'test tube','试管',['boiling tube']],
+];
+const CLOZE=[
+ ['The [[nucleus]] is the centre of an atom. It contains protons and neutrons.','原子核'],
+ ['An electron has a [[negative]] charge.','电子带负电'],
+ ['A [[neutron]] has no charge.','中子不带电'],
+ ['The number of protons in an atom is called the [[proton|atomic]] number.','原子序数'],
+ ['A substance made of two or more different elements chemically joined is a [[compound]].','化合物'],
+ ['Iron and sulfur just mixed together make a [[mixture]]. A magnet can separate them.','混合物'],
+ ['When iron and sulfur are heated, they make iron [[sulfide|sulphide]], which is a compound.','硫化亚铁'],
+ ['In the periodic table, a vertical column is called a [[group]].','族'],
+ ['A horizontal row in the periodic table is called a [[period]].','周期'],
+ ['Elements in the same [[group]] have the same number of outer electrons.','同族最外层电子数相同'],
+ ['Metals [[conduct|conducts]] electricity. Most non-metals do not.','金属导电'],
+ ['Group I metals are called the [[alkali]] metals.','碱金属'],
+ ['Going down Group I, the reactivity [[increases]].','Group I 越往下越活泼'],
+ ['Group 0 elements are called the [[noble|inert]] gases. [IGCSE]','惰性气体'],
+ ['Going down Group VII, the reactivity [[decreases]]. [IGCSE]','卤素越往下越不活泼'],
+];
+const $=id=>document.getElementById(id);
+const norm=(s,strict)=>{s=(s||'').trim().replace(/\s+/g,' ');return strict?s:s.toLowerCase().replace(/[-‐-―]/g,' ').replace(/\s+/g,' ');};
+const okAns=(val,list,strict)=>list.some(a=>norm(a,strict)===norm(val,strict));
+function vocabTable(id,data){
+  let h='<table><tr><th>English</th><th>中文</th><th>Meaning</th></tr>';
+  data.forEach(r=>{h+=`<tr><td class="en">${r[0]}${r[3]?'<span class="tag igcse">IGCSE</span>':''}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`;});
+  $(id).innerHTML=h+'</table>';
+}
+vocabTable('tbl-c2',C2);vocabTable('tbl-c8',C8);
+(function(){
+  let h='<table><tr><th>Symbol</th><th>English</th><th>中文</th></tr>';
+  EL.forEach(r=>{h+=`<tr><td class="sym">${r[0]}</td><td class="en">${r[2]}</td><td>${r[1]}</td></tr>`;});
+  $('tbl-el').innerHTML=h+'</table>';
+})();
+const BTNS='<button type="button" class="chk">Check 检查</button><button type="button" class="sec shw">Show answers 显示答案</button><button type="button" class="sec rst">Reset 重做</button><span class="score"></span>';
+function wire(c,rows,good){
+  const btns=document.createElement('div');btns.className='btns';btns.innerHTML=BTNS;c.appendChild(btns);
+  const score=btns.querySelector('.score');
+  const clear=r=>{r.inp.classList.remove('ok','bad');r.fb.className='fb';r.fb.textContent='';};
+  btns.querySelector('.chk').onclick=()=>{let n=0,blank=0;rows.forEach(r=>{clear(r);if(!r.inp.value.trim()){blank++;return;}const g=good(r);r.inp.classList.add(g?'ok':'bad');r.fb.classList.add(g?'ok':'bad');r.fb.textContent=g?'✓':'✗';if(g)n++;});score.textContent=n+' / '+rows.length+(blank?'（还有 '+blank+' 题没写）':'');};
+  btns.querySelector('.shw').onclick=()=>{rows.forEach(r=>{const g=good(r);r.fb.className='fb '+(g?'ok':'bad');r.fb.textContent=(g?'✓ ':'→ ')+r.show;if(!g&&r.inp.value.trim())r.inp.classList.add('bad');});};
+  btns.querySelector('.rst').onclick=()=>{rows.forEach(r=>{r.inp.value='';clear(r);});score.textContent='';};
+}
+function mkInput(sm){const i=document.createElement('input');i.type='text';i.className='ans'+(sm?' sm':'');i.autocomplete='off';i.spellcheck=false;i.setAttribute('autocapitalize','off');return i;}
+function makeQuiz(id,items){
+  const c=$(id),rows=[];
+  items.forEach(it=>{
+    const row=document.createElement('div');row.className='qrow';
+    row.innerHTML=(it.num!=null?'<span class="n">'+it.num+'</span>':'')+'<span class="q">'+(it.q||'')+'</span>';
+    const inp=mkInput(it.sm),fb=document.createElement('span');fb.className='fb';
+    row.appendChild(inp);row.appendChild(fb);c.appendChild(row);
+    rows.push({it,inp,fb,show:it.answers[0]});
+  });
+  wire(c,rows,r=>okAns(r.inp.value,r.it.answers.concat(r.it.alt||[]),r.it.strict));
+}
+makeQuiz('quiz-atom',ATOM.map(a=>({num:a[0],q:'<span class="zh">'+a[2]+'</span>',answers:[a[1]],alt:a[3]})).concat([
+ {q:'Carbon has how many protons?<span class="zh"> 碳有几个质子？</span>',answers:['6'],sm:1},
+ {q:'How many neutrons? <span class="zh">（碳-12）几个中子？</span>',answers:['6'],sm:1},
+ {q:'How many electrons? <span class="zh">几个电子？</span>',answers:['6'],sm:1},
+ {q:'Electrons in the inner shell <span class="zh">内层几个电子？</span>',answers:['2'],sm:1},
+ {q:'Electrons in the outer shell <span class="zh">外层几个电子？</span>',answers:['4'],sm:1},
+]));
+makeQuiz('quiz-exp',EXP.map(a=>({num:a[0],q:'<span class="zh">'+a[2]+'</span>',answers:[a[1]],alt:a[3]})).concat([
+ {q:'After heating, the new compound is <span class="zh">加热后生成</span>',answers:['iron sulfide'],alt:['iron sulphide']},
+ {q:'Write the formula <span class="zh">写出化学式</span>',answers:['FeS'],strict:true,sm:1},
+]));
+makeQuiz('quiz-zh',ZH.map(a=>({q:'<b>'+a[0]+'</b>',answers:[a[1]],alt:a[2]||[]})));
+makeQuiz('quiz-sym',EL.map(a=>({q:'<b style="font-family:Georgia,serif;font-size:1.05rem">'+a[0]+'</b> <span class="zh">'+a[1]+'</span>',answers:[a[2]],alt:a[3]||[]})));
+(function(){
+  const arr=EL.slice();let s=7;const rnd=()=>{s=(s*9301+49297)%233280;return s/233280;};
+  for(let i=arr.length-1;i>0;i--){const j=Math.floor(rnd()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}
+  makeQuiz('quiz-name',arr.map(a=>({q:'<b>'+a[2]+'</b> <span class="zh">'+a[1]+'</span>',answers:[a[0]],strict:true,sm:1})));
+})();
+(function(){
+  const c=$('quiz-cloze'),rows=[];
+  CLOZE.forEach((it,i)=>{
+    const m=it[0].match(/\[\[(.*?)\]\]/),ans=m[1].split('|');
+    const div=document.createElement('div');div.className='cloze';
+    const html=it[0].replace('[IGCSE]','<span class="tag igcse">IGCSE</span>').replace(m[0],'<span class="slot"></span>');
+    div.innerHTML='<b>'+(i+1)+'.</b> '+html+' <span class="zh">（'+it[1]+'）</span> <span class="fb"></span>';
+    const inp=mkInput(false);div.querySelector('.slot').replaceWith(inp);
+    c.appendChild(div);rows.push({ans,inp,fb:div.querySelector('.fb'),show:ans[0]});
+  });
+  wire(c,rows,r=>okAns(r.inp.value,r.ans));
+})();
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches&&e.target.matches('input.ans')){const all=[...document.querySelectorAll('input.ans')],i=all.indexOf(e.target);if(all[i+1])all[i+1].focus();e.preventDefault();}});
+</script>
+</body>
+</html>
